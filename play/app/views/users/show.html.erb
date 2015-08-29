@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @user.points %>
+</p>
+
+<p>
+  <strong>All bets:</strong>
+  <%= @user.all_bets %>
+</p>
+
+<p>
+  <strong>Curr bets:</strong>
+  <%= @user.curr_bets %>
+</p>
+
+<p>
+  <strong>Won bets:</strong>
+  <%= @user.won_bets %>
+</p>
+
+<p>
+  <strong>Lost bets:</strong>
+  <%= @user.lost_bets %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

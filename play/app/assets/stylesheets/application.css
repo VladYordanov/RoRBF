@@ -1,0 +1,101 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ html,
+ body {
+ 	width: 100%;
+ 	height: 100%;
+ 	margin: 0 auto;
+ 	padding: 0;
+ }
+
+.menu {
+	border: 1px solid red;
+	padding: 0;
+	background: tomato;
+	margin-top: 0;
+}
+
+.menu p {
+	font-weight: bold;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+ .menu li {
+ 	list-style-type: none;
+ 	line-height: 60px;
+ 	padding-left: 15px;
+ 	padding-right: 15px;
+ 	background: tomato;
+ 	display: inline-block;
+ }
+
+.menu a {
+	text-decoration: none;
+	color: #fff;
+	font-size: 14px;
+}
+
+.menu a:hover {
+	background: none;
+}
+
+/*showing bets in main page */
+
+.bet_layout {
+	width: 400px;
+	height: 100px;
+	background: #333;
+	color: #fff;
+}
+
+.bet_layout p {
+	text-align: center;
+	margin-top: 40px;
+	padding-top: 20px;
+}
+
+.team_one,
+.team_two {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.team_one_chance,
+.team_two_chance {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.team_one_chance {
+	padding-right: 20px;
+}
+
+.team_two_chance {
+	padding-left: 20px;
+}
+
+.values {
+	text-align: center;
+}
+
+.team_one_value,
+.team_two_value {
+	padding-left: 30px;
+	padding-right: 30px;
+	font-weight: bold;
+}

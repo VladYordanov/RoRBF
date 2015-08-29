@@ -1,0 +1,53 @@
+<%= form_for(@user_bet) do |f| %>
+  <% if @user_bet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_bet.errors.count, "error") %> prohibited this user_bet from being saved:</h2>
+
+      <ul>
+      <% @user_bet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bet_on_id %><br>
+    <%= f.number_field :bet_on_id %>
+  </div>
+  <div class="field">
+    <%= f.label :bet_points %><br>
+    <%= f.number_field :bet_points %>
+  </div>
+  <div class="field">
+    <%= f.label :bet_team %><br>
+    <%= f.number_field :bet_team %>
+  </div>
+  <div class="field">
+    <%= f.label :won %><br>
+    <%= f.number_field :won %>
+  </div>
+  <div class="field">
+    <%= f.label :loss %><br>
+    <%= f.number_field :loss %>
+  </div>
+  <div class="field">
+    <%= f.label :returned_value %><br>
+    <%= f.number_field :returned_value %>
+  </div>
+  <div class="field">
+    <%= f.label :closed %><br>
+    <%= f.number_field :closed %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.select :user_id, options_for_select(User.all.map{|s|[s.username, s.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :bet_id %><br>
+    <%= f.select :bet_id, options_for_select(Bet.all) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

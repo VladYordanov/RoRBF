@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Team one:</strong>
+  <%= @bet.team_one %>
+</p>
+
+<p>
+  <strong>Team two:</strong>
+  <%= @bet.team_two %>
+</p>
+
+<p>
+  <strong>Team one chance:</strong>
+  <%= @bet.team_one_chance %>
+</p>
+
+<p>
+  <strong>Team two chance:</strong>
+  <%= @bet.team_two_chance %>
+</p>
+
+<p>
+  <strong>Team one value:</strong>
+  <%= @bet.team_one_value %>
+</p>
+
+<p>
+  <strong>Team two value:</strong>
+  <%= @bet.team_two_value %>
+</p>
+
+<p>
+  <strong>Winner:</strong>
+  <%= @bet.winner %>
+</p>
+
+<p>
+  <strong>Bets on team one:</strong>
+  <%= @bet.bets_on_team_one %>
+</p>
+
+<p>
+  <strong>Bets on team two:</strong>
+  <%= @bet.bets_on_team_two %>
+</p>
+
+<p>
+  <strong>Can bet:</strong>
+  <%= @bet.can_bet %>
+</p>
+
+<%= link_to 'Edit', edit_bet_path(@bet) %> |
+<%= link_to 'Back', bets_path %>

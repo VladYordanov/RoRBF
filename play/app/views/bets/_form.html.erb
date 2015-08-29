@@ -1,0 +1,57 @@
+<%= form_for(@bet) do |f| %>
+  <% if @bet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
+
+      <ul>
+      <% @bet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :team_one %><br>
+    <%= f.text_field :team_one %>
+  </div>
+  <div class="field">
+    <%= f.label :team_two %><br>
+    <%= f.text_field :team_two %>
+  </div>
+  <div class="field">
+    <%= f.label :team_one_chance %><br>
+    <%= f.number_field :team_one_chance %>
+  </div>
+  <div class="field">
+    <%= f.label :team_two_chance %><br>
+    <%= f.number_field :team_two_chance %>
+  </div>
+  <div class="field">
+    <%= f.label :team_one_value %><br>
+    <%= f.number_field :team_one_value %>
+  </div>
+  <div class="field">
+    <%= f.label :team_two_value %><br>
+    <%= f.number_field :team_two_value %>
+  </div>
+  <div class="field">
+    <%= f.label :winner %><br>
+    <%= f.number_field :winner %>
+  </div>
+  <div class="field">
+    <%= f.label :bets_on_team_one %><br>
+    <%= f.number_field :bets_on_team_one %>
+  </div>
+  <div class="field">
+    <%= f.label :bets_on_team_two %><br>
+    <%= f.number_field :bets_on_team_two %>
+  </div>
+  <div class="field">
+    <%= f.label :can_bet %><br>
+    <%= f.number_field :can_bet %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,54 @@
+At the momemnt we have 3 tables: Users, Bets, User_Bets <br>
+#/main/bet/1/2  = #/main/bet/user_id/bet_id
+
+<h2>So much bugs to fix before continuing: </h2>
+<ul>
+	<li> bet/id/id is updating right now, we need to create new user bet to the user </li>
+	<li> take points of user </li>
+	<li> sign in auth </li>
+	<li> many more...</li>
+	<li> bet link on index </li>
+</ul>
+
+
+<div class="bets">
+	<div class="active">
+		<% @bets.each do |bet| %>
+			<div class="bet_layout">
+				<p> 
+					<span class="team_one_chance">
+						<%= bet.team_one_chance %>%
+					</span>
+					<span class="team_one"> 
+						<%= bet.team_one %> 
+					</span>
+					VS. 
+					<span class="team_two">
+						<%= bet.team_two %> 
+					</span>
+					<span class="team_two_chance">
+						<%= bet.team_two_chance %>%
+					</span>
+				</p>
+
+				<div class="values">
+				values:
+					<span class="team_one_value">
+						<%= bet.team_one_value %>
+					</span>
+					<span class="team_two_value">
+						<%= bet.team_two_value %>
+					</span>
+				</div>
+
+				<div class="bet_button">
+
+				</div>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="finished">
+
+	</div>
+</div>

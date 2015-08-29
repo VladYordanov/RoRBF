@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  email: MyString
+  password: MyString
+  points: 1
+  all_bets: 1
+  curr_bets: 1
+  won_bets: 1
+  lost_bets: 1
+
+two:
+  username: MyString
+  email: MyString
+  password: MyString
+  points: 1
+  all_bets: 1
+  curr_bets: 1
+  won_bets: 1
+  lost_bets: 1

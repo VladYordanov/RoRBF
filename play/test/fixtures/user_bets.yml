@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bet_on_id: 1
+  bet_points: 1
+  bet_team: 1
+  won: 1
+  loss: 1
+  returned_value: 1
+  closed: 1
+  user_id: 
+  bet_id: 
+
+two:
+  bet_on_id: 1
+  bet_points: 1
+  bet_team: 1
+  won: 1
+  loss: 1
+  returned_value: 1
+  closed: 1
+  user_id: 
+  bet_id: 
