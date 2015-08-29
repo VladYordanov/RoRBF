@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resource :main do
     # get "bet/:user_id/:id", :to => "main#bet", :on => :collection, as: "bet_userid_betid" #makes possible /bet/1/2 /bet/1/3
     #get "bet/:id", :to => 'main#bet', :on => :collection
-    get "bet/:id/:bet_id", :to => 'main#bet', :on => :collection
+    get "bet/:user_id/:bet_id", :to => 'main#bet', :on => :collection
   end
 
 

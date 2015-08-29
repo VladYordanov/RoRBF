@@ -21,13 +21,13 @@
     <%= f.label :bet_points %><br>
     <%= f.number_field :bet_points %>
   </div>
- <!-- <div class="field">
-    <%= f.label :user_id %><br>
-   <%= f.select :user_id, options_for_select(User.all.map{|s|[s.username, s.id]}) %> 
-  </div> -->
+  
   <div class="field">
     <%= f.label "Bet on" %><br>
-    <%= f.select :bet_id, options_for_select(@bet.team_one, @bet.team_two) %>
+    <select name="user_bet[bet_on_id]">
+      <option value="1"><%= @bet.team_one %></option>
+      <option value="2"><%= @bet.team_two %></option>
+    </select>
   </div>
   <div class="actions">
     <%= f.submit %>
