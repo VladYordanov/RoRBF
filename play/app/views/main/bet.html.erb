@@ -11,17 +11,23 @@
     </div>
   <% end %>
 
+  <p> User ID = <%= @user.id %></p>
+  <p> get "bet/:id/:bet_id", :to => 'main#bet', :on => :collection </p>
+
+  <p> team_one: <%= @bet.team_one %> </p>
+  <p> team_two: <%= @bet.team_two %> </p>
+
   <div class="field">
     <%= f.label :bet_points %><br>
     <%= f.number_field :bet_points %>
   </div>
-  <div class="field">
+ <!-- <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.select :user_id, options_for_select(User.all.map{|s|[s.username, s.id]}) %>
-  </div>
+   <%= f.select :user_id, options_for_select(User.all.map{|s|[s.username, s.id]}) %> 
+  </div> -->
   <div class="field">
-    <%= f.label :bet_id %><br>
-    <%= f.select :bet_id, options_for_select(Bet.all.map{|s|[s.team_one, s.team_two]}) %>
+    <%= f.label "Bet on" %><br>
+    <%= f.select :bet_id, options_for_select(@bet.team_one, @bet.team_two) %>
   </div>
   <div class="actions">
     <%= f.submit %>

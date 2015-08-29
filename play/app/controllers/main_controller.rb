@@ -14,8 +14,9 @@ class MainController < ApplicationController
 	end
 
 	def bet
-		@user = User.find(1) #need to fix so it gets the logged in user
-		@user_bet = @user.user_bets.find(params[:id])
+		@bet = Bet.find(params[:bet_id])
+		@user = User.find(params[:id]) #need to fix so it gets the logged in user
+		@user_bet = UserBet.new
 
 	end
 
