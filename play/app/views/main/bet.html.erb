@@ -21,7 +21,7 @@
     <%= f.label :bet_points %><br>
     <%= f.number_field :bet_points %>
   </div>
-  
+
   <div class="field">
     <%= f.label "Bet on" %><br>
     <select name="user_bet[bet_on_id]">
@@ -30,6 +30,8 @@
     </select>
   </div>
   <div class="actions">
+    <%= @user_bet.won %>
     <%= f.submit %>
   </div>
+
 <% end %>

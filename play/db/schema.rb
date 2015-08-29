@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150828143521) do
+ActiveRecord::Schema.define(version: 20150829173454) do
 
   create_table "bets", force: :cascade do |t|
     t.string   "team_one"
@@ -31,15 +31,15 @@ ActiveRecord::Schema.define(version: 20150828143521) do
   create_table "user_bets", force: :cascade do |t|
     t.integer  "bet_on_id"
     t.integer  "bet_points"
-    t.integer  "bet_team"
-    t.integer  "won"
-    t.integer  "loss"
-    t.integer  "returned_value"
-    t.integer  "closed"
+    t.integer  "bet_team",       default: 0
+    t.integer  "won",            default: 0
+    t.integer  "loss",           default: 0
+    t.integer  "returned_value", default: 0
+    t.integer  "closed",         default: 0
     t.integer  "user_id"
     t.integer  "bet_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "user_bets", ["bet_id"], name: "index_user_bets_on_bet_id"
