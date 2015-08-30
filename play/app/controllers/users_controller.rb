@@ -63,7 +63,7 @@ class UsersController < ApplicationController
 
 def bet
   @user = User.find(params[:id])
-  @user_bet = @user.user_bet.find(params[:id])
+  @user_bets = @user.user_bets.all
 end
 
   private

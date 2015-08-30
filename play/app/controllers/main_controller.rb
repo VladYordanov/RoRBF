@@ -9,22 +9,19 @@ class MainController < ApplicationController
 		@user_bet = @user.find(params[:id])
 	end
 
-	def new_bet
-		@user_bet = UserBet.new
-	end
-
 	def bet
 		@bet = Bet.find(params[:bet_id])
-		@user = User.find(params[:user_id]) #need to fix so it gets the logged in user
+		@user = User.find_by_username(params[:id]) #need to fix so it gets the logged in user
 		@user_bet = UserBet.new
 		@user_bet.user_id = @user.id
         @user_bet.bet_id = @bet.id
         @user_bet.save
 	end
 
+	def login
+		@user = User.all
 
-	private
-		def user_bet_params
-	      params.require(:user_bet).permit(:bet_on_id, :bet_points, :bet_team, :won, :loss, :returned_value, :closed, :user_id, :bet_id)
-	    end
+
+	end
+
 end
