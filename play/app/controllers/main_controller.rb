@@ -18,10 +18,5 @@ class MainController < ApplicationController
         @user_bet.save
 	end
 
-	def login
-		@user = User.all
-
-
-	end
 
 end

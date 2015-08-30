@@ -3,19 +3,12 @@ Rails.application.routes.draw do
   resources :bets
   resources :users 
 
-  resources :main do
-    collection do
-      get "bet", param: :id
-    end
-  end
-
   resources :users do
-    get ":id/bets", :to => "users#bet", :on => :collection
+    get ":id/bets" => "users#bet", :on => :collection
   end
 
-  resource :main do
-    get "bet/:id/:bet_id", :to => 'main#bet', :on => :collection
-    get 'user/login', :to => 'main#login'
+  resource :main, :path => "" do
+    get "/bet/:id/:bet_id" => 'main#bet', :on => :collection
   end
 
 
