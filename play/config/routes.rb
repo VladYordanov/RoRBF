@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get ":id/bets" => "users#bet", :on => :collection
   end
 
-  resource :main, :path => "" do
+  resource :main, :path => "m" do
     get "/bet/:id/:bet_id" => 'main#bet', :on => :collection
   end
 
