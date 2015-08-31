@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829173454) do
+ActiveRecord::Schema.define(version: 20150831142835) do
 
   create_table "bets", force: :cascade do |t|
     t.string   "team_one"
@@ -31,11 +31,11 @@ ActiveRecord::Schema.define(version: 20150829173454) do
   create_table "user_bets", force: :cascade do |t|
     t.integer  "bet_on_id"
     t.integer  "bet_points"
-    t.integer  "bet_team",       
-    t.integer  "won",            
-    t.integer  "loss",           
-    t.integer  "returned_value", 
-    t.integer  "closed",         
+    t.integer  "bet_team",       default: 0
+    t.integer  "won",            default: 0
+    t.integer  "loss",           default: 0
+    t.integer  "returned_value", default: 0
+    t.integer  "closed",         default: 0
     t.integer  "user_id"
     t.integer  "bet_id"
     t.datetime "created_at",                 null: false
@@ -54,8 +54,20 @@ ActiveRecord::Schema.define(version: 20150829173454) do
     t.integer  "curr_bets"
     t.integer  "won_bets"
     t.integer  "lost_bets"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

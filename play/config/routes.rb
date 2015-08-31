@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :user_bets
   resources :bets
   resources :users 
