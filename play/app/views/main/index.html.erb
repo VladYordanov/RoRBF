@@ -3,26 +3,19 @@ At the momemnt we have 3 tables: Users, Bets, User_Bets <br>
 
 <h2>So much bugs to fix before continuing: </h2>
 <ul>
-	<li> bet/id/id is updating right now, we need to create new user bet to the user </li>
 	<li> take points of user </li>
-	<li> sign in auth </li>
-	<li> many more...</li>
 	<li> bet link on index </li>
+	<li> sign in fixes(later) </li>
 </ul>
 
 <h2>http://localhost:3000/users/Theuser/bets -> show all bets of user Theuser</h2>
 <h2>http://localhost:3000/m/bet/Theuser/1 -> bet on match(ID1) by user Theuser</h2>
 
-<h1>New User</h1>
-
+<h1>02.09</h1>
 <ul>
-	<li>Fix:</li>
-	<li>Remove the fields that aren't needed by the actual user</li>
-	<li>Make the removed fields(variables) with default values (equal to 0)</li>
-	<li>Auth</li>
-	<li>Hash passwords</li>
+	<li> At the moment when new user bet is created, its actually using the update action from user_bets_controller </li>
+	<li> --- fix this by redirecting the form submit to create action </li>
 </ul>
-
 
 <div class="bets">
 	<div class="active">
@@ -55,7 +48,11 @@ At the momemnt we have 3 tables: Users, Bets, User_Bets <br>
 				</div>
 
 				<div class="bet_button">
-
+					<% if current_user %>
+					<%= link_to "Bet", user_bet_user_bets_path(bet.id) %>
+					<% else %>
+					<%= link_to "Bet", new_user_session_path %>
+					<% end %>
 				</div>
 			</div>
 		<% end %>

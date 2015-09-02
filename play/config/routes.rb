@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     get ":id/bets" => "users#bet", :on => :collection
   end
 
-  resource :main, :path => "m" do
-    get "/bet/:id/:bet_id" => 'main#bet', :on => :collection
+  resource :user_bets do
+    get "/bet/:bet_id" => 'user_bets#bet', :on => :collection, :as => "user_bet" 
   end
 
 
