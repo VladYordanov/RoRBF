@@ -14,7 +14,8 @@
 	<li><%= link_to "Sign in", user_session_path %></li>
 	<li><%= link_to "Log out",  destroy_user_session_path, :method => :delete %></li>
 	<li><%= link_to "Create bet", new_bet_path %></li>
-	<li><%= link_to "User bets", new_user_bet_path %></li>
+	<li><%= link_to "User bets", user_bets_path %></li>
+	<li><%= link_to "Users", users_path %></li>
 </ul>
 
 <%= yield %>

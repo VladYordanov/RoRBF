@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831142835) do
+ActiveRecord::Schema.define(version: 20150902044548) do
 
   create_table "bets", force: :cascade do |t|
     t.string   "team_one"
@@ -48,12 +48,11 @@ ActiveRecord::Schema.define(version: 20150831142835) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
-    t.string   "password"
-    t.integer  "points"
-    t.integer  "all_bets"
-    t.integer  "curr_bets"
-    t.integer  "won_bets"
-    t.integer  "lost_bets"
+    t.integer  "points",                 default: 0
+    t.integer  "all_bets",               default: 0
+    t.integer  "curr_bets",              default: 0
+    t.integer  "won_bets",               default: 0
+    t.integer  "lost_bets",              default: 0
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "encrypted_password",     default: "", null: false
