@@ -1,22 +1,3 @@
-At the momemnt we have 3 tables: Users, Bets, User_Bets <br>
-#/main/bet/1/2  = #/main/bet/user_id/bet_id
-
-<h2>So much bugs to fix before continuing: </h2>
-<ul>
-	<li> take points of user </li>
-	<li> bet link on index </li>
-	<li> sign in fixes(later) </li>
-</ul>
-
-<h2>http://localhost:3000/users/Theuser/bets -> show all bets of user Theuser</h2>
-<h2>http://localhost:3000/m/bet/Theuser/1 -> bet on match(ID1) by user Theuser</h2>
-
-<h1>02.09</h1>
-<ul>
-	<li> At the moment when new user bet is created, its actually using the update action from user_bets_controller </li>
-	<li> --- fix this by redirecting the form submit to create action </li>
-</ul>
-
 <div class="bets">
 	<div class="active">
 		<% @bets.each do |bet| %>

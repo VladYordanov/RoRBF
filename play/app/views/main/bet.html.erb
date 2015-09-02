@@ -1,18 +1,17 @@
+<%= form_for(@user_bet) do |f| %>
+  <% if @user_bet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_bet.errors.count, "error") %> prohibited this user_bet from being saved:</h2>
 
+      <ul>
+      <% @user_bet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <%= form_for(@user_bet) do |f| %>
-    <% if @user_bet.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@user_bet.errors.count, "error") %> prohibited this user_bet from being saved:</h2>
-
-        <ul>
-        <% @user_bet.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
+  
     <p> User ID = <%= @user.id %></p>
     <p> get "bet/:id/:bet_id", :to => 'main#bet', :on => :collection </p>
 
@@ -35,4 +34,4 @@
       <%= f.submit %>
     </div>
 
-  <% end %>
+<% end %>

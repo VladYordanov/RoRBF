@@ -19,17 +19,18 @@ class UserBetsController < ApplicationController
     @user_bets = UserBet.all
     @user = current_user  
 
-
-    #checking if the user already has a bet on this match
+    #check if user already betted on this match
     @user_bets.each do |bet| 
       if bet.user_id == @user.id 
         if bet.bet_id == @bet.id
-          redirect_to root_path
+          #redirect_to root_path
           @already_bet = 1
+          @user_bet = UserBet.find(bet.id)
           break
         end
       end
     end
+  
   end
 
   # GET /user_bets/1/edit
