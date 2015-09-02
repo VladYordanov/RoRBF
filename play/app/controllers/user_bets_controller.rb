@@ -15,6 +15,21 @@ class UserBetsController < ApplicationController
   # GET /user_bets/new
   def new
     @user_bet = UserBet.new
+    @bet = Bet.find(params[:id])
+    @user_bets = UserBet.all
+    @user = current_user  
+
+
+    #checking if the user already has a bet on this match
+    @user_bets.each do |bet| 
+      if bet.user_id == @user.id 
+        if bet.bet_id == @bet.id
+          redirect_to root_path
+          @already_bet = 1
+          break
+        end
+      end
+    end
   end
 
   # GET /user_bets/1/edit
@@ -26,6 +41,19 @@ class UserBetsController < ApplicationController
   def create
 
     @user_bet = UserBet.new(user_bet_params)
+    @bet = Bet.find(params[:id]) 
+    @user = current_user
+
+    @user_bet.user_id = @user.id
+    @user_bet.bet_id = @bet.id
+    @user_bet.save
+
+    #taking the points betted from the user 
+    @user = User.find(@user_bet.user_id) 
+    @user.points -= @user_bet.bet_points 
+    @user.all_bets += 1
+    @user.save
+    
 
 
     respond_to do |format|
@@ -44,11 +72,6 @@ class UserBetsController < ApplicationController
   def update
     respond_to do |format|
       if @user_bet.update(user_bet_params)
-
-         @user = User.find(@user_bet.user_id) #take points from the user when bet is created
-         @user.points += @user_bet.bet_points
-         @user.save
-
         format.html { redirect_to @user_bet, notice: 'Bet was successfully created' }
         format.json { render :show, status: :ok, location: @user_bet }
       else
@@ -56,28 +79,6 @@ class UserBetsController < ApplicationController
         format.json { render json: @user_bet.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def bet
-    @bet = Bet.find(params[:bet_id])
-    @user = current_user
-    @user_bets = UserBet.all
-
-    @user_bets.each do |bet| #checks if the user already has a bet on this match
-      if bet.user_id == @user.id
-        redirect_to root_path
-        @already_bet = 1 #if there's a bet - give val 1 to var already_bet for later check
-        break
-      end
-    end
-
-    if @already_bet != 1
-      @user_bet = UserBet.new(params[:bet_points]) #if he doesnt have a bet - create new one
-      @user_bet.user_id = @user.id
-      @user_bet.bet_id = @bet.id
-      @user_bet.save
-    end
-
   end
 
   # DELETE /user_bets/1
