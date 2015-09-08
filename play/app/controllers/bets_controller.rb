@@ -67,6 +67,25 @@ class BetsController < ApplicationController
 
   def finish
     @bet = Bet.find(params[:id])
+    @user_bets = UserBet.all
+    @users = User.all
+
+    #assigning points to the winners
+    # --- 
+    # --- check for fixes
+    # --- working for now
+    @user_bets.each do |user_bet| 
+      if user_bet.bet_id == @bet.id 
+    
+        @users.each do |user|
+          if user_bet.user_id == user.id && user_bet.bet_on_id == @bet.winner
+            user.points += user_bet.bet_points * (@bet.team_one_chance / 10 )
+            user.save
+          end
+        end
+
+      end
+    end
   end
 
   private
