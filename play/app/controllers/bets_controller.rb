@@ -40,6 +40,10 @@ class BetsController < ApplicationController
   # PATCH/PUT /bets/1
   # PATCH/PUT /bets/1.json
   def update
+    if @bet.winner 
+      @bet.can_bet = 0
+    end
+
     respond_to do |format|
       if @bet.update(bet_params)
         format.html { redirect_to @bet, notice: 'Bet was successfully updated.' }
@@ -59,6 +63,10 @@ class BetsController < ApplicationController
       format.html { redirect_to bets_url, notice: 'Bet was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def finish
+    @bet = Bet.find(params[:id])
   end
 
   private

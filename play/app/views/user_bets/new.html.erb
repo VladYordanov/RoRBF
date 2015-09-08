@@ -27,16 +27,19 @@
   </div><!-- .values -->
 </div> <!-- .bet_layout -->
 
-<% if DateTime.now.in_time_zone < @bet.match_starts_at.in_time_zone.to_datetime %>
-  <% if !@already_bet  %>
-  	<%= render 'form' %>
-  <% else %>
-    <% if @user_bet.bet_on_id == 1 %>
-    	<p>Betted <%= @user_bet.bet_points %> points on <%= @bet.team_one %> </p>
-    <% elsif @user_bet.bet_on_id == 2 %>
-    	<p>Betted <%= @user_bet.bet_points %> points on <%= @bet.team_two %> </p>
+
+<% if @bet.can_bet != 0 %>
+    <% if DateTime.now.in_time_zone < @bet.match_starts_at.in_time_zone.to_datetime %>
+        <% if !@already_bet %>
+            <%= render 'form' %>
+        <% else %>
+            <% if @user_bet.bet_on_id == 1 %>
+        	   <p>Betted <%= @user_bet.bet_points %> points on <%= @bet.team_one %> </p>
+             <% elsif @user_bet.bet_on_id == 2 %>
+        	   <p>Betted <%= @user_bet.bet_points %> points on <%= @bet.team_two %> </p>
+            <% end %>
+        <% end %>
     <% end %>
-  <% end %>
 <% else %>
-  Can't bet - It's too late
+    Match has already ended
 <% end %>

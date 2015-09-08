@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   end
 
   resource :user_bets do
-    get "/bet/:id" => 'user_bets#new', :on => :collection, :as => "user_bet" 
+    get "/bet/:id" => 'user_bets#new', :on => :collection, :as => "user_bet"  
+  end
+
+  resource :bets do
+    get "/finish/:id" => "bets#finish", :on => :collection, :as => "finish_match"
   end
 
 

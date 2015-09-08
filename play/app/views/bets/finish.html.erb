@@ -1,0 +1,42 @@
+<div class="bet_layout">
+  <p> 
+    <span class="team_one_chance">
+      <%= @bet.team_one_chance %>%
+    </span>
+    <span class="team_one"> 
+      <%= @bet.team_one %> 
+    </span>
+    VS. 
+    <span class="team_two">
+      <%= @bet.team_two %> 
+    </span>
+    <span class="team_two_chance">
+      <%= @bet.team_two_chance %>%
+    </span>
+  </p>
+
+  <div class="values">
+  values:
+    <span class="team_one_value">
+      <%= @bet.team_one_value %>
+    </span>
+    <span class="team_two_value">
+      <%= @bet.team_two_value %>
+    </span>
+  </div><!-- .values -->
+</div> <!-- .bet_layout -->
+
+<%= form_for(@bet) do |f| %>
+	<div class="field">
+	  <%= f.label "Winner" %><br>
+	  <select name="bet[winner]">
+	    <option value="1"><%= @bet.team_one %></option>
+	    <option value="2"><%= @bet.team_two %></option>
+	  </select>
+	</div>
+
+	<div class="actions">
+  		<%= f.button :submit %>
+	</div>
+<% end %>
+
