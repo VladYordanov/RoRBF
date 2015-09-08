@@ -15,6 +15,7 @@
       <th>Bets on team one</th>
       <th>Bets on team two</th>
       <th>Can bet</th>
+      <th>Mach starts at:</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -32,6 +33,7 @@
         <td><%= bet.bets_on_team_one %></td>
         <td><%= bet.bets_on_team_two %></td>
         <td><%= bet.can_bet %></td>
+        <td><%= bet.match_starts_at %></td>
         <td><%= link_to 'Show', bet %></td>
         <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
         <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>

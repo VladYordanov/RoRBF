@@ -20,38 +20,14 @@
     <%= f.text_field :team_two %>
   </div>
   <div class="field">
-    <%= f.label :team_one_chance %><br>
-    <%= f.number_field :team_one_chance %>
+      <%= f.label :match_starts_at %><br>
+      <%= f.datetime_select :match_starts_at,  :default => { :hour => 00, :minute => 00 } %>
   </div>
-  <div class="field">
-    <%= f.label :team_two_chance %><br>
-    <%= f.number_field :team_two_chance %>
-  </div>
-  <div class="field">
-    <%= f.label :team_one_value %><br>
-    <%= f.number_field :team_one_value %>
-  </div>
-  <div class="field">
-    <%= f.label :team_two_value %><br>
-    <%= f.number_field :team_two_value %>
-  </div>
-  <div class="field">
-    <%= f.label :winner %><br>
-    <%= f.number_field :winner %>
-  </div>
-  <div class="field">
-    <%= f.label :bets_on_team_one %><br>
-    <%= f.number_field :bets_on_team_one %>
-  </div>
-  <div class="field">
-    <%= f.label :bets_on_team_two %><br>
-    <%= f.number_field :bets_on_team_two %>
-  </div>
-  <div class="field">
-    <%= f.label :can_bet %><br>
-    <%= f.number_field :can_bet %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+

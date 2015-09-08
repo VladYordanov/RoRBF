@@ -50,5 +50,10 @@
   <%= @bet.can_bet %>
 </p>
 
+<p>
+  <strong>Match starts at:</strong>
+  <%= @bet.match_starts_at %>
+</p>
+
 <%= link_to 'Edit', edit_bet_path(@bet) %> |
 <%= link_to 'Back', bets_path %>

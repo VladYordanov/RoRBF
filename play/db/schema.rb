@@ -11,21 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902044548) do
+ActiveRecord::Schema.define(version: 20150903141334) do
 
   create_table "bets", force: :cascade do |t|
     t.string   "team_one"
     t.string   "team_two"
-    t.integer  "team_one_chance"
-    t.integer  "team_two_chance"
-    t.integer  "team_one_value"
-    t.integer  "team_two_value"
+    t.integer  "team_one_chance",  default: 50
+    t.integer  "team_two_chance",  default: 50
+    t.integer  "team_one_value",   default: 1
+    t.integer  "team_two_value",   default: 1
     t.integer  "winner"
-    t.integer  "bets_on_team_one"
-    t.integer  "bets_on_team_two"
-    t.integer  "can_bet"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "bets_on_team_one", default: 0
+    t.integer  "bets_on_team_two", default: 0
+    t.integer  "can_bet",          default: 1
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.datetime "match_starts_at"
   end
 
   create_table "user_bets", force: :cascade do |t|
@@ -50,7 +51,6 @@ ActiveRecord::Schema.define(version: 20150902044548) do
     t.string   "email"
     t.integer  "points",                 default: 0
     t.integer  "all_bets",               default: 0
-    t.integer  "curr_bets",              default: 0
     t.integer  "won_bets",               default: 0
     t.integer  "lost_bets",              default: 0
     t.datetime "created_at",                          null: false

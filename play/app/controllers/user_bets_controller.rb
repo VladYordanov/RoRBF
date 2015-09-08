@@ -54,6 +54,15 @@ class UserBetsController < ApplicationController
     @user.points -= @user_bet.bet_points 
     @user.all_bets += 1
     @user.save
+
+    if @user_bet.bet_on_id == 1 
+      @bet.bets_on_team_one += 1
+      @bet.save
+    elsif 
+      @bet.bets_on_team_two += 1
+      @bet.save
+    end
+      
     
 
 
