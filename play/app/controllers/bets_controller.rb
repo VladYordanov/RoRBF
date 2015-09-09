@@ -1,6 +1,6 @@
 class BetsController < ApplicationController
   before_action :set_bet, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_filter :authenticate_admin!
   # GET /bets
   # GET /bets.json
   def index
@@ -79,6 +79,7 @@ class BetsController < ApplicationController
     
         @users.each do |user|
           if user_bet.user_id == user.id && user_bet.bet_on_id == @bet.winner
+            #formula must be edited LATER ON
             user.points += user_bet.bet_points * (@bet.team_one_chance / 10 )
             user.save
           end

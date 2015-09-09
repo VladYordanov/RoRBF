@@ -27,7 +27,6 @@
   </div><!-- .values -->
 </div> <!-- .bet_layout -->
 
-
 <% if @bet.can_bet != 0 %>
     <% if DateTime.now.in_time_zone < @bet.match_starts_at.in_time_zone.to_datetime %>
         <% if !@already_bet %>
