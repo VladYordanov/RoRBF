@@ -23,20 +23,23 @@
  	padding: 0;
  }
 
-.menu {
+.menu-users,
+.menu-admins {
 	border: 1px solid red;
 	padding: 0;
 	background: tomato;
 	margin-top: 0;
 }
 
-.menu p {
+.menu-users p,
+.menu-admins p {
 	font-weight: bold;
 	padding-left: 30px;
 	padding-right: 30px;
 }
 
- .menu li {
+ .menu-users li,
+ .menu-admins li {
  	list-style-type: none;
  	line-height: 60px;
  	padding-left: 15px;
@@ -45,13 +48,15 @@
  	display: inline-block;
  }
 
-.menu a {
+.menu-users a,
+.menu-admins a {
 	text-decoration: none;
 	color: #fff;
 	font-size: 14px;
 }
 
-.menu a:hover {
+.menu-users a:hover,
+.menu-admins a:hover {
 	background: none;
 }
 

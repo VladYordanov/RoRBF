@@ -30,7 +30,7 @@
 					</div>
 
 					<div class="bet_button">
-						<% if current_user %>
+						<% if current_user or current_admin %>
 						<%= link_to "Bet", user_bet_user_bets_path(bet.id) %>
 						<% else %>
 						<%= link_to "Log in to bet", new_user_session_path %>

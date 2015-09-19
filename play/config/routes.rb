@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :user_bets
   resources :bets
   resources :users 
+  resources :admin
 
   resources :users do
     get ":id/bets" => "users#bet", :on => :collection
@@ -17,6 +18,9 @@ Rails.application.routes.draw do
     get "/finish/:id" => "bets#finish", :on => :collection, :as => "finish_match"
   end
 
+  resources :admin do
+    get "/panel/" => "admin#panel", :on => :collection, :as => "admin_panel"
+  end
 
 
   root 'main#index'
