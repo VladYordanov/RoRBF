@@ -90,11 +90,27 @@ class BetsController < ApplicationController
   end
 
   def current_matches
-    @bets = Bet.all
+    @bets = Bet.all.where(:can_bet => 1)
   end
 
   def finished_matches
-    @bets = Bet.all
+    @bets = Bet.all.where(:can_bet => 0)
+  end
+
+  def lol_matches
+    @bets = Bet.all.where(:game => "lol")
+  end
+
+  def csgo_matches
+    @bets = Bet.all.where(:game => "csgo")
+  end
+
+  def dota2_matches
+    @bets = Bet.all.where(:game => "dota2")
+  end
+
+  def sc2_matches
+    @bets = Bet.all.where(:game => "sc2")
   end
 
   private
@@ -105,6 +121,6 @@ class BetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:team_one, :team_two, :team_one_chance, :team_two_chance, :team_one_value, :team_two_value, :winner, :bets_on_team_one, :bets_on_team_two, :match_starts_at)
+      params.require(:bet).permit(:team_one, :team_two, :team_one_chance, :team_two_chance, :team_one_value, :team_two_value, :winner, :bets_on_team_one, :bets_on_team_two, :match_starts_at, :game)
     end
 end

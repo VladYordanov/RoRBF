@@ -2,11 +2,15 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :users
   resources :user_bets
-  
+
   resources :bets do
     collection do
       get 'current_matches', :as => 'current_matches'
       get 'finished_matches', :as => 'finished_matches'
+      get 'lol_matches', :as => 'lol_matches'
+      get 'csgo_matches', :as => 'csgo_matches'
+      get 'dota2_matches', :as => 'dota2_matches'
+      get 'sc2_matches', :as => 'sc2_matches'
     end
   end
 
