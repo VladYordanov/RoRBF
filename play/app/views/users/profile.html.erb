@@ -1,1 +1,5 @@
-profile.html.erb
+<p style="font-weight: bold"><%= @user.username %> </p>
+<p>Points: <%= @user.points %> </p>
+<p>All bets count: <%= @user.all_bets %> </p>
+<p style="color:green;">Won bets: <%= @user.won_bets %> </p>
+<p style="color:red;">Lost bets: <%= @user.lost_bets %> </p>
