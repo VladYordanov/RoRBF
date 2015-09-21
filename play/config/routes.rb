@@ -2,20 +2,21 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :users
   resources :user_bets
+  
   resources :bets do
     collection do
-      get 'current_matches', :as => "current_matches"
-      get 'finished_matches', :as => "finished_matches"
+      get 'current_matches', :as => 'current_matches'
+      get 'finished_matches', :as => 'finished_matches'
     end
   end
-  resources :users 
-  resources :admin
-
 
   resources :users do
-    get ":id/bets" => "users#bet", :on => :collection, :as => "my_bets"
-
+    collection do
+      get 'bets', :as => 'my_bets'
+      get 'profile', :as => 'profile'
+    end
   end
+  resources :admin
 
   resource :user_bets do
     get "/bet/:id" => 'user_bets#new', :on => :collection, :as => "user_bet"  
