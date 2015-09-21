@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!, except: [:bet]
 
   # GET /users
   # GET /users.json
@@ -63,9 +63,10 @@ class UsersController < ApplicationController
   end
 
 def bet
-  @user = User.find_by_username(params[:id])
+  @user = User.find(params[:id])
   @user_bets = @user.user_bets.all
 end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

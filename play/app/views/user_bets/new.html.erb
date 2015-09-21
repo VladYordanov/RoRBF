@@ -38,7 +38,9 @@
         	   <p>Betted <%= @user_bet.bet_points %> points on <%= @bet.team_two %> </p>
             <% end %>
         <% end %>
+    <% else %>
+      <p>Match has already ended</p>
     <% end %>
 <% else %>
-    Match has already ended
+    <p>Match has already ended</p>
 <% end %>

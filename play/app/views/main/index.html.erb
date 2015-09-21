@@ -30,18 +30,16 @@
 					</div>
 
 					<div class="bet_button">
-						<% if current_user or current_admin %>
-						<%= link_to "Bet", user_bet_user_bets_path(bet.id) %>
+						<% if current_user %>
+							<%= link_to "Bet", user_bet_user_bets_path(bet.id) %>
+						<% elsif current_admin %>
+							<%= link_to "Finish match", finish_match_bets_path(bet.id) %>
 						<% else %>
-						<%= link_to "Log in to bet", new_user_session_path %>
+							<%= link_to "Log in to bet", new_user_session_path %>
 						<% end %>
 					</div>
 				</div>
 			<% end %>
 		<% end %>
-	</div>
-
-	<div class="finished">
-
 	</div>
 </div>

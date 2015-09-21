@@ -7,7 +7,6 @@
     <tr>
       <th>Bet on</th>
       <th>Bet points</th>
-      <th>Bet team</th>
       <th>Won</th>
       <th>Loss</th>
       <th>Returned value</th>
@@ -23,7 +22,6 @@
       <tr>
         <td><%= user_bet.bet_on_id %></td>
         <td><%= user_bet.bet_points %></td>
-        <td><%= user_bet.bet_team %></td>
         <td><%= user_bet.won %></td>
         <td><%= user_bet.loss %></td>
         <td><%= user_bet.returned_value %></td>
@@ -37,7 +35,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New User bet', new_user_bet_path %>

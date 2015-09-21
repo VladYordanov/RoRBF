@@ -2,12 +2,19 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :users
   resources :user_bets
-  resources :bets
+  resources :bets do
+    collection do
+      get 'current_matches', :as => "current_matches"
+      get 'finished_matches', :as => "finished_matches"
+    end
+  end
   resources :users 
   resources :admin
 
+
   resources :users do
-    get ":id/bets" => "users#bet", :on => :collection
+    get ":id/bets" => "users#bet", :on => :collection, :as => "my_bets"
+
   end
 
   resource :user_bets do
@@ -22,6 +29,8 @@ Rails.application.routes.draw do
     get "/panel/" => "admin#panel", :on => :collection, :as => "admin_panel"
   end
 
+  
+  
 
   root 'main#index'
   # The priority is based upon order of creation: first created -> highest priority.

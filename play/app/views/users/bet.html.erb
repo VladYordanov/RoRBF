@@ -1,3 +1,29 @@
-<h1> Hello :) </h1>
+<p id="notice"><%= notice %></p>
 
-<%= render "user_bets/index" %>
+<h1>Current bets by <%= current_user.username %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bet on</th>
+      <th>Bet points</th>
+      <th>Won</th>
+      <th>Loss</th>
+      <th>Returned value</th>
+      <th>Closed</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_bets.each do |user_bet| %>
+      <tr>
+        <td><%= user_bet.bet_on_id %></td>
+        <td><%= user_bet.bet_points %></td>
+        <td><%= user_bet.won %></td>
+        <td><%= user_bet.loss %></td>
+        <td><%= user_bet.returned_value %></td>
+        <td><%= user_bet.closed %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
