@@ -18,6 +18,21 @@ class MainController < ApplicationController
 	    @user_bet.save
 
 	end
+	
+	def lol_matches
+	@bets = Bet.all.where(:game => "lol")
+	end
 
+	def csgo_matches
+	@bets = Bet.all.where(:game => "csgo")
+	end
+
+	def dota2_matches
+	@bets = Bet.all.where(:game => "dota2")
+	end
+
+	def sc2_matches
+	@bets = Bet.all.where(:game => "sc2")
+	end
 
 end
