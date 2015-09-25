@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  resources :prizes
   devise_for :admins
   devise_for :users
   resources :user_bets
+
+  resource :prizes do
+      get '/:id/buy' => 'prizes#buy', :on => :collection, :as => 'buy_prize'
+  end
 
   resources :main do
     collection do

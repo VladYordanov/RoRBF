@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 	
 	has_many :user_bets
+	has_many :prizes
 
 	def to_param #bet/name/ not /id
 		username
