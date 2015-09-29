@@ -15,9 +15,10 @@ class DeliveriesController < ApplicationController
     # GET /deliveries/new
     def new
         @delivery = Delivery.new
-        @delivery.user_id = current_user.id
-        @delivery_user_username = current_user.username
         @prize = Prize.find(params[:prize_id])
+
+        @delivery.user_id = current_user.id
+        @delivery_user_username = current_user.username 
         @delivery.prize_id = @prize.id
     end
 
@@ -29,14 +30,23 @@ class DeliveriesController < ApplicationController
     # POST /deliveries.json
     def create
         @delivery = Delivery.new(delivery_params)
-        @delivery.user_id = current_user.id
-        @delivery.prize_id = 
-        @delivery.save
+        @prize = Prize.find(params[:prize_id])
+        @user = current_user
+
+   
 
         respond_to do |format|
         if @delivery.save
-              format.html { redirect_to @delivery, notice: 'Delivery was successfully created.' }
-              format.json { render :show, status: :created, location: @delivery }
+            @delivery.user_id = current_user.id
+            @delivery.prize_id = @prize.id
+            @delivery.save
+            @prize.in_stock -= 1
+            @prize.save
+            @user.points = @user.points - @prize.price
+            @user.save 
+
+            format.html { redirect_to @delivery, notice: 'Delivery was successfully created.' }
+            format.json { render :show, status: :created, location: @delivery }
         else
               format.html { render :new }
               format.json { render json: @delivery.errors, status: :unprocessable_entity }

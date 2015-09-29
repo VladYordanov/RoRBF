@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
 	resource :delivery do
 		get '/new/:prize_id' => 'deliveries#new', :on => :collection, :as => 'new_prize_delivery'
+		get '/create/:prize_id' => 'deliveries#create', :on => :collection, :as => 'new_prize_create'
 	end
 
 

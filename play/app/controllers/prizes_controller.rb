@@ -25,6 +25,12 @@ class PrizesController < ApplicationController
     # POST /prizes.json
     def create
         @prize = Prize.new(prize_params)
+        @prize = Prize.find(params[:prize_id])
+
+        @delivery.user_id = current_user.id
+        @delivery_user_username = current_user.username 
+        @delivery.prize_id = @prize.id
+        @delivery.save
 
         respond_to do |format|
           if @prize.save
