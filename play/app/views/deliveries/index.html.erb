@@ -5,7 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
+      <th>User Name</th>
+      <th>User ID</th>
+      <th>Prize Name</th>
+      <th>Prize ID</th>
       <th>Street</th>
       <th>State</th>
       <th>Country</th>
@@ -17,7 +20,10 @@
   <tbody>
     <% @deliveries.each do |delivery| %>
       <tr>
+        <td><%= User.find(delivery.user_id).username %></td>
         <td><%= delivery.user_id %></td>
+        <td><%= Prize.find(delivery.prize_id).name %></td>
+        <td><%= delivery.prize_id %></td>
         <td><%= delivery.street %></td>
         <td><%= delivery.state %></td>
         <td><%= delivery.country %></td>
