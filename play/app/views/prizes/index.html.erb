@@ -22,7 +22,6 @@
         <td><%= prize.in_stock %></td>
         <td><%= link_to 'Show', prize %></td>
         <td><%= link_to 'Edit', edit_prize_path(prize) %></td>
-        <td><%= link_to 'Buy', buy_prize_prizes_path(prize.id) %></td>
         <p><%= prize %></p>
         <td><%= link_to 'Destroy', prize, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

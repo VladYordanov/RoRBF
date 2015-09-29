@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
+  resources :deliveries
   resources :prizes
   devise_for :admins
   devise_for :users
   resources :user_bets
 
+
   resource :prizes do
       get '/:id/buy' => 'prizes#buy', :on => :collection, :as => 'buy_prize'
+      get '/:id/delivery_info' => 'prizes#delivery_info', :on => :collection, :as => 'delivery_info'
   end
+
+  
+  resource :delivery do
+      get '/new/:prize_id' => 'deliveries#new', :on => :collection, :as => 'new_prize_delivery'
+  end
+
 
   resources :main do
     collection do
@@ -34,6 +43,7 @@ Rails.application.routes.draw do
       get 'profile', :as => 'profile'
     end
   end
+
   resources :admin
 
   resource :user_bets do

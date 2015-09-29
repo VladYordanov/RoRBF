@@ -61,17 +61,6 @@ class PrizesController < ApplicationController
     end
   end
 
-  def buy
-    @prize = Prize.find(params[:id])
-    @user = current_user
-    @prize.in_stock -= 1
-    @prize.save
-    
-    respond_to do |format|
-      format.html { redirect_to prizes_url, notice: 'You have bought this prize'}
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_prize

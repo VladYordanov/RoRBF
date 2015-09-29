@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 	
 	has_many :user_bets
 	has_many :prizes
+	has_many :deliveries
 
 	def to_param #bet/name/ not /id
 		username
