@@ -43,6 +43,7 @@ class DeliveriesController < ApplicationController
             @prize.in_stock -= 1
             @prize.save
             @user.points = @user.points - @prize.price
+            @user.experience += 100
             @user.save 
 
             format.html { redirect_to @delivery, notice: 'Delivery was successfully created.' }

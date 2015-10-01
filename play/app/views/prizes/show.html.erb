@@ -22,4 +22,8 @@
 
 <%= link_to 'Edit', edit_prize_path(@prize) %> |
 <%= link_to 'Back', prizes_path %>
-<%= link_to 'Buy', new_prize_delivery_delivery_path(@prize) %>
+<% if current_user.points >= @prize.price %>
+	<%= link_to 'Buy', new_prize_delivery_delivery_path(@prize) %>
+<% else %>
+	<p> Not enough points </p>
+<% end %>
