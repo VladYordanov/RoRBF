@@ -1,6 +1,6 @@
 class BetsController < ApplicationController
   before_action :set_bet, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_admin!
+ # before_filter :authenticate_admin!
   # GET /bets
   # GET /bets.json
   def index

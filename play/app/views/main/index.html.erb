@@ -1,23 +1,79 @@
+<div class="main-head">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="welcome-info">
+					<h1>BettingForge</h1>
+					<h2>Bet on your favorite game absolutely free,
+	win points and buy a prize.</h2>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="welcome-sign-up">
+					<h1>Sign Up</h1>
+
+					<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+					  <%= devise_error_messages! %>
+
+					 <div class="welcome-field">
+					    <%= f.text_field :username, :placeholder => "Username" %>
+					 </div>
+
+					  <div class="welcome-field">
+					    <%= f.email_field :email, :placeholder => "E-mail" %>
+					  </div>
+
+					  <div class="welcome-field">
+					    <%= f.password_field :password, :placeholder => "Password" %>
+					  </div>
+
+					  <div class="welcome-field">
+					    <%= f.password_field :password_confirmation, :placeholder => "Password confirmation" %>
+					  </div>
+
+					  <div class="welcome-btn-signup">
+					    <%= f.submit "Sign up" %>
+					  </div>
+					<% end %>
+
+						<div class="welcome-btn-already-signedup">
+							<a href="#">Already signed up? <span>Log in</span></a>
+						</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<% if current_user %>
+	Logged in as <%= current_user.username %>
+<% end %>
+
 <%= link_to "LoL Matches", lol_matches_main_index_path %>
 <%= link_to "CS:GO Matches", csgo_matches_main_index_path %>
 <%= link_to "Dota2 Matches", dota2_matches_main_index_path %>
 <%= link_to "SC2 Matches", sc2_matches_main_index_path %>
+
+
 
 <div class="bets">
 	<div class="active">
 		<% @bets.each do |bet| %>
 			<% if bet.can_bet != 0 %> <!-- show matches which are to be played or are being played ATM -->
 				<div class="bet_layout">
-					<p> 
+					<p>
 						<span class="team_one_chance">
 							<%= bet.team_one_chance %>%
 						</span>
-						<span class="team_one"> 
-							<%= bet.team_one %> 
+						<span class="team_one">
+							<%= bet.team_one %>
 						</span>
-						VS. 
+						VS.
 						<span class="team_two">
-							<%= bet.team_two %> 
+							<%= bet.team_two %>
 						</span>
 						<span class="team_two_chance">
 							<%= bet.team_two_chance %>%

@@ -2,3 +2,114 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'functions';
+@import 'variables';
+
+.main-head {
+  width: 100%;
+  height: 600px;
+  background:
+  linear-gradient(
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.85)
+      ),
+  url(asset_path('warlock.jpg'));
+  background-size: cover;
+  background-position: 0 -200px;
+
+  /* filter: grayscale(80%);
+  -webkit-filter: grayscale(80%);
+  -moz-filter: grayscale(80%);
+  -ms-filter: grayscale(80%);
+  -o-filter: grayscale(80%);
+  filter: gray; */
+
+
+  h1 {
+    font-family: 'Roboto Slab', sans-serif;
+    @include font-size(48px);
+    font-weight: 700;
+    color: #d7d7d7;
+  }
+
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    width: 350px;
+    @include font-size(18px);
+    color: #fff;
+    line-height: 24px;
+  }
+
+}
+
+.welcome-info {
+  margin-top: 260px;
+  height: 100%;
+}
+
+.welcome-sign-up {
+  text-align: center;
+  margin-top: 150px;
+
+  h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    @include font-size(20px);
+    margin-bottom: 25px;
+  }
+}
+
+input[name='user[username]'],
+input[name='user[email]'],
+input[name='user[password]'],
+input[name='user[password_confirmation]'],
+input[name='commit'] {
+  width: 240px;
+  height: 40px;
+  border-radius: 4px;
+  border: 0;
+  background: #f6f6f6;
+  margin-top: 2px;
+  padding-left: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+input[name='commit'] {
+  background: $main_red;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  padding-left: 0;
+  margin-top: 20px;
+  @include font-size(16px);
+  text-transform: uppercase;
+
+  box-shadow:
+    0 1px 1px #000, /*top external shadow*/
+    0 0px 0px #fff, /*bottom external highlight*/
+    inset 0 1px 0px rgba(255,255,255,0.5), /*top internal highlight*/
+    inset 0 0px 0px rgba(0,0,0,0.5); /*bottom internal shadow*/
+}
+
+.welcome-btn-already-signedup {
+  padding-top: 10px;
+  @include font-size(14px);
+  padding-right: 80px;
+
+  a {
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+  }
+
+  span {
+    color: $main_red;
+  }
+}
+
+#element_to_pop_up,
+#element_to_pop_up_sign_up {
+  display: none;
+}

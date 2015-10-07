@@ -8,39 +8,108 @@
 </head>
 <body>
 
+<div class="main-nav-container">
+  <div class="container">
+    <div class="row">
+      <% if current_user %>
+      	<ul class="menu-users">
+      		<li><%= link_to "HOME", root_path %></li>
+          <li><%= link_to "MATCHES", bets_path %></li>
+          <li><%= link_to "PRIZES", prizes_path %></li>
+      		<!--<li><%= link_to "Deliveries", deliveries_path %></li>
+      		<li><%= link_to "Prizes", prizes_path %></li>
+      		<li><%= link_to "My Bets", my_bets_users_path %></li>
+      		<li><%= link_to "My Profile", profile_users_path %></li>
+      		<li><%= link_to "Log Out",  destroy_user_session_path, :method => :delete %></li>
+      		<li> Logged in as: <%= current_user.username %> </li>-->
+      	</ul>
+      <% elsif current_admin %>
+      	<ul class="menu-admins">
+      		<li><p><%= link_to "BettingForge AdminPanel", admin_panel_admin_index_path %></p></li>
 
-<%if current_user %>
-	<ul class="menu-users">
-		<li><p><%= link_to "BettingForge", root_path %></p></li>
-		<li><%= link_to "Deliveries", deliveries_path %></li>
-		<li><%= link_to "Prizes", prizes_path %></li>
-		<li><%= link_to "My Bets", my_bets_users_path %></li>
-		<li><%= link_to "My Profile", profile_users_path %></li>
-		<li><%= link_to "Log Out",  destroy_user_session_path, :method => :delete %></li>
-		<li> Logged in as: <%= current_user.username %> </li>	
-	</ul>
-<% elsif current_admin %>
-	<ul class="menu-admins">
-		<li><p><%= link_to "BettingForge AdminPanel", admin_panel_admin_index_path %></p></li>
-		<li><%= link_to "View site", root_path %>
-		<li><%= link_to "LogOut", destroy_user_session_path, :method => :delete %></li>
-		<li> Logged in as: <%= current_admin.username %> </li>
-	</ul>
-<% else %>
-	<ul class="menu-users">
-		<li><p><%= link_to "BettingForge", root_path %></p></li>
-		<li><%= link_to "Deliveries", deliveries_path %></li>
-		<li><%= link_to "Prizes", prizes_path%></li>
-		<li><%= link_to "UserReg", new_user_registration_path %></li>
-		<li><%= link_to "UserLogIn", user_session_path %></li>
-		<li><%= link_to "AdminLogIn", admin_session_path %></li>
-		<li>Not logged in</li>
-	</ul>
+      		<li><%= link_to "View site", root_path %>
+      		<li><%= link_to "LogOut", destroy_user_session_path, :method => :delete %></li>
+      		<li> Logged in as: <%= current_admin.username %> </li>
+      	</ul>
+      <% else %>
+      	<ul class="menu-users">
+      		<li><%= link_to "HOME", root_path %></li>
+          <li><%= link_to "MATCHES", bets_path %></li>
+          <li><%= link_to "PRIZES", prizes_path %></li>
+
+          <div class="menu-if-not-logged">
+            <li><a href="#" id="my-button">Sign Up</a></li>
+            <div id="element_to_pop_up">
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+       <div class="field">
+          <%= f.label :username %><br />
+          <%= f.text_field :username %>
+       </div>
+
+        <div class="field">
+          <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+            </div>
+            <li><a href="#" id="my-button-sign-up">Sign In</a></li>
+            <div id="element_to_pop_up_sign_up">
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
 <% end %>
-	
-<div id="wrapper">	
-	<%= yield %>
+            </div>
+          </div>
+      <!--		<li><%= link_to "Deliveries", deliveries_path %></li>
+      		<li><%= link_to "Prizes", prizes_path%></li>
+      		<li><%= link_to "UserReg", new_user_registration_path %></li>
+      		<li><%= link_to "UserLogIn", user_session_path %></li>
+      		<li><%= link_to "AdminLogIn", admin_session_path %></li>-->
+      	</ul>
+      <% end %>
+    </div>
+  </div> <!-- .container -->
 </div>
+
+<%= yield %>
 
 </body>
 </html>

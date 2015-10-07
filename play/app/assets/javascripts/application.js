@@ -11,7 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
+//= require jquery.bpopup.min
+//= require init.js
 //= require jquery-ui/datepicker
 //= require turbolinks
 //= require_tree .

@@ -1,4 +1,5 @@
 class MainController < ApplicationController
+
 	def index
 		@user = current_user
 		@bets = Bet.all
@@ -6,7 +7,7 @@ class MainController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-    		
+
 	end
 
 	def bet
@@ -18,7 +19,7 @@ class MainController < ApplicationController
 	    @user_bet.save
 
 	end
-	
+
 	def lol_matches
 	@bets = Bet.all.where(:game => "lol")
 	end
