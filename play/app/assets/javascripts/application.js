@@ -14,7 +14,9 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery.bpopup.min
-//= require init.js
 //= require jquery-ui/datepicker
-//= require turbolinks
+//= require responsive-nav.min
+//= require jquery.bxslider.min
+//= require init.js
+// require turbolinks
 //= require_tree .

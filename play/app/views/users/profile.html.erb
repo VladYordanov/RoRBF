@@ -1,5 +1,11 @@
-<p style="font-weight: bold"><%= @user.username %> </p>
-<p>Points: <%= @user.points %> </p>
-<p>All bets count: <%= @user.all_bets %> </p>
-<p style="color:green;">Won bets: <%= @user.won_bets %> </p>
-<p style="color:red;">Lost bets: <%= @user.lost_bets %> </p>
+<div class="container">
+	<div class="row">
+		<p style="font-weight: bold;">Username: <%= @user.username %> </p>
+		<p style="">Points: <%= @user.points %> </p>
+		<p style="">All bets count: <%= @user.all_bets %> </p>
+		<p style="color:green;">Won bets: <%= @user.won_bets %> </p>
+		<p style="color:red;">Lost bets: <%= @user.lost_bets %> </p>
+		<p>Experience: <%= @user.experience %></p>
+		<p>Level: <%= @user.level %></p>
+	</div>
+</div>

@@ -1,8 +1,12 @@
-<h1>New Delivery</h1>
+<div class="container">
+	<div class="row">
 
+	 	<h2><%= @prize.name %></h2><br />
+	  	User: <%= @delivery_user_username %> <br />
+		User ID: <%= @delivery.user_id %><br />
 
-<h1><%= @user %></h1>
+		<%= render 'form' %>
+		<%= link_to 'Back', deliveries_path %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', deliveries_path %>
+	</div>
+</div>

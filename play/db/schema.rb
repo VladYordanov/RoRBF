@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150930104305) do
+ActiveRecord::Schema.define(version: 20151031133433) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -35,18 +35,19 @@ ActiveRecord::Schema.define(version: 20150930104305) do
   create_table "bets", force: :cascade do |t|
     t.string   "team_one"
     t.string   "team_two"
-    t.integer  "team_one_chance"
-    t.integer  "team_two_chance"
-    t.integer  "team_one_value"
-    t.integer  "team_two_value"
+    t.integer  "team_one_chance",  default: 50
+    t.integer  "team_two_chance",  default: 50
+    t.integer  "team_one_value",   default: 2
+    t.integer  "team_two_value",   default: 2
     t.integer  "winner"
-    t.integer  "bets_on_team_one"
-    t.integer  "bets_on_team_two"
-    t.integer  "can_bet"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "bets_on_team_one", default: 0
+    t.integer  "bets_on_team_two", default: 0
+    t.integer  "can_bet",          default: 1
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.datetime "match_starts_at"
     t.string   "game"
+    t.integer  "bestof"
   end
 
   create_table "deliveries", force: :cascade do |t|
@@ -104,8 +105,8 @@ ActiveRecord::Schema.define(version: 20150930104305) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "level"
-    t.integer  "experience"
+    t.integer  "level",                  default: 1
+    t.integer  "experience",             default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

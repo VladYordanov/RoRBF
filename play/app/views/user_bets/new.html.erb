@@ -1,20 +1,64 @@
-<h2><%= @bet.team_one %> VERSUS <%= @bet.team_two %> </h2>
-<div class="bet_layout">
-  <p> 
-    <span class="team_one_chance">
-      <%= @bet.team_one_chance %>%
-    </span>
-    <span class="team_one"> 
-      <%= @bet.team_one %> 
-    </span>
-    VS. 
-    <span class="team_two">
-      <%= @bet.team_two %> 
-    </span>
-    <span class="team_two_chance">
-      <%= @bet.team_two_chance %>%
-    </span>
-  </p>
+<% if false %>
+
+<div class="container matches-soon-container">
+  <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="match-container">
+          <div class="game-info-container">
+            <p><%= @starting_soon.game %></p>
+          </div>  
+          <% @starts_in_min = @starting_soon.match_starts_at.min - DateTime.now.min %>
+          <% @starts_in_day = @starting_soon.match_starts_at.day - DateTime.now.day %>
+          <% @starts_in_hour = @starting_soon.match_starts_at.hour - DateTime.now.hour %>
+          <% if @starts_in_hour < 0 then @starts_in_hour = @starts_in_hour.to_i*(-1) end %>
+          
+          <h1>
+            <span><%= @starting_soon.team_one %></span> 
+            VS. 
+            <span><%= @starting_soon.team_two %></span>
+          </h1>
+          <% if @starts_in_day >= 0 %>
+            <h2> starts in <%= @starts_in_day %>d <%= @starts_in_hour %>h </h2>
+          <% elsif @starts_in_min <= 0  %>
+            <h2> started </h2>
+          <% else %>
+            <h2> starts in <%= @starts_in_hour %>h </h2>
+          <% end %>
+          <h3>BO<%= @starting_soon.bestof %></h3>
+        </div> <!-- .match-container -->
+      </div> <!-- .columns -->
+  </div>
+</div> <% end %>
+
+<div class="container">
+  <div class="row">
+
+<div class="col-sm-6">
+<div class="match-container">
+            <div class="game-info-container">
+              <p><%= @bet.game %></p>
+            </div>  
+            <% @starts_in_mon = @bet.match_starts_at.mon - DateTime.now.mon %>
+            <% @starts_in_min = @bet.match_starts_at.min - DateTime.now.min %>
+            <% @starts_in_day = @bet.match_starts_at.day - DateTime.now.day %>
+            <% @starts_in_hour = @bet.match_starts_at.hour - DateTime.now.hour %>
+            <% if @starts_in_hour < 0 then @starts_in_hour = @starts_in_hour.to_i*(-1) end %>
+            
+            <h1>
+              <span><%= @bet.team_one %></span> 
+              VS. 
+              <span><%= @bet.team_two %></span>
+            </h1>
+            <% if @starts_in_day >= 0 %>
+              <h2> starts in <%= @starts_in_day %>d <%= @starts_in_hour %>h </h2>
+            <% elsif @starts_in_min <= 0  %>
+              <h2> started </h2>
+            <% else %>
+              <h2> starts in <%= @starts_in_hour %>h </h2>
+            <% end %>
+            <h3>BO<%= @bet.bestof %></h3>
+          </div> <!-- .match-container -->
+        </div> <!-- .columns -->
 
   <div class="values">
   values:
@@ -28,7 +72,7 @@
 </div> <!-- .bet_layout -->
 
 <% if @bet.can_bet != 0 %>
-    <% if DateTime.now.in_time_zone < @bet.match_starts_at.in_time_zone.to_datetime %>
+    <%# if DateTime.now.in_time_zone < @bet.match_starts_at.in_time_zone.to_datetime %>
         <% if !@already_bet %>
             <%= render 'form' %>
         <% else %>
@@ -38,9 +82,12 @@
         	   <p>Betted <%= @user_bet.bet_points %> points on <%= @bet.team_two %> </p>
             <% end %>
         <% end %>
-    <% else %>
-      <p>Match has already ended</p>
-    <% end %>
+    <% #else %>
+      <!-- <p>Match has already ended</p> -->
+    <% #end %>
 <% else %>
     <p>Match has already ended</p>
 <% end %>
+
+  </div>
+</div>

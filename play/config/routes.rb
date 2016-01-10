@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    DashboardManifest::DASHBOARDS.each do |dashboard_resource|
+      resources dashboard_resource
+    end
+
+    root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
+  end
+
 	resources :deliveries
 	resources :prizes
 	devise_for :admins
@@ -24,6 +32,8 @@ Rails.application.routes.draw do
 			get 'csgo_matches', :as => 'csgo_matches'
 			get 'dota2_matches', :as => 'dota2_matches'
 			get 'sc2_matches', :as => 'sc2_matches'
+			get 'all_matches', :as => 'all_matches'
+			get 'prizes', :as => 'prizes'
 		end
 	end
 
@@ -53,6 +63,7 @@ Rails.application.routes.draw do
 
 	resource :bets do
 		get "/finish/:id" => "bets#finish", :on => :collection, :as => "finish_match"
+		get "/finished/:id" => "bets#finished", :on => :collection, :as => "finished_match"
 	end
 
 	resources :admin do

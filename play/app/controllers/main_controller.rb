@@ -3,11 +3,12 @@ class MainController < ApplicationController
 	def index
 		@user = current_user
 		@bets = Bet.all
+		@starting_soon = Bet.order("match_starts_at ASC").where(:can_bet => "1").first(6)
+		@prizes = Prize.order("in_stock ASC").first(6)
 	end
 
 	def show
 		@user = User.find(params[:id])
-
 	end
 
 	def bet
@@ -21,19 +22,32 @@ class MainController < ApplicationController
 	end
 
 	def lol_matches
-	@bets = Bet.all.where(:game => "lol")
+		@bets = Bet.all.where(:game => "lol")
+		@finished_bets = Bet.order("match_starts_at ASC").where(:winner => [1,2], :game => "lol").first(5)
 	end
 
 	def csgo_matches
-	@bets = Bet.all.where(:game => "csgo")
+		@bets = Bet.all.where(:game => "csgo")
+		@finished_bets = Bet.order("match_starts_at ASC").where(:winner => [1,2], :game => "csgo").first(5)
 	end
 
 	def dota2_matches
-	@bets = Bet.all.where(:game => "dota2")
+		@bets = Bet.all.where(:game => "dota2")
+		@finished_bets = Bet.order("match_starts_at ASC").where(:winner => [1,2], :game => "dota2").first(5)
 	end
 
 	def sc2_matches
-	@bets = Bet.all.where(:game => "sc2")
+		@bets = Bet.all.where(:game => "sc2")
+		@finished_bets = Bet.order("match_starts_at ASC").where(:winner => [1,2], :game => "sc2").first(5)
+	end
+
+	def all_matches
+		@bets = Bet.all.where(:winner => nil)
+		@finished_bets = Bet.order("match_starts_at ASC").where(:winner => [1,2]).first(5)
+	end
+
+	def prizes
+		@prizes = Prize.all
 	end
 
 end

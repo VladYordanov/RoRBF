@@ -2,19 +2,61 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import 'functions';
 @import 'variables';
+@import 'functions';
+@import 'jquery.bxslider';
+@import 'responsive-nav';
+@import 'navicon';
+
+
+* {
+  @include prefix(transition, 0.4s);
+}
+
+.no-padding { padding: 0; };
+.no-padding-top { padding-top: 0; };
+
+.no-margin { margin: 0 };
+.no-margin-top { margin-top: 0; }
+
+table,
+td,
+th {
+  font-family: 'Roboto', sans-serif;
+  font-size: rem-calc(14px);
+
+  padding: 4px;
+  text-align: center;
+  border: 1px solid #ede;
+
+  a {
+    text-decoration: none;
+    color: $main_red;
+  }
+}
+
+td {
+  background: #fff;
+}
+
+th {
+  background: #fff;
+}
+
+
+
 
 .main-head {
   width: 100%;
-  height: 600px;
-  background:
-  linear-gradient(
+  height: 340px;
+  background: $main_background;
+ /* linear-gradient(
         rgba(0, 0, 0, 0.85),
         rgba(0, 0, 0, 0.85)
       ),
   url(asset_path('warlock.jpg'));
-  background-size: cover;
+  background-size: cover;*/
+
   background-position: 0 -200px;
 
   /* filter: grayscale(80%);
@@ -24,12 +66,25 @@
   -o-filter: grayscale(80%);
   filter: gray; */
 
+  @include bp-medium {
+    background: none;
+    height: 60px;
+    border: 1px solid red;
+  }
+
+
+}
+
+.welcome-info {
+  margin-top: 135px;
+  height: 100%;
+  text-align: center;
 
   h1 {
     font-family: 'Roboto Slab', sans-serif;
-    @include font-size(48px);
+    font-size: rem-calc(48px);
     font-weight: 700;
-    color: #d7d7d7;
+    color: $main_text_on_white;
   }
 
   h2 {
@@ -37,16 +92,32 @@
     font-weight: 300;
     font-style: italic;
     width: 350px;
-    @include font-size(18px);
-    color: #fff;
+    font-size: rem-calc(18px);
+    color: $main_text_on_white;
     line-height: 24px;
+    margin: 0 auto;
   }
 
-}
+  @include bp-medium {
+    margin-top: 0;
 
-.welcome-info {
-  margin-top: 260px;
-  height: 100%;
+    h2 {
+      width: 100%;
+      display: none;
+    }
+
+    h1 {
+      font-size: rem-calc(28px);
+    }
+  }
+
+  @include bp-medium {
+    text-align: center;
+
+    h2 {
+      margin: 0 auto;
+    }
+  }
 }
 
 .welcome-sign-up {
@@ -56,8 +127,12 @@
   h1 {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    @include font-size(20px);
+    font-size: rem-calc(20px);
     margin-bottom: 25px;
+  }
+
+  @include bp-medium {
+    display: none;
   }
 }
 
@@ -83,7 +158,7 @@ input[name='commit'] {
   text-align: center;
   padding-left: 0;
   margin-top: 20px;
-  @include font-size(16px);
+  font-size: rem-calc(16px);
   text-transform: uppercase;
 
   box-shadow:
@@ -95,7 +170,7 @@ input[name='commit'] {
 
 .welcome-btn-already-signedup {
   padding-top: 10px;
-  @include font-size(14px);
+  font-size: rem-calc(14px);
   padding-right: 80px;
 
   a {
@@ -109,7 +184,378 @@ input[name='commit'] {
   }
 }
 
-#element_to_pop_up,
-#element_to_pop_up_sign_up {
+#sign-in-element-to-pop-up,
+#sign-up-element-to-pop-up {
   display: none;
+}
+
+.seperation-block {
+  width: 100%;
+  height: 70px;
+  background: #fff;
+  text-align: center;
+  margin-top: -18px;
+
+  p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: $main_seperation_color;
+    font-size: rem-calc(20px);
+    text-transform: uppercase;
+    @include vertical-align();
+  }
+}
+
+.matches-soon-container {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background: 
+  /*linear-gradient(
+        rgba(194, 40, 58, 0.95),
+        rgba(194, 40, 58, 0.95)
+      ), */
+  linear-gradient(
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0.75)
+      ),
+  url(asset_path('warlock.jpg'));
+  background-size: cover;
+}
+
+.match-container {
+  width: 100%;
+  height: 80px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: $main_red;
+
+  h1 {
+    @include vertical-align();
+    font-weight: bold;
+    font-size: rem-calc(14px);
+    color: $main_link_color;
+
+    span {
+      color: $main_red;
+      font-size: rem-calc(18px);
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+
+  h2,
+  h3 {
+    font-size: rem-calc(11px);
+    margin-top: 25px;
+    margin-right: 15px;
+    float: right;
+  }
+
+  h3 {
+    margin-right: 0;
+    margin-left: 15px;
+    float: left;
+  }
+
+  @include prefix(transition, 0.4s);
+
+  @include bp-medium {
+    width: 100%;
+  }
+}
+
+.versus {
+  display: inline-block;
+}
+
+.match-container:hover {
+
+
+  background: $main_red;
+  color: $main_link_color;
+
+  .versus {
+    @include prefix(transition, 0.4s);
+    padding: rem-calc(0 25px);
+  }
+
+  h2,
+  h3 {
+    text-align: center;
+    display: inline-block;
+  }
+
+  span {
+    color: #fff;
+  }
+}
+
+.game-info-container {
+  float: left;
+  width: 40px;
+  height: 80px;
+  background: $main_red;
+
+  p {
+    @include vertical-align();
+    -webkit-transform: rotate(90deg) translateY(-0%) translateX(-50%);
+    -moz-transform: rotate(90deg) translateY(-0%) translateX(-50%);
+    -ms-transform: rotate(90deg) translateY(-0%) translateX(-50%);
+    -o-transform: rotate(90deg) translateY(-0%) translateX(-50%); 
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: $main_color;
+    font-size: rem-calc(18px);
+    text-transform: uppercase;
+  }
+
+}
+
+.finished {
+  .game-info-container {
+    background: $main_color4;
+  }
+
+  h2, h3 {
+    display: none;
+  }
+
+  &:hover {
+    h2, h3, .game-info-container p{
+      color: #000;
+    }
+
+    background: rgba(0, 0, 0, 0.8);
+  
+    .game-info-container {
+      background: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  color: blue;
+}
+
+.prizes-container {
+  margin-top: rem-calc(0);
+  border: 1px solid red;
+}
+
+.prize-info {
+  margin-top: 5px;
+
+  h1 {
+    width: 70%;
+    display: inline-block;
+    
+    color: $main_red;
+    font-family: 'Roboto', sans-serif;
+    font-size: rem-calc(20px);
+    text-align: left;
+  }
+
+  h2 {
+    width: 25%;
+    float: right;
+    display: inline-block;
+    text-align: right;
+
+    font-size: rem-calc(16px);
+    font-family: 'Roboto', sans-serif;
+    color: $main_text_on_white;
+  }
+}
+
+.prize-container {
+  width: 100%;
+  height: 200px;
+  background: #000;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  @include prefix(transition, 0.4s);
+
+  &:hover {
+    @include prefix(transition, 0.4s);
+    filter: grayscale(0);
+    -webkit-filter: grayscale(0);
+
+    > .prize-container-hover {
+      background: 0;
+      @include prefix(transition, 0.4s);
+
+      .last-prize-name {
+        position: absolute;
+        left: 0; 
+        right: 0;
+        opacity: 0;
+        margin-top: rem-calc(-50px);
+        @include prefix(transition, 0.4s);
+      }
+    }
+  }
+
+  @include bp-large {
+    margin-top: rem-calc(30px);
+
+  }
+}
+
+.btn-buy-prize {
+  width: 100%;
+  height: 40px;
+  background: $main_color;
+  color: $main_color5;
+  border: 0;
+  
+  color: #fff;  
+  margin-top: rem-calc(10px);
+  @include prefix(transition, 0.4s);
+
+  &:hover {
+    @include prefix(transition, 0.4s);
+    background: $main_red;
+    color: #fff;
+  }
+}
+
+
+.prize-container-hover {
+  background: rgba(0, 0, 0, 0.55);
+  height: 100%;
+  width: 100%;
+  @include prefix(transition, 0.4s);
+}
+
+
+footer {
+  position: relative;
+  width: 100%;
+  padding-top: 40px;
+//  padding-bottom: 40px;
+  background-color: $main_color;
+  font-size: rem-calc(14px);
+  color: $main_link_color;
+
+  a {
+    text-decoration: none;
+    color: $main_link_color;
+  }
+
+  ul {
+    text-decoration: none;
+    list-style-type: none;
+  }
+
+  span a,
+  span {
+    line-height: 40px;
+    font-family: "Roboto Slab", sans-serif;
+    font-size: rem-calc(16px);
+    color: #fff;
+  }
+}
+
+
+
+// -------------------------------------
+.head-nav-container {
+  background: $main_color;
+  height: rem-calc(100px);
+
+  .logo {
+    font-size: rem-calc(26px);
+    color: $main_red;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700; 
+    margin-top: rem-calc(30px);
+  }
+
+  @include bp-large {
+    position: fixed;
+    width: 100%;
+    z-index: 999999;
+  }
+
+  .head-nav {
+    text-align: center;
+    
+    ul {
+      margin-top: rem-calc(41px);
+    }
+
+    ul li {
+      display: inline;
+
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: rem-calc(14px);
+      text-transform: uppercase;
+      padding: rem-calc(0 13px);
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+
+      a {
+        color: $main_color2;
+        text-decoration: none;
+      }
+    }
+
+      @include bp-large {
+        position: fixed;
+        ul {
+          height: 350px;
+          position: fixed;
+          z-index: 9999;
+          width: 100%;
+          top: rem-calc(80px);
+          left: 0;
+          text-align: left;
+
+          li, 
+          li:first-child,
+          .sign-menu li {
+            display: block;
+            padding-left: rem-calc(20px);
+          }
+        }
+      }
+
+    }
+
+
+    .sign-menu {
+      float: right;
+      text-align: right;
+
+      @include bp-large {
+        text-align: left;
+        float: none;
+        border: 1px solid red;
+      }
+    }
+}
+
+.nav-toggle {
+
+  right: 0;
+  top: rem-calc(20px);
+}
+
+#ninja-btn {
+  display: none;
+
+  @include bp-large {
+    display: block;
+    position: relative;
+    float: right;
+    padding-right: 0;
+    top: rem-calc(38px);
+  }
 }

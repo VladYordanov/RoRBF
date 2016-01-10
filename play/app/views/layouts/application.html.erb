@@ -1,21 +1,195 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
-<head>
-  <title>BettingForge</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>BettingForge</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+
+    <div class="head-nav-container">
+      <div class="container">
+        <div class="row">
+          <%= link_to (root_path) do %>
+            <div class="col-xs-4 no-padding">
+                <div class="logo">BettingForge</div>
+            </div>
+          <% end %>
+
+            <!-- <div class="col-xs-4 no-padding"> -->
+              <a id="ninja-btn" class="ninja-btn" title="menu"><span></span></a>
+              <nav class="nav-collapse head-nav">
+                <ul>
+
+                  <div class="col-lg-6 col-md-12 no-padding">
+                    <li><%= link_to "HOME", root_path %></li>
+                    <li><a href="#"> MATCHES </a> <!-- <%= link_to "MATCHES", all_matches_main_index_path %> -->
+                        <ul class="dropdown">
+                          <li> <%= link_to "CURRENT", all_matches_main_index_path %> </li>
+                          <li> <%= link_to "CS:GO", csgo_matches_main_index_path %> </li>
+                          <li> <%= link_to "DOTA2", dota2_matches_main_index_path %> </li>
+                          <li> <%= link_to "LoL", lol_matches_main_index_path %> </li>
+                          <li> <%= link_to "SC II", sc2_matches_main_index_path %> </li>
+                        </ul>
+                    </li>
+                    <li><%= link_to "PRIZES", prizes_main_index_path %></li>
+                  </div>
+
+                  <div class="col-lg-6 col-md-12 no-padding sign-menu">
+                    <li><a href="#" id="sign-up-pop-up">Sign Up</a></li>
+                      <div id="sign-up-element-to-pop-up">
+                         <%= render :partial => "users/registrations/new" %>
+                      </div>
+                    <li><a href="#" id="sign-in-pop-up">Log In</a></li>
+                      <div id="sign-in-element-to-pop-up">
+                          <%= render :partial => "users/sessions/new" %>
+                      </div>
+                  </div>
+
+                </ul>
+              </nav>
+
+   <!--           <div class="col-xs-4 no-padding">
+                <div class="head-nav sign-menu">
+                  <ul>
+                    <li><a href="#">Sign up</a></li>
+                    <li><<a href="#">Log in</a></li>
+                  </ul>
+                </div>
+            </div> -->
+
+          </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- head-nav-container -->
+
+    <%= yield %>
+
+  </body>
+</html>
+
+
+
+
+<footer>
+  <div class="container">
+    <div class="row"> 
+      <div class="col-lg-4">
+        <div class="footer-menu">
+          <ul>
+            <li><a href="#">home</a></li>
+            <li><a href="#">matches</a></li>
+            <li><a href="#">prizes</a></li>
+            <div class="footer-sign">
+              <li><a href="#">sign up</a></li>
+              <li><a href="#">sign in</a></li>
+            </div>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-lg-offset-4"> 
+        <div class="footer-menu-social">
+          <a href="#"> <i class="fa fa-facebook-square"> </i> </a>
+          <a href="#"> <i class="fa fa-twitter-square"> </i> </a>
+          <a href="#"> <i class="fa fa-youtube-square"> </i> </a>
+          <div class="footer-email">support@bettingforge.eu</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-copyright">
+    <div class="container">
+      <div class="row">
+        <div class="copyright-text"> BettingForge © 2015 </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if false%>
+
+<div class="main-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="welcome-info">
+          <h1>BettingForge</h1>
+          <h2>Bet on your favorite game absolutely free,
+  win points and buy a prize.</h2>
+        </div>
+      </div>
+      <!--<div class="col-sm-12">
+        <% if !current_user %>
+          <div class="welcome-sign-up">
+            <h1>Sign Up</h1>
+            <%= render :partial => "users/registrations/new" %>
+            <div class="welcome-btn-already-signedup">
+              <a href="#">Already signed up? <span>Log in</span></a>
+            </div>
+          </div>
+        <% else %>
+        <% end %>
+      </div> -->
+    </div>
+
+  </div>
+</div>
 
 <div class="main-nav-container">
   <div class="container">
     <div class="row">
+    <nav id="my-menu">
       <% if current_user %>
       	<ul class="menu-users">
-      		<li><%= link_to "HOME", root_path %></li>
-          <li><%= link_to "MATCHES", bets_path %></li>
-          <li><%= link_to "PRIZES", prizes_path %></li>
+          <li><%= link_to "HOME", root_path %></li>
+          <li><%= link_to "MATCHES", all_matches_main_index_path %>
+              <ul>
+                <li> <%= link_to "CURRENT", all_matches_main_index_path %> </li>
+                <li> <%= link_to "CS:GO", csgo_matches_main_index_path %> </li>
+                <li> <%= link_to "DOTA2", dota2_matches_main_index_path %> </li>
+                <li> <%= link_to "LoL", lol_matches_main_index_path %> </li>
+                <li> <%= link_to "SC II", sc2_matches_main_index_path %> </li>
+              </ul>
+          </li>
+          <li><%= link_to "PRIZES", prizes_main_index_path %></li>
+          <div class="menu-if-logged">
+              <li><%= link_to "My Profile", profile_users_path %></li>
+              <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
+          </div>
       		<!--<li><%= link_to "Deliveries", deliveries_path %></li>
       		<li><%= link_to "Prizes", prizes_path %></li>
       		<li><%= link_to "My Bets", my_bets_users_path %></li>
@@ -33,83 +207,66 @@
       	</ul>
       <% else %>
       	<ul class="menu-users">
-      		<li><%= link_to "HOME", root_path %></li>
-          <li><%= link_to "MATCHES", bets_path %></li>
-          <li><%= link_to "PRIZES", prizes_path %></li>
-
+          <li><%= link_to "HOME", root_path %></li>
+          <li><%= link_to "MATCHES", all_matches_main_index_path %>
+              <ul>
+                <li> <%= link_to "CURRENT", all_matches_main_index_path %> </li>
+                <li> <%= link_to "CS:GO", csgo_matches_main_index_path %> </li>
+                <li> <%= link_to "DOTA2", dota2_matches_main_index_path %> </li>
+                <li> <%= link_to "LoL", lol_matches_main_index_path %> </li>
+                <li> <%= link_to "SC II", sc2_matches_main_index_path %> </li>
+              </ul>
+          </li>
+          <li><%= link_to "PRIZES", prizes_main_index_path %></li>
           <div class="menu-if-not-logged">
-            <li><a href="#" id="my-button">Sign Up</a></li>
-            <div id="element_to_pop_up">
-                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
+            <li><a href="#" id="sign-up-pop-up">Sign Up</a></li>
+            <div id="sign-up-element-to-pop-up">
+                <%= render :partial => "users/registrations/new" %>
 
-       <div class="field">
-          <%= f.label :username %><br />
-          <%= f.text_field :username %>
-       </div>
-
-        <div class="field">
-          <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Sign up" %>
-      </div>
-    <% end %>
             </div>
-            <li><a href="#" id="my-button-sign-up">Sign In</a></li>
-            <div id="element_to_pop_up_sign_up">
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+            <li><a href="#" id="sign-in-pop-up">Sign In</a></li>
+            <div id="sign-in-element-to-pop-up">
+                <%= render :partial => "users/sessions/new" %>
             </div>
           </div>
-      <!--		<li><%= link_to "Deliveries", deliveries_path %></li>
-      		<li><%= link_to "Prizes", prizes_path%></li>
-      		<li><%= link_to "UserReg", new_user_registration_path %></li>
-      		<li><%= link_to "UserLogIn", user_session_path %></li>
-      		<li><%= link_to "AdminLogIn", admin_session_path %></li>-->
       	</ul>
       <% end %>
+    </nav> <!-- my menu -->
     </div>
   </div> <!-- .container -->
 </div>
 
 <%= yield %>
 
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <ul>
+          <li><span><%= link_to 'BettingForge', root_path %></span></li>
+          <li>support@bettingforge.eu</li> 
+          <li><a href="#">twitter</a></li>  
+          <li><a href="#">facebook</a></li>
+          <li><a href="#">youtube</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <ul>
+          <li><span><%= link_to 'BettingForge', root_path %></span></li>
+          <li>support@bettingforge.eu</li> 
+          <li><a href="#">twitter</a></li>  
+          <li><a href="#">facebook</a></li>
+          <li><a href="#">youtube</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6 col-xs-offset-3">
+        <span>Copyright 2015</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
 </body>
 </html>
+<% end %>

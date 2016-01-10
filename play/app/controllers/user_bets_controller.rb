@@ -45,6 +45,7 @@ class UserBetsController < ApplicationController
     @bet = Bet.find(params[:id]) 
     @user = current_user
 
+    #linking the bet by the user with the match and the user
     @user_bet.user_id = @user.id
     @user_bet.bet_id = @bet.id
     @user_bet.save
@@ -55,10 +56,11 @@ class UserBetsController < ApplicationController
     @user.all_bets += 1
     @user.save
 
+    #updating bet info
     if @user_bet.bet_on_id == 1 
       @bet.bets_on_team_one += 1
       @bet.save
-    elsif 
+    elsif @user_bet.bet_on_id == 2
       @bet.bets_on_team_two += 1
       @bet.save
     end

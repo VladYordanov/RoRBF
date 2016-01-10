@@ -1,0 +1,18 @@
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="welcome-field">
+    <%= f.email_field :email, :placeholder => "E-mail" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="welcome-field">
+      <%= f.password_field :password, :placeholder => "Password" %>
+    </div>
+  <% end -%>
+
+  <div class="welcome-btn-signup">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

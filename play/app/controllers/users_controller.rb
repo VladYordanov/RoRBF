@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_admin!, except: [:bets, :profile]
-  before_filter :authenticate_user!, only: [:bets, :profile]
+  #before_filter :authenticate_admin!, except: [:bets, :profile]
+  #before_filter :authenticate_user!, only: [:bets, :profile]
 
   # GET /users
   # GET /users.json

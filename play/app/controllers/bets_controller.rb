@@ -1,4 +1,4 @@
-class BetsController < ApplicationController
+  class BetsController < ApplicationController
   before_action :set_bet, only: [:show, :edit, :update, :destroy]
  # before_filter :authenticate_admin!
   # GET /bets
@@ -40,14 +40,12 @@ class BetsController < ApplicationController
   # PATCH/PUT /bets/1
   # PATCH/PUT /bets/1.json
   def update
-    if @bet.winner 
-      @bet.can_bet = 0
-    end
+
 
     respond_to do |format|
       if @bet.update(bet_params)
-        format.html { redirect_to @bet, notice: 'Bet was successfully updated.' }
-        format.json { render :show, status: :ok, location: @bet }
+        format.html { redirect_to finished_match_bets_path, notice: 'Bet was successfully updated.' }
+        format.json { render :show, status: :ok, location: finished_match_bets_path }
       else
         format.html { render :edit }
         format.json { render json: @bet.errors, status: :unprocessable_entity }
@@ -65,28 +63,59 @@ class BetsController < ApplicationController
     end
   end
 
-  def finish
-    @bet = Bet.find(params[:id])
+  def finished
+    @bet = Bet.find(params[:id]);
+    @bet.can_bet = 0;
+    @bet.save
+
     @user_bets = UserBet.all
     @users = User.all
 
-    #assigning points to the winners
-    # --- 
-    # --- check for fixes
-    # --- working for now
     @user_bets.each do |user_bet| 
       if user_bet.bet_id == @bet.id 
     
         @users.each do |user|
-          if user_bet.user_id == user.id && user_bet.bet_on_id == @bet.winner
-            #formula must be edited LATER ON
-            user.points += user_bet.bet_points * (@bet.team_one_chance / 10 )
-            user.save
-          end
-        end
+          if user_bet.user_id == user.id && user_bet.bet_on_id == @bet.winner #if won
+            user_bet.won = 1;
+            user_bet.returned_value += user_bet.bet_points * ( @bet.team_one_chance / 10 ) #how many points the user gets
+            user_bet.save
 
-      end
-    end
+            user.won_bets += 1;
+            user.points += user_bet.returned_value
+            user.experience += user_bet.bet_points 
+            user.save
+
+          else #if not won
+            user.lost_bets += 1;
+            user.experience += ( user_bet.bet_points / 2 );
+            user.save
+          end # / if
+
+          case user.experience
+            when 100..300 then user.level = 1
+            when 301..600 then user.level = 2
+            when 601..1000 then user.level = 3
+            when 1001..1700 then user.level = 4
+            when 1701..3500 then user.level = 5
+            when 3501..5000 then user.level = 6
+            when 5001..7000 then user.level = 7
+            when 7001..9500 then user.level = 8
+            when 9501..11150 then user.level = 9
+            when 11150..14000 then user.level = 10
+          end
+          user.save
+
+        end # / users.each
+
+      end # / if users_bets
+     end # / user_bet.each
+
+  end
+
+  def finish
+    @bet = Bet.find(params[:id])
+    @user_bets = UserBet.all
+    @users = User.all
   end
 
   def current_matches
@@ -121,6 +150,6 @@ class BetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:team_one, :team_two, :team_one_chance, :team_two_chance, :team_one_value, :team_two_value, :winner, :bets_on_team_one, :bets_on_team_two, :match_starts_at, :game)
+      params.require(:bet).permit(:team_one, :team_two, :team_one_chance, :team_two_chance, :team_one_value, :team_two_value, :winner, :bets_on_team_one, :bets_on_team_two, :match_starts_at, :game, :bestof)
     end
 end

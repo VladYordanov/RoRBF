@@ -34,6 +34,10 @@
       <%= f.label :match_starts_at %><br>
       <%= f.datetime_select :match_starts_at,  :default => { :hour => 00, :minute => 00 } %>
   </div>
+  <div class="field">
+    <%= f.label :bestof %><br>
+    <%= f.number_field :bestof %>
+  </div>
 
   <div class="actions">
     <%= f.button :submit, name: "game", value: @bet.game %>

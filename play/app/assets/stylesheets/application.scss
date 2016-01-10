@@ -10,14 +10,21 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+
+ *= require main
  *= require_tree .
  *= require_self
  */
 
- /* google fonts */
- @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,300);
- @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700);
 
+a {
+  text-decoration: none;
+}
+
+ @import 'functions';
+ @import 'variables';
+ @import 'responsive-nav';
+ @import 'font-awesome.min';
 
  html,
  body {
@@ -25,12 +32,16 @@
  	height: 100%;
  	margin: 0 auto;
  	padding: 0;
+  background-color: $main_background;
  }
 
- td,th {
- 	border: 1px solid #333;
- 	text-align: center;
- }
+.no-padding {
+  padding: 0;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
 
 /*showing bets in main page */
 
@@ -82,7 +93,6 @@
 
 
 .main-nav-container {
-  position: fixed;
   width: 100%;
   height: 63px;
   /* background: rgba(0, 0, 0, 0.25); */
@@ -99,6 +109,16 @@
     padding-left: 0;
   }
 
+  li ul {
+    opacity: 0;
+    position: absolute;
+  }
+
+  li:hover > ul {
+    border: 1px solid red;
+    opacity: 1;
+  }
+
   li {
     list-style-type: none;
     padding-left: 15px;
@@ -110,13 +130,316 @@
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    color: #fff;
+    color: $main_text_on_white;
     font-size: 14px;
     line-height: 60px;
   }
+
+  @include bp-medium {
+    display: none;
+  }
 }
 
-.menu-if-not-logged {
+.menu-if-not-logged,
+.menu-if-logged {
   display: inline-block;
   float: right;
 }
+
+#my-menu ul {
+  padding-left: 0;
+}
+
+//Slider
+
+.slider-container {
+  margin-top: rem-calc(130px);
+
+  @include bp-large {
+    margin-top: rem-calc(100px);
+  }
+}
+
+.bx-wrapper {
+  width: 100%;
+  height: rem-calc(435px);
+
+  .bx-viewport {
+    position: static !important; 
+  }
+
+  img {
+    height: rem-calc(450px);
+    width: 100%;
+  }
+
+  .bx-viewport {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border: 0;
+    background: 0;
+  }
+
+  @include bp-large {
+    height: 100%;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .bx-pager.bx-default-pager a {
+    width: 100%;
+    height: rem-calc(6px);
+    background: red;
+    margin: rem-calc(2px);
+    border-radius: 0;
+    background: $main_color3;
+
+    @include prefix(transition, 0.3s);
+
+    &:active,
+    &:hover {
+      background: $main_red;
+      @include prefix(transition, 0.3s);
+    }
+  }
+
+  .bx-pager.bx-default-pager a.active {
+    background: $main_red;
+  }
+
+  .bx-pager {
+  
+    .bx-pager-item {
+      @include prefix(box-sizing, border-box);
+      width: 33.33333%;
+      padding: rem-calc(4px);
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+  
+    }
+  
+  }
+
+}
+
+
+.slider-slide-container {
+  background: red;
+  height: rem-calc(435px);
+  background: $main_background;
+  background: rgba(27,27,27,1);
+background: -moz-linear-gradient(left, rgba(27,27,27,1) 0%, rgba(24,24,24,1) 52%, rgba(27,27,27,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(27,27,27,1)), color-stop(52%, rgba(24,24,24,1)), color-stop(100%, rgba(27,27,27,1)));
+background: -webkit-linear-gradient(left, rgba(27,27,27,1) 0%, rgba(24,24,24,1) 52%, rgba(27,27,27,1) 100%);
+background: -o-linear-gradient(left, rgba(27,27,27,1) 0%, rgba(24,24,24,1) 52%, rgba(27,27,27,1) 100%);
+background: -ms-linear-gradient(left, rgba(27,27,27,1) 0%, rgba(24,24,24,1) 52%, rgba(27,27,27,1) 100%);
+background: linear-gradient(to right, rgba(27,27,27,1) 0%, rgba(24,24,24,1) 52%, rgba(27,27,27,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', endColorstr='#1b1b1b', GradientType=1 );
+
+  .slider-headline {
+    color: $main_red;
+    font-size: rem-calc(48px);
+    font-weight: 700;
+    padding-top: rem-calc(100px);
+    padding-left: rem-calc(50px);
+  }
+
+  .slider-subline {
+    color: $main_color2;
+    font-size: rem-calc(22px);
+    line-height: 1.5em;
+    padding-top: rem-calc(20px);
+    padding-left: rem-calc(50px);
+  }
+
+  .slider-image {
+    background-image: url('../assets/game_mouse_trans.png');
+    background-repeat: no-repeat;
+    width: rem-calc(320px);
+    height: rem-calc(300px);
+    margin-top: rem-calc(-50px);
+    margin-right: rem-calc(80px);
+    float: right;
+  }
+}
+
+//Coming soon matches
+.match-container,
+.game-info-container {
+  height: rem-calc(90px);
+}
+
+.matches-soon-container {
+  background: url('../assets/matches_container.jpg');
+  margin-top: rem-calc(120px);
+
+  @include bp-large {
+    margin-top: rem-calc(20px);
+  }
+}
+
+.match-container {
+
+  background: rgba(0, 0, 0, 0.45);
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h2,
+  h3 {
+    text-transform: uppercase;
+    font-size: rem-calc(14px);
+    color: $main_color4;
+  }
+
+  h1 {
+
+    font-size: rem-calc(18px);
+    color: $main_color4;
+
+    span {
+       font-size: rem-calc(22px);
+      color: $main_color2; 
+    }
+
+  }
+
+}
+
+
+.section_headline,
+.matches-to-be-played {
+  color: $main_color2;
+  font-size: rem-calc(28px);
+  font-weight: 700;
+
+  text-align: center;
+  padding-bottom: rem-calc(63px);
+}
+
+.last-added-prizes-container {
+  margin-top: rem-calc(60px);
+  padding-bottom: rem-calc(60px);
+}
+
+.matches-to-be-played {
+  font-size: rem-calc(22px);
+  text-align: left;
+  padding: 0;
+
+}
+
+.last-prize-name {
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  font-size: rem-calc(22px);
+  padding-top: rem-calc(43px);
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+
+//Footer
+.footer-menu {
+
+  .footer-sign {
+    padding-top: rem-calc(26px);
+  }
+
+  ul li {
+    text-transform: uppercase;
+    font-size: rem-calc(14);
+    padding: rem-calc(5px 0);
+
+    a {
+      color: $main_color5;
+    }
+  }
+}
+
+.footer-menu-social {
+  text-align: right;
+  margin-top: rem-calc(65px);
+
+  i,
+  a {
+    font-size: rem-calc(28px);
+    color: $main_color5;
+    padding:rem-calc(0 4px);
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    @include prefix(transition, 0.4s);
+    &:hover {
+      @include prefix(transition, 0.4s);
+      color: $main_red;
+    }
+  }
+
+  .footer-email {
+    font-size: rem-calc(16px);
+    margin-top: rem-calc(5px);
+    color: $main_color5;
+  }
+
+  @include bp-large {
+    text-align: center;
+  }
+}
+
+.footer-copyright {
+  width: 100%;
+  height: rem-calc(60px);
+  text-align: center;
+  background: #111;
+  margin-top: rem-calc(35px);
+
+
+  .copyright-text {
+    font-size: rem-calc(14px);
+    color: $main_color2;
+    padding-top: rem-calc(21px);
+  }
+}
+
+
+.head-nav .dropdown {
+  display: none;
+  border: 1px solid red;
+}
+
+.head-nav {
+    &:hover {
+      .dropdown {
+        display: block;
+        border: 3px solid red;
+      }
+  }
+}
+
+// Additional classes for overwriting in html without using style tag
+
+.no-padding { padding: 0; };
+.no-padding-top { padding-top: 0; };
+
+.no-margin { margin: 0 };
+.no-margin-top { margin-top: 0; }
