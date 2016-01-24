@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031133433) do
+ActiveRecord::Schema.define(version: 20160124113534) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -66,8 +66,12 @@ ActiveRecord::Schema.define(version: 20151031133433) do
     t.integer  "price"
     t.integer  "is_in_stock"
     t.integer  "in_stock"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
   end
 
   create_table "user_bets", force: :cascade do |t|

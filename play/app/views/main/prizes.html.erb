@@ -3,7 +3,8 @@
 		<div class="section_headline">All Prizes</div>
 
 		<% @prizes.each do |prize| %>
-			<div class="col-xs-12 col-sm-4">
+			<div class="col-xs-12 col-sm-4">.
+			<%= image_tag prize.thumbnail.url %>
 			<%= link_to (new_prize_delivery_delivery_path(prize.id)) do %>
 				<div class="prize-container" style="background: url('assets/mamba.jpg'); background-size: cover">				
 					<div class="prize-container-hover">
@@ -28,3 +29,4 @@
 </div>
 
 
+ 

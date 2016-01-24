@@ -73,7 +73,8 @@
 		<% @prizes.each do |prize| %>
 			<div class="col-xs-12 col-sm-4">
 			<%= link_to (new_prize_delivery_delivery_path(prize.id)) do %>
-				<div class="prize-container" style="background: url('assets/mamba.jpg'); background-size: cover">				
+				<div class="prize-container" style="background: url('assets/mamba.jpg'); background-size: cover">	
+				<%= image_tag prize.thumbnail.url %>			
 					<div class="prize-container-hover">
 						<div class="prize-info">
 							<div class="last-prize-name"> <%= prize.name %> </div>

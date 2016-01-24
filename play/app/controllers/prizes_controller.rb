@@ -76,6 +76,6 @@ class PrizesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def prize_params
-      params.require(:prize).permit(:name, :price, :is_in_stock, :in_stock)
+      params.require(:prize).permit(:name, :price, :is_in_stock, :in_stock, :thumbnail)
     end
 end
