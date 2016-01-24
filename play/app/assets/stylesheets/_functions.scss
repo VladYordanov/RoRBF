@@ -138,3 +138,9 @@ $rem-base: 16px;
   -o-#{$name}: #{$argument};
   #{$name}: #{$argument};
 }
+
+@mixin border-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; 
+}

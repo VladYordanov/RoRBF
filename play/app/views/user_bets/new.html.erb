@@ -3,7 +3,7 @@
 <div class="container matches-soon-container">
   <div class="row">
       <div class="col-xs-12 col-sm-6">
-        <div class="match-container">
+        <div class="match-container" style="margin-top: 110px; border: 2px solid blue;">
           <div class="game-info-container">
             <p><%= @starting_soon.game %></p>
           </div>  
@@ -33,8 +33,8 @@
 <div class="container">
   <div class="row">
 
-<div class="col-sm-6">
-<div class="match-container">
+<div class="col-sm-12">
+<div class="match-container" style="margin-top: 110px; margin-bottom: 110px;">
             <div class="game-info-container">
               <p><%= @bet.game %></p>
             </div>  
@@ -60,34 +60,58 @@
           </div> <!-- .match-container -->
         </div> <!-- .columns -->
 
-  <div class="values">
-  values:
-    <span class="team_one_value">
-      <%= @bet.team_one_value %>
-    </span>
-    <span class="team_two_value">
-      <%= @bet.team_two_value %>
-    </span>
-  </div><!-- .values -->
+<div class="col-sm-6">
+<iframe src="http://player.twitch.tv/?channel=riotgames" frameborder="0" scrolling="no" height="378" width="98%" ></iframe><a href="http://www.twitch.tv/riotgames?tt_medium=live_embed&tt_content=text_link" style="margin-bottom: 110px; padding:2px 0px 4px; display:block; width:100%; left: 0; position: relative; font-weight:normal; font-size:10px;text-decoration:underline;"></a>
+</div>
+
+  
+<div class="col-sm-6" style="margin-bottom: 110px">
+        
+      <% if @bet.can_bet != 0 %>
+          <%# if DateTime.now.in_time_zone < @bet.match_starts_at.in_time_zone.to_datetime %>
+              <% if !@already_bet %>
+                    <%= render 'form' %>
+              <% else %>
+              <div class="user-bet-form">
+                  <% if @user_bet.bet_on_id == 1 %>
+                   <p>You have <%= @user_bet.bet_points %> points bet on <%= @bet.team_one %> </p>
+                   <% elsif @user_bet.bet_on_id == 2 %>
+                   <p>You have <%= @user_bet.bet_points %> points bet on <%= @bet.team_two %> </p>
+                  <% end %>
+               </div>
+              <% end %>
+             
+          <% #else %>
+            <!-- <p>Match has already ended</p> -->
+          <% #end %>
+      <% else %>
+          <p>Match has already ended</p>
+      <% end %>
+
+
+      <div class="match-single-info">
+      <div class="match-single-info-headline"> VALUES </div>
+      <div class="match-single-info-container">
+        <span class="team_one_value">
+          <%= @bet.team_one %> - <%= @bet.team_one_value %> for 1
+        </span>
+        <span class="team_two_value">
+          <%= @bet.team_two %> - <%= @bet.team_two_value %> for 1
+        </span>
+      </div>      
+     </div><!-- .mattch-info-container -->
+
+</div>
+
+
+<div class="col-sm-6">
+
+
+</div>
+
 </div> <!-- .bet_layout -->
 
-<% if @bet.can_bet != 0 %>
-    <%# if DateTime.now.in_time_zone < @bet.match_starts_at.in_time_zone.to_datetime %>
-        <% if !@already_bet %>
-            <%= render 'form' %>
-        <% else %>
-            <% if @user_bet.bet_on_id == 1 %>
-        	   <p>Betted <%= @user_bet.bet_points %> points on <%= @bet.team_one %> </p>
-             <% elsif @user_bet.bet_on_id == 2 %>
-        	   <p>Betted <%= @user_bet.bet_points %> points on <%= @bet.team_two %> </p>
-            <% end %>
-        <% end %>
-    <% #else %>
-      <!-- <p>Match has already ended</p> -->
-    <% #end %>
-<% else %>
-    <p>Match has already ended</p>
-<% end %>
+
 
   </div>
 </div>

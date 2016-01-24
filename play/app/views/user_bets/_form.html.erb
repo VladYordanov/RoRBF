@@ -1,5 +1,4 @@
-<div class="container">
-  <div class="row">
+
 
       <%= form_for(@user_bet) do |f| %>
       <% if @user_bet.errors.any? %>
@@ -14,26 +13,25 @@
         </div>
       <% end %>
 
-      <p> team_one: <%= @bet.team_one %> </p>
-      <p> team_two: <%= @bet.team_two %> </p>
+      <div class="user-bet-form">
 
-      <div class="field">
-        <%= f.label :bet_points %><br>
-        <%= f.number_field :bet_points %>
-      </div>
+        <div class="field-match">
+          <%= f.label :bet_points %><br>
+          <%= f.number_field :bet_points %>
+        </div>
 
-      <div class="field">
-        <%= f.label "Bet on" %><br>
-        <select name="user_bet[bet_on_id]">
-          <option value="1"><%= @bet.team_one %></option>
-          <option value="2"><%= @bet.team_two %></option>
-        </select>
-      </div>
+        <div class="field-match field-bet-id">
+          <%= f.label "Bet on" %><br>
+          <select name="user_bet[bet_on_id]">
+            <option value="1"><%= @bet.team_one %></option>
+            <option value="2"><%= @bet.team_two %></option>
+          </select>
+        </div>
 
-      <div class="actions">
-        <%= f.button :submit, name: "id", value: @bet.id %>
-      </div>
+        <div class="actions user-bet-submit">
+          <%= f.button :submit => "Test", name: "id", value: @bet.id %>
+        </div>
+
+      </div> <!-- .user-bet-form -->
 
       <% end %>
-    </div>
-  </div>

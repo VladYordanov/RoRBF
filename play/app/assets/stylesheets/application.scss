@@ -146,8 +146,49 @@ a {
   float: right;
 }
 
+.slicknav_menu {
+  background: $main_color;
+}
+
 #my-menu ul {
   padding-left: 0;
+}
+
+.head-nav-container {
+  @include bp-large {
+    display: none;
+  }
+}
+
+.slicknav_menu {
+  position: fixed;
+  width: 100%;
+  z-index: 999999;
+
+  @include bp-large {
+    height: rem-calc(64px);
+  }
+
+  ul {
+    background-color: $main_color;
+    margin-left: 0;
+  }
+}
+
+.logo {
+  @include bp-large {
+    color: $main_red;
+    font-size: rem-calc(24px);
+    font-weight: 700;
+    margin-top: rem-calc(5px);
+  }
+}
+
+.slicknav_btn {
+  font-size: rem-calc(22px);
+  margin-top: rem-calc(8px);
+  padding: rem-calc(8px);
+  background: 0;
 }
 
 //Slider
@@ -265,7 +306,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', end
     background-repeat: no-repeat;
     width: rem-calc(320px);
     height: rem-calc(300px);
-    margin-top: rem-calc(-50px);
+    margin-top: -7.5rem;
     margin-right: rem-calc(80px);
     float: right;
   }
@@ -277,8 +318,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', end
   height: rem-calc(90px);
 }
 
+.match-finished-returned {
+
+}
+
 .matches-soon-container {
   background: url('../assets/matches_container.jpg');
+  width: 100%;
   margin-top: rem-calc(120px);
 
   @include bp-large {
@@ -422,19 +468,281 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', end
 }
 
 
-.head-nav .dropdown {
-  display: none;
-  border: 1px solid red;
-}
+.match-single-info {
+  padding: rem-calc(40px 40px);
+  background-color: $main_color;
 
-.head-nav {
-    &:hover {
-      .dropdown {
-        display: block;
-        border: 3px solid red;
-      }
+  text-align: left;
+  width: 100%;
+  color: $main_color2;
+
+  .match-single-info-headline {
+    font-size: rem-calc(22px);
+    font-weight: 700;
+    display: inline-block;
+  }
+
+  .match-single-info-container {
+    display: inline-block;
+    position: relative;
+    right: 0;
+    float: right;
+    padding-top: rem-calc(6px);
   }
 }
+
+
+
+.user-bet-form {
+  color: $main_color2;
+  width: 90%;
+  float: left;
+  position: relative;
+  background: $main_color;
+
+  @include border-box;
+  padding: rem-calc(40px);
+  padding-right: 0;
+}
+
+#user_bet_bet_points,
+select[name="user_bet[bet_on_id]"] {
+  background: $main_color2;
+  border: 0;
+  color: $main_color;
+  width: 100%;
+  height: rem-calc(40px); 
+  margin-top: rem-calc(10px);
+  padding: rem-calc(10px);
+}
+
+#user_bet_bet_points {
+}
+
+select[name="user_bet[bet_on_id]"] {
+  float: right;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.field-match {
+  display: inline-block;
+  width: 45%;
+  //border: 3px solid blue;
+}
+
+.field-bet-id {
+  float: right;
+}
+
+.user-bet-submit {
+  border: 1px blue;
+  width: 100%;
+  height: rem-calc(40px);
+  margin-top: rem-calc(10px);
+}
+
+button[type="submit"] {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.profile-info-container {
+  background: $main_color;
+  margin: (110px 0);
+  padding: rem-calc(20px);
+  overflow: auto;
+
+  p {   
+    padding-left: rem-calc(20px);
+  }
+}
+
+.slicknav_menu {
+  display:none;
+
+  @include bp-large {
+    display: block;
+  }
+}
+
+#menu {
+  @include bp-large {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 40em) {
+  /* #menu is the original menu */
+  .js #menu {
+    display:none;
+  }
+  
+  .js .slicknav_menu {
+    display:block;
+  }
+}
+
+
+.main-nav {
+  ul {
+    padding-top: rem-calc(22px);
+    display: inline-block;
+    float: right;
+  }
+
+  li {
+    font-size: rem-calc(14px);
+    list-style-type: none;
+    display: inline-block;
+    padding: rem-calc(0 10px);
+    @include prefix(transition, 0.4s);
+  }
+
+  li:hover > .dropdown {
+    @include prefix(transition, 0.4s);
+    display: block;
+    height: auto;
+  }
+}
+
+
+.main-nav .dropdown {
+  position: absolute;
+  background: $main_color2;
+  padding: 0;
+  display: none;
+  z-index: 999;
+  height: 0;
+
+  li {
+    display: block;
+    padding: rem-calc(10px 10px);
+    width: rem-calc(160px);
+    border-top: 1px solid $main_color;
+    color: $main_color;
+
+
+    &:hover {
+      @include prefix(transition, 0.4s);
+      background: $main_color;
+      color: $main_color2;
+    }
+
+  }
+}
+
+
+
+/* ----------------------- *\ 
+--- PROFILE PROGRESS BAR ---
+\* ----------------------- */
+@mixin circle($size) {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - #{$size/2});
+  top: calc(50% - #{$size/2});
+  width: $size;
+  height: $size;
+}
+
+$size: 150px;
+.progress-pie-chart {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  background-color: $main_color3;
+  position: relative;
+  &.gt-50 {
+    background-color: $main_red;
+  }
+}
+.ppc-progress {
+  @include circle($size);
+  clip: rect(0, $size, $size, #{$size/2});
+  .ppc-progress-fill {
+    @include circle($size);
+    clip: rect(0, #{$size/2}, $size, 0);
+    background: $main_red;
+    transform: rotate(60deg);
+  }
+  .gt-50 & {
+    clip: rect(0, #{$size/2}, $size, 0);
+    .ppc-progress-fill {
+      clip: rect(0, $size, $size, #{$size/2});
+      background: $main_color3;
+    }
+  }
+}
+.ppc-percents {
+  @include circle(#{$size/1.15});
+  background: $main_color;
+  text-align: center;
+  display: table;
+  span {
+    display: block;
+    font-size: 2.6em;
+    font-weight: bold;
+    color: $main_red;
+  }
+}
+.pcc-percents-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.progress-pie-chart {
+  margin: 30px auto 0;
+}
+
+
+/* --------------------------- *\
+---------- User Profile ---------
+\* --------------------------- */
+
+.user-level-progress {
+  text-align: center;
+}
+
+.user-info {
+  margin-top: rem-calc(20px);
+  margin-bottom: rem-calc(20px);
+  text-align: center;
+
+  div {
+  }
+
+  span { font-weight: 700; }
+}
+
+.user-name {
+  text-align: center;
+  font-size: rem-calc(24px);
+  margin-top: rem-calc(20px);
+  color: $main_red;
+}
+
+.user-level {
+  text-align: center;
+  margin-top: rem-calc(20px);
+}
+
+
+
+/* ------------------------ *\
+-------- Prizes Page ---------
+\* ------------------------ */
+
+
+
+
+
 
 // Additional classes for overwriting in html without using style tag
 

@@ -7,10 +7,12 @@
 @import 'jquery.bxslider';
 @import 'responsive-nav';
 @import 'navicon';
+@import 'slicknav';
 
 
 * {
   @include prefix(transition, 0.4s);
+  color: $main_color2;
 }
 
 .no-padding { padding: 0; };
@@ -35,12 +37,16 @@ th {
   }
 }
 
-td {
+tr td {
   background: #fff;
+  padding: rem-calc(10px);
 }
 
-th {
+tr th,
+tr td {
   background: #fff;
+  padding: rem-calc(10px);
+  color: #777;
 }
 
 
@@ -187,6 +193,10 @@ input[name='commit'] {
 #sign-in-element-to-pop-up,
 #sign-up-element-to-pop-up {
   display: none;
+
+  @include bp-large {
+    display: none;
+  }
 }
 
 .seperation-block {
@@ -299,10 +309,10 @@ input[name='commit'] {
 
   p {
     @include vertical-align();
-    -webkit-transform: rotate(90deg) translateY(-0%) translateX(-50%);
-    -moz-transform: rotate(90deg) translateY(-0%) translateX(-50%);
-    -ms-transform: rotate(90deg) translateY(-0%) translateX(-50%);
-    -o-transform: rotate(90deg) translateY(-0%) translateX(-50%); 
+    -webkit-transform: rotate(90deg) translateY(-0%) translateX(-73%);
+    -moz-transform: rotate(90deg) translateY(-0%) translateX(-73%);
+    -ms-transform: rotate(90deg) translateY(-0%) translateX(-73%);
+    -o-transform: rotate(90deg) translateY(-0%) translateX(-73%); 
 
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
@@ -368,12 +378,18 @@ input[name='commit'] {
 }
 
 .prize-container {
-  width: 100%;
+  width: 95%;
   height: 200px;
   background: #000;
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
   @include prefix(transition, 0.4s);
+
+  float: left;
+
+  &:last-child {
+    float: right;
+  }
 
   &:hover {
     @include prefix(transition, 0.4s);
@@ -402,7 +418,7 @@ input[name='commit'] {
 }
 
 .btn-buy-prize {
-  width: 100%;
+  width: 95%;
   height: 40px;
   background: $main_color;
   color: $main_color5;
@@ -411,6 +427,12 @@ input[name='commit'] {
   color: #fff;  
   margin-top: rem-calc(10px);
   @include prefix(transition, 0.4s);
+
+  float: left;
+
+  &:last-child {
+    float: right;
+  }
 
   &:hover {
     @include prefix(transition, 0.4s);
@@ -479,6 +501,7 @@ footer {
 
   .head-nav {
     text-align: center;
+    border: 1px solid red;
     
     ul {
       margin-top: rem-calc(41px);
@@ -527,8 +550,29 @@ footer {
         }
       }
 
+    ul ul {
+      display: none;
+      position: absolute;
+
+      li {
+        width: rem-calc(170px);
+        float: none;
+        display: list-item;
+        position: relative;
+        background: red;
+      }
     }
 
+    ul li:hover > ul {
+      display: block;
+
+    }
+
+    }
+
+    .head-nav-main {
+      display: inline-block;
+    }
 
     .sign-menu {
       float: right;

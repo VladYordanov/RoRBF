@@ -18,35 +18,81 @@
             </div>
           <% end %>
 
-            <!-- <div class="col-xs-4 no-padding"> -->
-              <a id="ninja-btn" class="ninja-btn" title="menu"><span></span></a>
-              <nav class="nav-collapse head-nav">
-                <ul>
+          <nav id="menu" class="main-nav">
+            <ul>
+              <li><%= link_to "HOME", root_path %></li>
+              <li><a href="#">MATCHES</a>
+                <ul class="dropdown">
+                  <%=link_to (all_matches_main_index_path) do %>
+                      <li>CURRENT</li>
+                  <% end %>
+                  <%=link_to (csgo_matches_main_index_path) do %>
+                      <li>CS:GO</li>
+                  <% end %>
+                  <%=link_to (dota2_matches_main_index_path) do %>
+                      <li>DOTA 2</li>
+                  <% end %>
+                  <%=link_to (lol_matches_main_index_path) do %>
+                      <li>LOL</li>
+                  <% end %>
+                  <%=link_to (sc2_matches_main_index_path) do %>
+                      <li>SC2</li>
+                  <% end %>
+                </ul>
+              </li>
+              <li><%= link_to "PRIZES", prizes_main_index_path %></li>
+              <li><%= link_to "MY PROFILE", profile_users_path %></li>
+              <li><%= link_to "LOG OUT", destroy_user_session_path, :method => :delete %></li>
 
-                  <div class="col-lg-6 col-md-12 no-padding">
-                    <li><%= link_to "HOME", root_path %></li>
-                    <li><a href="#"> MATCHES </a> <!-- <%= link_to "MATCHES", all_matches_main_index_path %> -->
-                        <ul class="dropdown">
-                          <li> <%= link_to "CURRENT", all_matches_main_index_path %> </li>
-                          <li> <%= link_to "CS:GO", csgo_matches_main_index_path %> </li>
-                          <li> <%= link_to "DOTA2", dota2_matches_main_index_path %> </li>
-                          <li> <%= link_to "LoL", lol_matches_main_index_path %> </li>
-                          <li> <%= link_to "SC II", sc2_matches_main_index_path %> </li>
-                        </ul>
-                    </li>
-                    <li><%= link_to "PRIZES", prizes_main_index_path %></li>
-                  </div>
+              <li><a href="#" id="sign-up-pop-up">Sign Up</a></li>
+              <div id="sign-up-element-to-pop-up">
+                <%= render :partial => "users/registrations/new" %>
+              </div>
+              <li><a href="#" id="sign-in-pop-up">Log In</a></li>
+              <div id="sign-in-element-to-pop-up">
+                <%= render :partial => "users/sessions/new" %>
+              </div>
+            </ul>
+          </nav>
 
-                  <div class="col-lg-6 col-md-12 no-padding sign-menu">
-                    <li><a href="#" id="sign-up-pop-up">Sign Up</a></li>
-                      <div id="sign-up-element-to-pop-up">
-                         <%= render :partial => "users/registrations/new" %>
-                      </div>
-                    <li><a href="#" id="sign-in-pop-up">Log In</a></li>
-                      <div id="sign-in-element-to-pop-up">
-                          <%= render :partial => "users/sessions/new" %>
-                      </div>
-                  </div>
+
+
+
+                  <!--<div class="col-lg-12 col-md-12 no-padding">-->
+                    <!--&lt;!&ndash;<div class="head-nav-main" style="border: 1px solid red;">&ndash;&gt;-->
+                      <!--<li><%= link_to "HOME", root_path %></li>-->
+                      <!--<li><a href="#"> MATCHES </a>-->
+                          <!--<ul class="dropdown">-->
+                            <!--<li> <%= link_to "CURRENT", all_matches_main_index_path %> </li>-->
+                            <!--<li> <%= link_to "CS:GO", csgo_matches_main_index_path %> </li>-->
+                            <!--<li> <%= link_to "DOTA2", dota2_matches_main_index_path %> </li>-->
+                            <!--<li> <%= link_to "LoL", lol_matches_main_index_path %> </li>-->
+                            <!--<li> <%= link_to "SC II", sc2_matches_main_index_path %> </li>-->
+                          <!--</ul>-->
+                      <!--</li>-->
+                      <!--<li><%= link_to "PRIZES", prizes_main_index_path %></li>-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                  <!--&lt;!&ndash;<div class="col-lg-6 col-md-12 no-padding sign-menu">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="sign-menu">&ndash;&gt;-->
+                      <!--<% if current_user %>-->
+                          <!--<li><%= link_to "MY PROFILE", profile_users_path %></li>-->
+                          <!--<li><%= link_to "LOG OUT", destroy_user_session_path, :method => :delete %></li>-->
+                      <!--<% else %>-->
+
+                          <!--<li><a href="#" id="sign-up-pop-up">Sign Up</a></li>-->
+                          <!--<div id="sign-up-element-to-pop-up">-->
+                            <!--<%= render :partial => "users/registrations/new" %>-->
+                          <!--</div>-->
+                          <!--<li><a href="#" id="sign-in-pop-up">Log In</a></li>-->
+                          <!--<div id="sign-in-element-to-pop-up">-->
+                            <!--<%= render :partial => "users/sessions/new" %>-->
+                          <!--</div>-->
+
+                      <!--<% end %>-->
+                    <!--&lt;!&ndash;</div> &lt;!&ndash; head-nav-login &ndash;&gt;&ndash;&gt;-->
+                  <!--</div> &lt;!&ndash; col &ndash;&gt;-->
 
                 </ul>
               </nav>

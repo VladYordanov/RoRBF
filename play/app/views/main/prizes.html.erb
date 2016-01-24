@@ -1,8 +1,30 @@
-<% @prizes.each do |prize| %>
-	<div class="col-xs-6">
-		<div class="prize-container">
-			<h1> <%= prize.name %> </h1>
-			<h2> <%= prize.price %> </h2>
-		</div>
+<div class="container">
+	<div class="row last-added-prizes-container">
+		<div class="section_headline">All Prizes</div>
+
+		<% @prizes.each do |prize| %>
+			<div class="col-xs-12 col-sm-4">
+			<%= link_to (new_prize_delivery_delivery_path(prize.id)) do %>
+				<div class="prize-container" style="background: url('assets/mamba.jpg'); background-size: cover">				
+					<div class="prize-container-hover">
+						<div class="prize-info">
+							<div class="last-prize-name"> <%= prize.name %> </div>
+						</div>
+					</div>
+				</div> <!--  -->
+			<% end %>
+
+						
+
+				<%= link_to (new_prize_delivery_delivery_path(prize.id)) do %>
+					<button class="btn-buy-prize">
+						Buy for <%= prize.price %>p
+					</button>
+				<% end %>
+			</div>
+	<% end %>				
+
 	</div>
-<% end %>
+</div>
+
+

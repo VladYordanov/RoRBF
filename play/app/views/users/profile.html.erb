@@ -1,11 +1,98 @@
 <div class="container">
 	<div class="row">
-		<p style="font-weight: bold;">Username: <%= @user.username %> </p>
-		<p style="">Points: <%= @user.points %> </p>
-		<p style="">All bets count: <%= @user.all_bets %> </p>
-		<p style="color:green;">Won bets: <%= @user.won_bets %> </p>
-		<p style="color:red;">Lost bets: <%= @user.lost_bets %> </p>
-		<p>Experience: <%= @user.experience %></p>
-		<p>Level: <%= @user.level %></p>
+		<div class="profile-info-container">
+      <div class="col-sm-4">
+
+        <div class="progress-pie-chart" data-percent="<%= @level_percentage %>">
+          <div class="ppc-progress">
+            <div class="ppc-progress-fill"></div>
+          </div>
+          <div class="ppc-percents">
+            <div class="pcc-percents-wrapper">
+              <span>%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="user-name"><%= @user.username %></div>
+        <div class="user-level"> <span>Level </span><%= @user.level %></div>
+        <div class="user-level-progress">
+            <%= @user.experience %> / <%= @max_points_of_level %> exp
+        </div>
+    
+        <div class="user-info">
+          <div class="user-points"> <span>Points: </span><%= @user.points %></div>
+          <!-- <div class="user-all-bets"> <span>All bets count: </span><%= @user.all_bets %></div> -->
+          <div class="user-won-bets"> <span>Won bets: </span><%= @user.won_bets %></div>
+          <div class="user-lost-bets"> <span>Lost bets: </span><%= @user.lost_bets %></div>          
+        </div> <!-- user-info -->
+      </div> <!-- col -->
+
+      <div class="col-xs-8">
+
+      <% @user_bets.each do |user_bet| %>
+         <% match = user_bet.bet %>
+
+            <%= link_to user_bet_user_bets_path(match.id) do %>
+                <div class="match-container finished">
+                  <% if match.winner == user_bet.bet_on_id %>
+                    <div class="game-info-container" style="background: green">
+                      <p><%= match.game %></p>
+                    </div>
+                  <% else %>
+                      <div class="game-info-container" style="background: red;" >
+                        <p><%= match.game %></p>
+                      </div>
+                  <% end %>
+                  <% @starts_in_min = match.match_starts_at.min - DateTime.now.min %>
+                  <% @starts_in_day = match.match_starts_at.day - DateTime.now.day %>
+                  <% @starts_in_hour = match.match_starts_at.hour - DateTime.now.hour %>
+                  <% if @starts_in_hour < 0 then @starts_in_hour = @starts_in_hour.to_i*(-1) end %>
+
+                  <% if match.winner == 1 %>
+                      <% if match.winner == user_bet.bet_on_id %>
+                        <h1>
+                          <span style="color: green;"><%= match.team_one %></span>
+                          <div class="versus"> VS. </div>
+                          <span style="color: #505050;"><%= match.team_two %></span>
+                        </h1>
+                  <% else %>
+                          <h1>
+                            <span style="color: #db2f2e;"><%= match.team_one %></span>
+                            <div class="versus"> VS. </div>
+                            <span style="color: #505050;"><%= match.team_two %></span>
+                          </h1>
+                      <% end %>
+                  <% elsif match.winner == 2 %>
+                      <% if match.winner == user_bet.bet_on_id %>
+                          <h1>
+                            <span style="color: #505050;"><%= match.team_one %></span>
+                            <div class="versus"> VS. </div>
+                            <span style="color: green;"><%= match.team_two %></span>
+                          </h1>
+                      <% else %>
+                          <h1>
+                            <span style="color: #505050;"><%= match.team_one %></span>
+                            <div class="versus"> VS. </div>
+                            <span style="color: #db2f2e;"><%= match.team_two %></span>
+                          </h1>
+                      <% end %>
+                  <% end %>
+
+                  <% if match.winner == user_bet.bet_on_id %>
+                    <h2 style="color:green; display: block;">+100exp</h2>
+                    <h3 style="color:green; display: block;">+<%= user_bet.returned_value %>p</h3>
+                  <% else %>
+                    <h2 style="color:#db2f2e; display: block;">-100exp</h2>
+                    <h3 style="color:#db2f2e; display: block;">-<%= user_bet.returned_value %>p</h3>
+                  <% end %>
+                </div> <!-- .match-container -->
+            <% end %>
+
+      <% end #each loop%>
+
+      </div> <!-- .col -->
+
+		</div>
 	</div>
 </div>
