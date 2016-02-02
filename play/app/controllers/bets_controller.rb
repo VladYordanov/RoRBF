@@ -1,6 +1,6 @@
   class BetsController < ApplicationController
   before_action :set_bet, only: [:show, :edit, :update, :destroy]
- # before_filter :authenticate_admin!
+  before_filter :authenticate_admin!
   # GET /bets
   # GET /bets.json
   def index
@@ -77,7 +77,15 @@
         @users.each do |user|
           if user_bet.user_id == user.id && user_bet.bet_on_id == @bet.winner #if won
             user_bet.won = 1;
-            user_bet.returned_value += user_bet.bet_points * ( @bet.team_one_chance / 10 ) #how many points the user gets
+            #user_bet.returned_value += user_bet.bet_points * ( @bet.team_one_chance / 10 ) #how many points the user gets
+            #user_bet.returned_value = (1 - @bet.)
+
+            if @bet.winner == 1
+              user_bet.returned_value = ( (1 - @bet.team_one_chance / 100) * user_bet.bet_points ) + user_bet.bet_points
+            elsif @bet.winner = 2
+              user_bet.returned_value = ( (1 - @bet.team_two_chance / 100) * user_bet.bet_points ) + user_bet.bet_points
+            end
+
             user_bet.save
 
             user.won_bets += 1;
@@ -150,6 +158,6 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:team_one, :team_two, :team_one_chance, :team_two_chance, :team_one_value, :team_two_value, :winner, :bets_on_team_one, :bets_on_team_two, :match_starts_at, :game, :bestof)
+      params.require(:bet).permit(:team_one, :team_two, :team_one_chance, :team_two_chance, :team_one_value, :team_two_value, :winner, :bets_on_team_one, :bets_on_team_two, :match_starts_at, :game, :bestof, :stream_link)
     end
 end

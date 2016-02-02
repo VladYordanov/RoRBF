@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admins
+  #devise_for :admins
   namespace :admin do
     DashboardManifest::DASHBOARDS.each do |dashboard_resource|
       resources dashboard_resource
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
 
 	resources :deliveries
 	resources :prizes
-	devise_for :admins
+	#devise_for :admins
 	devise_for :users
 	resources :user_bets
 
@@ -55,7 +57,7 @@ Rails.application.routes.draw do
 		end
 	end
 
-	resources :admin
+	#resources :admin
 
 	resource :user_bets do
 		get "/bet/:id" => 'user_bets#new', :on => :collection, :as => "user_bet"  

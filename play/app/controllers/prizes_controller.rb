@@ -1,5 +1,6 @@
 class PrizesController < ApplicationController
     before_action :set_prize, only: [:show, :edit, :update, :destroy]
+    before_filter :authenticate_admin!, only: [:index, :edit, :new, :create, :update, :destroy]
 
     # GET /prizes
     # GET /prizes.json
@@ -76,6 +77,6 @@ class PrizesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def prize_params
-      params.require(:prize).permit(:name, :price, :is_in_stock, :in_stock, :thumbnail)
+      params.require(:prize).permit(:name, :price, :is_in_stock, :in_stock, :exp_price, :level_needed, :description, :thumbnail)
     end
 end

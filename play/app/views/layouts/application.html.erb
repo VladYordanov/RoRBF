@@ -41,17 +41,23 @@
                 </ul>
               </li>
               <li><%= link_to "PRIZES", prizes_main_index_path %></li>
-              <li><%= link_to "MY PROFILE", profile_users_path %></li>
-              <li><%= link_to "LOG OUT", destroy_user_session_path, :method => :delete %></li>
 
-              <li><a href="#" id="sign-up-pop-up">Sign Up</a></li>
-              <div id="sign-up-element-to-pop-up">
-                <%= render :partial => "users/registrations/new" %>
-              </div>
-              <li><a href="#" id="sign-in-pop-up">Log In</a></li>
-              <div id="sign-in-element-to-pop-up">
-                <%= render :partial => "users/sessions/new" %>
-              </div>
+              <% if current_user %>
+                <li><%= link_to "MY PROFILE", profile_users_path %></li>
+                <li><%= link_to "LOG OUT", destroy_user_session_path, :method => :delete %></li>
+              <% elsif current_admin %>
+
+              <% else %>
+                <li><a href="#" id="sign-up-pop-up">Sign Up</a></li>
+                <div id="sign-up-element-to-pop-up">
+                  <%= render :partial => "users/registrations/new" %>
+                </div>
+                <li><a href="#" id="sign-in-pop-up">Log In</a></li>
+                <div id="sign-in-element-to-pop-up">
+                  <%= render :partial => "users/sessions/new" %>
+                </div>
+              <% end %>  
+
             </ul>
           </nav>
 

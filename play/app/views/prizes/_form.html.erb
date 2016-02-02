@@ -20,6 +20,14 @@
     <%= f.number_field :price %>
   </div>
   <div class="field">
+    <%= f.label :exp_price %><br>
+    <%= f.number_field :exp_price %>
+  </div>
+  <div class="field">
+    <%= f.label :level_needed %><br>
+    <%= f.number_field :level_needed %>
+  </div>
+  <div class="field">
     <%= f.label :is_in_stock %><br>
     <%= f.number_field :is_in_stock %>
   </div>
@@ -27,8 +35,15 @@
     <%= f.label :in_stock %><br>
     <%= f.number_field :in_stock %>
   </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
   <%= f.file_field :thumbnail %>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+

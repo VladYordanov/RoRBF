@@ -736,11 +736,34 @@ $size: 150px;
 
 
 /* ------------------------ *\
--------- Prizes Page ---------
+------- Prizes Single --------
 \* ------------------------ */
 
+.prize-single-thumbnail {
+  width: 100%;
+  height: rem-calc(250px);
+ // margin: rem-calc(100px 0);
+}
 
+.prize-single-info {
+  //margin-top: rem-calc(100px);
+  margin-left: rem-calc(50px);
+  background: $main_color;
+  padding: rem-calc(50px);
+  margin-bottom: rem-calc(100px);
+}
 
+.prize-single-name {
+  font-size: rem-calc(24px);
+  color: $main_red;
+  font-weight: 700;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.single-prize-btn {
+  width: 100%;
+}
 
 
 

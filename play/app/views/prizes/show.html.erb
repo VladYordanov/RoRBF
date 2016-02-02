@@ -1,29 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row" style="margin-top: 100px">
 
-<p>
-  <strong>Name:</strong>
-  <%= @prize.name %>
-</p>
+    <div class="col-sm-4">
+      <div class="prize-single-thumbnail" style="background: url('<%= @prize.thumbnail.url %>')">
+      </div>
+        <p>
+          <strong></strong>
+          <%= @prize.price %>p, <%= @prize.exp_price%> exp, <%= @prize.level_needed %> level
+        </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @prize.price %>
-</p>
+        <!-- <p><%= @prize.in_stock %> in stock</p> -->
 
-<p>
-  <strong>Is in stock:</strong>
-  <%= @prize.is_in_stock %>
-</p>
+        <% if current_user %>
+          <% if current_user.points >= @prize.price && current_user.level >= @prize.level_needed && current_user.experience >= @prize.exp_price %>
+            
+            <%= link_to (new_prize_delivery_delivery_path(@prize.id)) do %>
+              <button class="btn-buy-prize single-prize-btn">
+                Buy
+              </button>
+            <% end %>
+          <% else %>
+            <p>You do not have enough points, experience or level to buy this product</p>
+          <% end %>
+        <% elsif current_admin%>
+          <%= link_to 'Edit', edit_prize_path(@prize) %> |
+          <%= link_to 'Back', prizes_path %>
+        <% else %>
+          <p class="prize-buy-not-logged"> Please log in to be able to buy this product </p>
+        <% end %>
 
-<p>
-  <strong>In stock:</strong>
-  <%= @prize.in_stock %>
-</p>
+    </div>
+   
 
-<%= link_to 'Edit', edit_prize_path(@prize) %> |
-<%= link_to 'Back', prizes_path %>
-<% if current_user.points >= @prize.price %>
-	<%= link_to 'Buy', new_prize_delivery_delivery_path(@prize) %>
-<% else %>
-	<p> Not enough points </p>
-<% end %>
+    <div class="col-sm-8">
+      <div class="prize-single-info">
+         <p class="prize-single-name"><%= @prize.name %></p>
+         <p> <%= @prize.description.html_safe %></p>
+       </div>
+    </div>
+
+
+  </div> <!-- row -->
+</div> <!-- container -->

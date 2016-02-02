@@ -37,7 +37,7 @@ development:
   database: bf_dev
   pool: 5
   username: root
-  password: root
+  password: 
 #  **socket: /opt/local/var/run/mysql5/mysqld.sock**
 test:
   adapter: mysql2
@@ -46,7 +46,7 @@ test:
   database: bf_test
   pool: 5
   username: root
-  password: root
+  password: 
 #  socket: **/opt/local/var/run/mysql5/mysqld.sock**
 
 production:
@@ -56,6 +56,6 @@ production:
   database: bf_prod
   pool: 5
   username: root
-  password: root
+  password: 
 #  socket: **/opt/local/var/run/mysql5/mysqld.sock**
 

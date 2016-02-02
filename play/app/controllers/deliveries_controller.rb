@@ -1,5 +1,6 @@
 class DeliveriesController < ApplicationController
     before_action :set_delivery, only: [:show, :edit, :update, :destroy]
+    before_filter :authenticate_admin!, except: [:create, :buy, :new]
 
     # GET /deliveries
     # GET /deliveries.json

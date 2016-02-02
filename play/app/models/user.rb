@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	
@@ -8,7 +6,8 @@ class User < ActiveRecord::Base
 	has_many :prizes
 	has_many :deliveries
 
-	def to_param #bet/name/ not /id
+	#converts /user/id to /user/name
+	def to_param
 		username
 	end 
 end

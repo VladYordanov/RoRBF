@@ -65,44 +65,44 @@
 </div>
 
   
-<div class="col-sm-6" style="margin-bottom: 110px">
-        
-      <% if @bet.can_bet != 0 %>
+<div class="col-sm-6" style="margin-bottom: 110px">     
+    <% if !current_user %>
+      <p class="new-ubet-notlogged"> Please log in if you want to bet on this match. </p>
+    <% else %>
+
+      <% if @bet.can_bet %>
           <%# if DateTime.now.in_time_zone < @bet.match_starts_at.in_time_zone.to_datetime %>
-              <% if !@already_bet %>
-                    <%= render 'form' %>
-              <% else %>
-              <div class="user-bet-form">
-                  <% if @user_bet.bet_on_id == 1 %>
-                   <p>You have <%= @user_bet.bet_points %> points bet on <%= @bet.team_one %> </p>
-                   <% elsif @user_bet.bet_on_id == 2 %>
-                   <p>You have <%= @user_bet.bet_points %> points bet on <%= @bet.team_two %> </p>
-                  <% end %>
-               </div>
-              <% end %>
+          <% if !@already_bet %>
+            <%= render 'form' %>
+          <% else %>
+            <div class="user-bet-form">
+                <% if @user_bet.bet_on_id == 1 %>
+                 <p>You have <%= @user_bet.bet_points %> points bet on <%= @bet.team_one %> </p>
+                 <% elsif @user_bet.bet_on_id == 2 %>
+                 <p>You have <%= @user_bet.bet_points %> points bet on <%= @bet.team_two %> </p>
+                <% end %>
+             </div>
+          <% end %>
              
-          <% #else %>
-            <!-- <p>Match has already ended</p> -->
-          <% #end %>
       <% else %>
           <p>Match has already ended</p>
       <% end %>
 
 
       <div class="match-single-info">
-      <div class="match-single-info-headline"> VALUES </div>
-      <div class="match-single-info-container">
-        <span class="team_one_value">
-          <%= @bet.team_one %> - <%= @bet.team_one_value %> for 1
-        </span>
-        <span class="team_two_value">
-          <%= @bet.team_two %> - <%= @bet.team_two_value %> for 1
-        </span>
-      </div>      
-     </div><!-- .mattch-info-container -->
+        <div class="match-single-info-headline"> VALUES </div>
+        <div class="match-single-info-container">
+          <span class="team_one_value">
+            <%= @bet.team_one %> - <%= @bet.team_one_value %> for 1
+          </span>
+          <span class="team_two_value">
+            <%= @bet.team_two %> - <%= @bet.team_two_value %> for 1
+          </span>
+        </div>      
+     </div><!-- .mattch-single-info -->
 
+    <% end %> <!-- if current user -->
 </div>
-
 
 <div class="col-sm-6">
 
