@@ -80,10 +80,10 @@
                   <% end %>
 
                   <% if match.winner == user_bet.bet_on_id %>
-                    <h2 style="color:green; display: block;">+100exp</h2>
+                    <h2 style="color:green; display: block;"><%= user_bet.exp_change %> exp</h2>
                     <h3 style="color:green; display: block;">+<%= user_bet.returned_value %>p</h3>
                   <% else %>
-                    <h2 style="color:#db2f2e; display: block;">-100exp</h2>
+                    <h2 style="color:#db2f2e; display: block;"><%= user_bet.exp_change %> </h2>
                     <h3 style="color:#db2f2e; display: block;">-<%= user_bet.returned_value %>p</h3>
                   <% end %>
                 </div> <!-- .match-container -->

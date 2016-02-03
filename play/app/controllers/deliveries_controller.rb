@@ -30,19 +30,20 @@ class DeliveriesController < ApplicationController
     # POST /deliveries
     # POST /deliveries.json
     def create
-        @delivery = Delivery.new(delivery_params)
-        @prize = Prize.find(params[:prize_id])
-        @user = current_user
+      @delivery = Delivery.new(delivery_params)
+      @prize = Prize.find(params[:prize_id])
+      @user = current_user
 
    
-
-        respond_to do |format|
+      respond_to do |format|
         if @delivery.save
             @delivery.user_id = current_user.id
             @delivery.prize_id = @prize.id
             @delivery.save
+
             @prize.in_stock -= 1
             @prize.save
+
             @user.points = @user.points - @prize.price
             @user.experience += 100
             @user.save 
@@ -50,10 +51,11 @@ class DeliveriesController < ApplicationController
             format.html { redirect_to @delivery, notice: 'Delivery was successfully created.' }
             format.json { render :show, status: :created, location: @delivery }
         else
-              format.html { render :new }
-              format.json { render json: @delivery.errors, status: :unprocessable_entity }
+            format.html { render :new }
+            format.json { render json: @delivery.errors, status: :unprocessable_entity }
         end
-    end
+      end
+
     end
 
     # PATCH/PUT /deliveries/1
@@ -99,6 +101,6 @@ class DeliveriesController < ApplicationController
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def delivery_params
-        params.require(:delivery).permit(:user_id, :street, :state, :country, :zipcode)
+        params.require(:delivery).permit(:user_id, :street, :state, :country, :zipcode, :first_last_name, :phone_number, :address_continued, :user_email)
       end
 end

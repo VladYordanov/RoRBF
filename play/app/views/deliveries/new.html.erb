@@ -1,12 +1,18 @@
 <div class="container">
 	<div class="row">
 
-	 	<h2><%= @prize.name %></h2><br />
-	  	User: <%= @delivery_user_username %> <br />
-		User ID: <%= @delivery.user_id %><br />
 
-		<%= render 'form' %>
-		<%= link_to 'Back', deliveries_path %>
+	<div class="col-sm-6">
+		<div class="delivery-new-prize-container">
+
+		 	<p class="prize-single-name"><%= @prize.name %></p><br />
+		  	User: <%= @delivery_user_username %> <br />
+			User ID: <%= @delivery.user_id %><br />
+		</div>
+	</div> <!-- col-6 -->
+
+			<%= render 'form' %>
+			<%= link_to 'Back', deliveries_path %>
 
 	</div>
 </div>

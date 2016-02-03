@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202163705) do
+ActiveRecord::Schema.define(version: 20160203154315) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -52,14 +52,18 @@ ActiveRecord::Schema.define(version: 20160202163705) do
   end
 
   create_table "deliveries", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.string   "street",     limit: 255
-    t.string   "state",      limit: 255
-    t.string   "country",    limit: 255
-    t.integer  "zipcode",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "prize_id",   limit: 4
+    t.integer  "user_id",           limit: 4
+    t.string   "street",            limit: 255
+    t.string   "state",             limit: 255
+    t.string   "country",           limit: 255
+    t.integer  "zipcode",           limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "prize_id",          limit: 4
+    t.text     "first_last_name",   limit: 65535
+    t.text     "phone_number",      limit: 65535
+    t.text     "address_continued", limit: 65535
+    t.string   "user_email",        limit: 255
   end
 
   create_table "prizes", force: :cascade do |t|
@@ -90,6 +94,7 @@ ActiveRecord::Schema.define(version: 20160202163705) do
     t.integer  "bet_id",         limit: 4
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.integer  "exp_change",     limit: 4
   end
 
   add_index "user_bets", ["bet_id"], name: "index_user_bets_on_bet_id", using: :btree

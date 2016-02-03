@@ -68,36 +68,37 @@
     @bet.can_bet = 0;
     @bet.save
 
-    @user_bets = UserBet.all
+    @user_bets = UserBet.all.where(:bet_id => @bet.id)
     @users = User.all
 
     @user_bets.each do |user_bet| 
       if user_bet.bet_id == @bet.id 
     
         @users.each do |user|
-          if user_bet.user_id == user.id && user_bet.bet_on_id == @bet.winner #if won
+          if user_bet.user_id == user.id && user_bet.bet_on_id == @bet.winner 
             user_bet.won = 1;
-            #user_bet.returned_value += user_bet.bet_points * ( @bet.team_one_chance / 10 ) #how many points the user gets
-            #user_bet.returned_value = (1 - @bet.)
 
             if @bet.winner == 1
               user_bet.returned_value = ( (1 - @bet.team_one_chance / 100) * user_bet.bet_points ) + user_bet.bet_points
-            elsif @bet.winner = 2
+            elsif @bet.winner == 2
               user_bet.returned_value = ( (1 - @bet.team_two_chance / 100) * user_bet.bet_points ) + user_bet.bet_points
             end
 
+            user_bet.exp_change = user_bet.bet_points / 4
             user_bet.save
 
             user.won_bets += 1;
             user.points += user_bet.returned_value
-            user.experience += user_bet.bet_points 
-            user.save
+            user.experience += user_bet.exp_change
 
-          else #if not won
+          else 
+            user_bet.exp_change = -( user_bet.bet_points / 8 )
+            user_bet.save
             user.lost_bets += 1;
-            user.experience += ( user_bet.bet_points / 2 );
-            user.save
-          end # / if
+            user.experience += user_bet.bet_points / 8;
+          end
+
+          user.save
 
           case user.experience
             when 100..300 then user.level = 1

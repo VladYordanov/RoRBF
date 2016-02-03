@@ -11,7 +11,14 @@
     </div>
   <% end %>
 
-
+  <div class="field">
+    <%= f.label :first_last_name %><br>
+    <%= f.text_field :first_last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :user_email %><br>
+    <%= f.text_field :user_email %>
+  </div>
   <div class="field">
     <%= f.label :street %><br>
     <%= f.text_field :street %>
@@ -27,6 +34,14 @@
   <div class="field">
     <%= f.label :zipcode %><br>
     <%= f.number_field :zipcode %>
+  </div>
+  <div class="field">
+    <%= f.label :address_continued %><br>
+    <%= f.text_field :address_continued %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %>
   </div>
   <div class="actions">
     <%= f.button :submit, name: "prize_id", value: @prize.id %>
