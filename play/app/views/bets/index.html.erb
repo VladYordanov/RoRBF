@@ -3,29 +3,23 @@
 
     <p id="notice"><%= notice %></p>
 
-    <h1>All Matches</h1>
-    <%= link_to "Create new match", new_bet_path %>
-    <%= link_to "Current matches", current_matches_bets_path %>
-    <%= link_to "Finished matches", finished_matches_bets_path %>
-    <%= link_to "LoL Matches", lol_matches_bets_path %>
-    <%= link_to "CS:GO Matches", csgo_matches_bets_path %>
-    <%= link_to "Dota2 Matches", dota2_matches_bets_path %>
-    <%= link_to "SC2 Matches", sc2_matches_bets_path %>
+    
+   <%= render partial: 'admin_nav', :locals => {:admin_nav_head => "All Matches"} %>
 
     <table>
       <thead>
         <tr>
           <th>Team one</th>
           <th>Team two</th>
-          <th>Team one chance</th>
+         <!--  <th>Team one chance</th>
           <th>Team two chance</th>
           <th>Team one value</th>
-          <th>Team two value</th>
+          <th>Team two value</th> -->
           <th>Winner</th>
-          <th>Bets on team one</th>
+        <!--   <th>Bets on team one</th>
           <th>Bets on team two</th>
-          <th>Can bet</th>
-          <th>Mach starts at:</th>
+          <th>Can bet</th> -->
+         <!--  <th>Match starts at:</th> -->
         </tr>
       </thead>
 
@@ -34,15 +28,15 @@
           <tr>
             <td><%= bet.team_one %></td>
             <td><%= bet.team_two %></td>
-            <td><%= bet.team_one_chance %></td>
+            <!-- <td><%= bet.team_one_chance %></td>
             <td><%= bet.team_two_chance %></td>
             <td><%= bet.team_one_value %></td>
-            <td><%= bet.team_two_value %></td>
+            <td><%= bet.team_two_value %></td> -->
             <td><%= bet.winner %></td>
-            <td><%= bet.bets_on_team_one %></td>
+            <!-- td><%= bet.bets_on_team_one %></td>
             <td><%= bet.bets_on_team_two %></td>
-            <td><%= bet.can_bet %></td>
-            <td><%= bet.match_starts_at %></td>
+            <td><%= bet.can_bet %></td> -->
+            <!-- <td><%= bet.match_starts_at %></td> -->
             <td><%= link_to 'Show', bet %></td>
             <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
             <td><%= link_to 'Finish', finish_match_bets_path(bet.id) %></td>

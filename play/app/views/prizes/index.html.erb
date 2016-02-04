@@ -3,7 +3,7 @@
 
       <p id="notice"><%= notice %></p>
 
-      <h1>Listing Prizes</h1>
+    <%= render partial: 'admin_nav_prizes', :locals => {:admin_nav_head => "Listing prizes"} %>
 
       <table>
         <thead>
@@ -25,7 +25,6 @@
               <td><%= prize.in_stock %></td>
               <td><%= link_to 'Show', prize %></td>
               <td><%= link_to 'Edit', edit_prize_path(prize) %></td>
-              <p><%= prize %></p>
               <td><%= link_to 'Destroy', prize, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
@@ -33,8 +32,6 @@
       </table>
 
       <br>
-
-      <%= link_to 'New Prize', new_prize_path %>
 
   </div>
 </div>

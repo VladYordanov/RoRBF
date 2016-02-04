@@ -1,6 +1,6 @@
-<h1>Editing User</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="container">
+	<div class="row">
+		<%= render partial: 'admin_nav_users', :locals => {:admin_nav_head => "Editing user"} %>
+		<%= render 'form' %>
+	</div>
+</div>

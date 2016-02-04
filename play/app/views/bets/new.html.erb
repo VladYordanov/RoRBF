@@ -1,21 +1,9 @@
 <div class="container">
   <div class="row">
 
-      <h1>Editing Bet</h1>
+      <%= render partial: 'admin_nav', :locals => {:admin_nav_head => "Create match"} %>
 
-      <%= form_for(@bet) do |f| %>
-        <% if @bet.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
-
-            <ul>
-            <% @bet.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
-
+      <%= form_for @bet, :html => {:class => 'padding-50 margin-bot-top-100'} do |f| %>
         <div class="field">
           <%= f.label :game %><br>
           <select name="bet[game]">

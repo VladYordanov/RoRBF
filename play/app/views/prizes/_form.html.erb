@@ -1,4 +1,4 @@
-<%= form_for(@prize) do |f| %>
+<%= form_for @prize, :html => {:class => 'padding-50 margin-bot-top-100'} do |f| %>
   <% if @prize.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@prize.errors.count, "error") %> prohibited this prize from being saved:</h2>

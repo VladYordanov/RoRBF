@@ -21,6 +21,10 @@
 .no-margin { margin: 0 };
 .no-margin-top { margin-top: 0; }
 
+table {
+  margin-bottom: rem-calc(50px);
+}
+
 table,
 td,
 th {
@@ -29,7 +33,7 @@ th {
 
   padding: 4px;
   text-align: center;
-  border: 1px solid #ede;
+  border: 1px solid #222;
 
   a {
     text-decoration: none;
@@ -38,18 +42,61 @@ th {
 }
 
 tr td {
-  background: #fff;
+  background: $main_color;;
   padding: rem-calc(10px);
 }
 
 tr th,
 tr td {
-  background: #fff;
+  background: $main_color;
   padding: rem-calc(10px);
   color: #777;
 }
 
+thead {
+  text-transform: uppercase;
+}
 
+select,
+input {
+  background: $main_color2;
+  border: 0;
+  padding: rem-calc(5px);
+
+  color: $main_color !important;
+  position: relative;
+}
+
+label {
+  padding-top: rem-calc(10px);
+  margin-top: rem-calc(10px);
+  line-height: rem-calc(22px);
+}
+
+form {
+  background: $main_color;
+  //padding: rem-calc(50px);
+}
+
+.field {
+  margin-top: rem-calc(15px);
+}
+
+button[type="submit"] {
+  padding: rem-calc(10px);
+  width: 150px;
+  border: 0;
+  margin-top: rem-calc(40px);
+  background: $main_red;
+
+  &:hover {
+    background: $main_color3;
+  }
+}
+
+input[type="file"] {
+  margin-top: rem-calc(30px);
+}
 
 
 .main-head {

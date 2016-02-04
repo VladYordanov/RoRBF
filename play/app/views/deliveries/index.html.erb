@@ -3,20 +3,16 @@
 
       <p id="notice"><%= notice %></p>
 
-      <h1>Listing Deliveries</h1>
+      <%= render partial: 'admin_nav_deliveries', :locals => {:admin_nav_head => "Listing Deliveries"} %>
 
       <table>
         <thead>
           <tr>
             <th>User Name</th>
             <th>User ID</th>
-            <th>Prize Name</th>
             <th>Prize ID</th>
-            <th>Street</th>
-            <th>State</th>
-            <th>Country</th>
-            <th>Zipcode</th>
-            <th colspan="3"></th>
+            <th>Prize</th>
+            <th colspan="2"></th>
           </tr>
         </thead>
 
@@ -25,14 +21,9 @@
             <tr>
               <td><%= User.find(delivery.user_id).username %></td>
               <td><%= delivery.user_id %></td>
-              <td><%= Prize.find(delivery.prize_id).name %></td>
               <td><%= delivery.prize_id %></td>
-              <td><%= delivery.street %></td>
-              <td><%= delivery.state %></td>
-              <td><%= delivery.country %></td>
-              <td><%= delivery.zipcode %></td>
+              <td><%= Prize.find(delivery.prize_id).name %></td>
               <td><%= link_to 'Show', delivery %></td>
-              <td><%= link_to 'Edit', edit_delivery_path(delivery) %></td>
               <td><%= link_to 'Destroy', delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
@@ -41,7 +32,6 @@
 
       <br>
 
-      <%= link_to 'New Delivery', new_delivery_path %>
 
   </div>
 </div>

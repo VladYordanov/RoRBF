@@ -1,52 +1,55 @@
-<h1>Editing Bet</h1>
+<div class="container">
+        <div class="row">
+       <%= render partial: 'admin_nav', :locals => {:admin_nav_head => "Edit match"} %>
 
-<%= form_for(@bet) do |f| %>
-  <% if @bet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
+      <%= form_for @bet, :html => {:class => 'padding-50 margin-bot-top-100'}  do |f| %>
+        <% if @bet.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
 
-      <ul>
-      <% @bet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <ul>
+            <% @bet.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="field">
+          <%= f.label :game %><br>
+          <select name="bet[game]">
+            <option value="csgo">Counter-Strike : Global Offensive</option>
+            <option value="lol">League of Legends</option>
+            <option value="dota2">DOTA 2</option>
+            <option value="sc2">Starcraft IId</option>
+          </select>
+        </div>
+        <div class="field">
+          <%= f.label :team_one %><br>
+          <%= f.text_field :team_one %>
+        </div>
+        <div class="field">
+          <%= f.label :team_two %><br>
+          <%= f.text_field :team_two %>
+        </div>
+        <div class="field">
+            <%= f.label :match_starts_at %><br>
+            <%= f.datetime_select :match_starts_at,  :default => { :hour => 00, :minute => 00 } %>
+        </div>
+        <div class="field">
+          <%= f.label :bestof %><br>
+          <%= f.number_field :bestof %>
+        </div>
+        <div class="field">
+          <%= f.label :stream_link %><br>
+          <%= f.text_field :stream_link %>
+        </div>   
+
+        <div class="actions">
+          <%= f.button :submit, name: "game", value: @bet.game %>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :game %><br>
-    <select name="bet[game]">
-      <option value="csgo">Counter-Strike : Global Offensive</option>
-      <option value="lol">League of Legends</option>
-      <option value="dota2">DOTA 2</option>
-      <option value="sc2">Starcraft IId</option>
-    </select>
   </div>
-  <div class="field">
-    <%= f.label :team_one %><br>
-    <%= f.text_field :team_one %>
-  </div>
-  <div class="field">
-    <%= f.label :team_two %><br>
-    <%= f.text_field :team_two %>
-  </div>
-  <div class="field">
-      <%= f.label :match_starts_at %><br>
-      <%= f.datetime_select :match_starts_at,  :default => { :hour => 00, :minute => 00 } %>
-  </div>
-  <div class="field">
-    <%= f.label :bestof %><br>
-    <%= f.number_field :bestof %>
-  </div>
-  <div class="field">
-    <%= f.label :stream_link %><br>
-    <%= f.text_field :stream_link %>
-  </div>   
-
-  <div class="actions">
-    <%= f.button :submit, name: "game", value: @bet.game %>
-  </div>
-<% end %>
-
+</div>
 
 

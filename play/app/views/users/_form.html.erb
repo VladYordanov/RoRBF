@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user, :html => {:class => 'padding-50 margin-bot-top-100'}  do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -30,10 +30,6 @@
   <div class="field">
     <%= f.label :all_bets %><br>
     <%= f.number_field :all_bets %>
-  </div>
-  <div class="field">
-    <%= f.label :curr_bets %><br>
-    <%= f.number_field :curr_bets %>
   </div>
   <div class="field">
     <%= f.label :won_bets %><br>

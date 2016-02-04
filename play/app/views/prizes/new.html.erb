@@ -1,9 +1,6 @@
-<h1>New Prize</h1>
-
-<% #if current_user.points >= @prize.price %>
-	<%= render 'form' %>
-<% #else %>
-	<p> Not enough points! </p>
-<% #end %>
-
-<%= link_to 'Back', prizes_path %>
+<div class="container">
+	<div class="row">
+		<%= render partial: 'admin_nav_prizes', :locals => {:admin_nav_head => "New prize"} %>
+		<%= render 'form' %>
+	</div>
+</div>

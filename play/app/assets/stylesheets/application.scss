@@ -544,12 +544,12 @@ input[type=number]::-webkit-outer-spin-button {
   width: 100%;
   height: rem-calc(40px);
   margin-top: rem-calc(10px);
-}
 
-button[type="submit"] {
+  button[type="submit"] {
   width: 100%;
   height: 100%;
   border: 0;
+}
 }
 
 .profile-info-container {
@@ -861,6 +861,63 @@ $size: 150px;
 
 
 
+/* --------------------- *\
+------- Admin Panel -------
+\* --------------------- */
+
+
+// Bets Navigation
+
+.admin-menu-container {
+  //border: 1px solid red;
+  background: $main_color;
+  padding: rem-calc(20px);
+  margin: rem-calc(50px 0);
+  margin-top: rem-calc(50px);
+
+  h1 {
+    margin-top: rem-calc(12px);
+    padding-right: rem-calc(50px);
+    padding-left: rem-calc(30px);
+    display: inline-block;
+    float: left;
+    font-size: rem-calc(22px);
+    text-transform: uppercase;
+
+    @include bp-large {
+      float: none;
+      padding-left: 0;
+    }
+  }
+}
+
+.admin-bets-menu {
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    display: inline-block;
+  }
+
+  ul li {
+    display: inline-block;
+    // padding: rem-calc(10px);
+    // background: red;
+
+    font-size: rem-calc(14px);
+    text-transform: uppercase;
+    padding: rem-calc(0 10px);
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    a:hover {
+      color: $main-red;
+    }
+  }
+}
+
+
 
 
 // Additional classes for overwriting in html without using style tag
@@ -883,6 +940,7 @@ $size: 150px;
 
 .no-margin { margin: 0 };
 .no-margin-top { margin-top: 0; }
+.margin-bot-top-100 { margin: rem-calc(100p 0); }
 
 .won-color-text { color: #4ecc11; }
 .won-color-background { color: #4ecc11; }
