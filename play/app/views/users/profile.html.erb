@@ -1,7 +1,7 @@
 <div class="container">
-	<div class="row">
-		<div class="profile-info-container">
-      <div class="col-sm-4">
+	<div class="profile-info-container">
+    <div class="row padding-50"  style="background: #db2f2e; padding-top: 0;">
+      <div class="col-sm-4" >
 
         <div class="progress-pie-chart" data-percent="<%= @level_percentage %>">
           <div class="ppc-progress">
@@ -13,46 +13,101 @@
             </div>
           </div>
         </div>
+      </div>
 
+      <div class="col-sm-4">
         <div class="user-name"><%= @user.username %></div>
         <div class="user-level"> <span>Level </span><%= @user.level %></div>
         <div class="user-level-progress">
             <%= @user.experience %> / <%= @max_points_of_level %> exp
         </div>
+      </div>
+
+      <div class="col-sm-4">
     
         <div class="user-info">
           <div class="user-points"> <span>Points: </span><%= @user.points %></div>
-          <!-- <div class="user-all-bets"> <span>All bets count: </span><%= @user.all_bets %></div> -->
           <div class="user-won-bets"> <span>Won bets: </span><%= @user.won_bets %></div>
           <div class="user-lost-bets"> <span>Lost bets: </span><%= @user.lost_bets %></div>          
         </div> <!-- user-info -->
       </div> <!-- col -->
+    </div> <!-- .row -->
 
-      <div class="col-xs-8">
 
+    <div class="row">
+
+      <div class="col-lg-4 col-sm-12 padding-50-bp" style=" padding-top: 0;" >
+        <div class="profile-bought-prizes-container">
+          <div class="profile-prizes-headline"> Products bought </div>
+          <% @deliveries.each do |delivery| %>
+            <%= link_to (prize_path(delivery.prize.id)) do %>
+              <div class="prize-container full-width" style="background: url('<%= delivery.prize.thumbnail.url %>'); background-size: cover"> 
+                <div class="prize-container-hover">
+                  <div class="prize-info">
+                    <div class="last-prize-name"> <%= delivery.prize.name %> </div>
+                  </div>
+                </div>
+              </div> 
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-sm-12 padding-50-bp" >
+      <div class="profile-matches-headline"> Matches you betted on</div>
       <% @user_bets.each do |user_bet| %>
-         <% match = user_bet.bet %>
+        <% match = user_bet.bet %>
+
+        <% if match.winner == user_bet.bet_on_id && match.winner == 1%>
+          <% @class_winner = "user-bet-won-first" %>
+        <% elsif match.winner == user_bet.bet_on_id && match.winner == 2 %>
+          <% @class_winner = "user-bet-won-second" %>
+        <% elsif match.winner != user_bet.bet_on_id && match.winner == 1 %>
+          <% @class_winner = "user-bet-lost-first" %>
+        <% elsif match.winner != user_bet.bet_on_id && match.winner == 2 %>
+          <% @class_winner = "user-bet-lost-second" %>
+        <% end %>
+
+        <%= link_to user_bet_user_bets_path(match.id) do %>
+          <div class="match-container <%= @class_winner %>">
+
+            <div class="game-info-container"><p> <%= match.game %> </p> </div>
+            <h1>
+              <span class="user-bet-first-team"><%= match.team_one %></span>
+              <div class="versus"> VS. </div>
+              <span class="user-bet-second-team"><%= match.team_two %></span>
+            </h1>
+            <h2><%= user_bet.exp_change %> exp</h2>
+            <h3>+<%= user_bet.returned_value %>p</h3>
+
+          </div> <!-- .match-container -->
+        <% end %>
+        <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+
+          
+
+<% if false %>
 
             <%= link_to user_bet_user_bets_path(match.id) do %>
-                <div class="match-container finished">
+                <div class="match-container">
                   <% if match.winner == user_bet.bet_on_id %>
-                    <div class="game-info-container" style="background: green">
+                    <div class="game-info-container" style="background: #4ecc11">
                       <p><%= match.game %></p>
                     </div>
                   <% else %>
-                      <div class="game-info-container" style="background: red;" >
+                      <div class="game-info-container won-color-background" >
                         <p><%= match.game %></p>
                       </div>
                   <% end %>
-                  <% @starts_in_min = match.match_starts_at.min - DateTime.now.min %>
-                  <% @starts_in_day = match.match_starts_at.day - DateTime.now.day %>
-                  <% @starts_in_hour = match.match_starts_at.hour - DateTime.now.hour %>
-                  <% if @starts_in_hour < 0 then @starts_in_hour = @starts_in_hour.to_i*(-1) end %>
 
                   <% if match.winner == 1 %>
                       <% if match.winner == user_bet.bet_on_id %>
                         <h1>
-                          <span style="color: green;"><%= match.team_one %></span>
+                          <span class="won-color-text"><%= match.team_one %></span>
                           <div class="versus"> VS. </div>
                           <span style="color: #505050;"><%= match.team_two %></span>
                         </h1>
@@ -68,7 +123,7 @@
                           <h1>
                             <span style="color: #505050;"><%= match.team_one %></span>
                             <div class="versus"> VS. </div>
-                            <span style="color: green;"><%= match.team_two %></span>
+                            <span style="color: #4ecc11;"><%= match.team_two %></span>
                           </h1>
                       <% else %>
                           <h1>
@@ -80,11 +135,10 @@
                   <% end %>
 
                   <% if match.winner == user_bet.bet_on_id %>
-                    <h2 style="color:green; display: block;"><%= user_bet.exp_change %> exp</h2>
-                    <h3 style="color:green; display: block;">+<%= user_bet.returned_value %>p</h3>
+                    <h2 style="color:#4ecc11; display: block;"><%= user_bet.exp_change %> exp</h2>
+                    <h3 style="color:#4ecc11; display: block;">+<%= user_bet.returned_value %>p</h3>
                   <% else %>
-                    <h2 style="color:#db2f2e; display: block;"><%= user_bet.exp_change %> </h2>
-                    <h3 style="color:#db2f2e; display: block;">-<%= user_bet.returned_value %>p</h3>
+                    <h2 style="color:#db2f2e; display: block;"><%= user_bet.exp_change %> exp</h2>
                   <% end %>
                 </div> <!-- .match-container -->
             <% end %>
@@ -96,3 +150,5 @@
 		</div>
 	</div>
 </div>
+
+

@@ -669,7 +669,7 @@ $size: 150px;
   .ppc-progress-fill {
     @include circle($size);
     clip: rect(0, #{$size/2}, $size, 0);
-    background: $main_red;
+    background: $main_color;
     transform: rotate(60deg);
   }
   .gt-50 & {
@@ -699,6 +699,7 @@ $size: 150px;
 
 .progress-pie-chart {
   margin: 30px auto 0;
+  margin-top: rem-calc(50px);
 }
 
 
@@ -706,26 +707,33 @@ $size: 150px;
 ---------- User Profile ---------
 \* --------------------------- */
 
-.user-level-progress {
-  text-align: center;
-}
 
 .user-info {
-  margin-top: rem-calc(20px);
-  margin-bottom: rem-calc(20px);
+  margin-top: rem-calc(92px);
+  //margin-bottom: rem-calc(20px);
   text-align: center;
+  position: relative;
+  height: 100%;
+}
 
-  div {
+.user-points,
+.user-won-bets,
+.user-lost-bets,
+.user-level,
+.user-level-progress {
+  span {
+    color: $main_color3;
   }
 
-  span { font-weight: 700; }
+  color: $main_color3;
 }
 
 .user-name {
+  padding-top: rem-calc(75px);
   text-align: center;
   font-size: rem-calc(24px);
-  margin-top: rem-calc(20px);
-  color: $main_red;
+  font-weight: 700;
+  color: $main_color;
 }
 
 .user-level {
@@ -733,7 +741,93 @@ $size: 150px;
   margin-top: rem-calc(20px);
 }
 
+.user-level-progress {
+  text-align: center;
+}
 
+.profile-matches-headline {
+  font-size: rem-calc(22px);
+  font-weight: 700;
+
+  //padding-top: rem-calc(30px);
+
+  @include bp-medium {
+    padding-top: rem-calc(50px);
+  }
+}
+
+.user-bet-won-first,
+.user-bet-won-second {
+  .game-info-container,
+  &:hover {
+    background: $won_color;
+  }
+
+  h2,
+  h3 {
+    color: $won_color;
+  }
+
+  &:hover {
+    .versus,
+    h2,
+    h3 {
+      color: $main_color;
+    }
+  }
+}
+
+.user-bet-lost-first,
+.user-bet-lost-second {
+  .game-info-container,
+  &:hover {
+    background: $main-red;
+  }
+
+  h2,
+  h3 {
+    color: $main-red;
+  }
+
+  &:hover {
+    .versus,
+    h2,
+    h3 {
+      color: $main_color;
+    }
+  }
+}
+
+.user-bet-won-first .user-bet-first-team,
+.user-bet-won-second .user-bet-second-team {
+  color: $won_color;
+}
+
+.user-bet-lost-first .user-bet-first-team,
+.user-bet-lost-second .user-bet-second-team {
+  color: $main-red;
+}
+
+
+.profile-bought-prizes-container {
+  padding-top: rem-calc(50px);
+
+  .prize-container { 
+    height: rem-calc(110px);
+  }
+}
+
+.profile-prizes-headline {
+  //padding-left: rem-calc(16px);
+  padding-bottom: rem-calc(30px);
+  font-size: rem-calc(22px);
+  font-weight: 700;
+
+  @include bp-medium {
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+}
 
 /* ------------------------ *\
 ------- Prizes Single --------
@@ -767,10 +861,35 @@ $size: 150px;
 
 
 
+
+
 // Additional classes for overwriting in html without using style tag
 
 .no-padding { padding: 0; };
 .no-padding-top { padding-top: 0; };
 
+.padding-50-bp {
+  padding: rem-calc(50px);
+
+  @include bp-medium {
+    padding: rem-calc(0px);
+  }
+}
+
+.padding-50 { padding: rem-calc(50px); }
+.no-padding-top { padding-top: 0; }
+
+.full-width { width: 100%; }
+
 .no-margin { margin: 0 };
 .no-margin-top { margin-top: 0; }
+
+.won-color-text { color: #4ecc11; }
+.won-color-background { color: #4ecc11; }
+.lost-color-text { color: $main_color; }
+.lost-color-background { color: $main-color };
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}

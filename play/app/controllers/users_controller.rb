@@ -70,7 +70,8 @@ end
 
 def profile
   @user = current_user
-  @user_bets = UserBet.all.where(:user_id => @user.id)
+  @user_bets = UserBet.all.order("created_at DESC").where(:user_id => @user.id)
+  @deliveries = Delivery.all.order("created_at DESC").where(:user_id => @user.id);
 
   def calc_experience(end_points, start_points)
     @max_points_of_level = start_points.to_i
@@ -90,9 +91,6 @@ def profile
     when 11150..14000 then @level_percentage = calc_experience(11150.0, 14000.0)
   end
 
-  #@level_percentage = ((600.0 - 450.0)/(600.0 - 301.0))*100 
-
-  # @bets = Bet.all.where(:id => @user_bets.bet_id)
 end
 
 

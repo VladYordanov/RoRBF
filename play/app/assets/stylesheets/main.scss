@@ -299,6 +299,12 @@ input[name='commit'] {
   span {
     color: #fff;
   }
+
+  @include bp-small {
+    .versus {
+      padding: 0;
+    }
+  }
 }
 
 .game-info-container {
@@ -387,6 +393,10 @@ input[name='commit'] {
 
   &:last-child {
     float: right;
+
+    @include bp-medium {
+      float: none
+    }
   }
 
   &:hover {
