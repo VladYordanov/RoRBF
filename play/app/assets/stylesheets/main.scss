@@ -429,17 +429,17 @@ input[name='commit'] {
 
 .prize-container {
   //margin-top: rem-calc(60px);
-  width: 95%;
+  width: 97.5%;
   height: 200px;
   background: #000;
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
   @include prefix(transition, 0.4s);
-
+  margin: 0 auto;
 
 
   &:last-child {
-    float: right;
+  //  float: right;
 
     @include bp-medium {
       float: none
@@ -466,7 +466,7 @@ input[name='commit'] {
     }
   }
 
-  @include bp-large {
+  @include bp-medium {
     margin-top: rem-calc(30px);
 
   }
@@ -477,20 +477,25 @@ input[name='commit'] {
 }
 
 .btn-buy-prize {
-  width: 95%;
+  width: 97.5%;
   height: 40px;
   background: $main_color;
   color: $main_color5;
   border: 0;
-  
+  float: none;
+  margin: 0 auto;
+
   color: #fff;  
   margin-top: rem-calc(10px);
   @include prefix(transition, 0.4s);
 
-  float: left;
+  position: relative;
+  display: block;
+
+  //float: left;
 
   &:last-child {
-    float: right;
+    //float: right;
   }
 
   &:hover {

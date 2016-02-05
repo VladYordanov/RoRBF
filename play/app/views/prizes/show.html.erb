@@ -1,4 +1,5 @@
 <div class="container">
+<%= render partial: 'admin_nav_prizes', :locals => {:admin_nav_head => "Prize info"} %>
   <div class="row" style="margin-top: 100px">
 
     <div class="col-sm-4">
@@ -11,7 +12,9 @@
 
         <!-- <p><%= @prize.in_stock %> in stock</p> -->
 
-        <% if current_user %>
+        <% if @prize.in_stock == 0 %>
+          <p> We don't have this product in stock. </p>
+        <% elsif current_user %>
           <% if current_user.points >= @prize.price && current_user.level >= @prize.level_needed && current_user.experience >= @prize.exp_price %>
             
             <%= link_to (new_prize_delivery_delivery_path(@prize.id)) do %>
@@ -23,8 +26,7 @@
             <p>You do not have enough points, experience or level to buy this product</p>
           <% end %>
         <% elsif current_admin%>
-          <%= link_to 'Edit', edit_prize_path(@prize) %> |
-          <%= link_to 'Back', prizes_path %>
+          <%= link_to 'Edit', edit_prize_path(@prize) %>
         <% else %>
           <p class="prize-buy-not-logged"> Please log in to be able to buy this product </p>
         <% end %>

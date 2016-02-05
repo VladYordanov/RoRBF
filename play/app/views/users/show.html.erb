@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row">
+  <%= render partial: 'admin_nav_users', :locals => {:admin_nav_head => "Show delivery info"} %>
+    <div class="show-container">
+
+      <p>
+        <strong> ID: </strong>
+        <%= @user.id %>
+      </p>
+
+      <p>
+        <strong> Level: </strong>
+        <%= @user.level %>
+      </p>
+
+      <p>
+        <strong> Experience: </strong>
+        <%= @user.experience %>
+      </p>
+
+      <p>
+        <strong> Username: </strong>
+        <%= @user.username %>
+      </p>
+
+      <p>
+        <strong> Email: </strong>
+        <%= @user.email %>
+      </p>
+
+      <p>
+        <strong> Points: </strong>
+        <%= @user.points %>
+      </p>
+
+      <p>
+        <strong> All Bets: </strong>
+        <%= @user.all_bets %>
+      </p>
+
+      <p>
+        <strong> Won Bets: </strong>
+        <%= @user.won_bets %>
+      </p>
+
+      <p>
+        <strong> Lost bets: </strong>
+        <%= @user.lost_bets %>
+      </p>
+
+      <p>
+        <strong> Reset password token: </strong>
+        <%= @user.reset_password_token %>
+      </p>
+
+      <p>
+        <strong> Reset password sent at: </strong>
+        <%= @user.reset_password_sent_at %>
+      </p>
+
+      <p>
+        <strong> Remember created at: </strong>
+        <%= @user.remember_created_at %>
+      </p>
+
+      <p>
+        <strong> Sign in count: </strong>
+        <%= @user.sign_in_count %>
+      </p>
+
+
+      <p>
+        <strong> Current sign in at: </strong>
+        <%= @user.current_sign_in_at %>
+      </p>
+
+      <p>
+        <strong> Last sign in at: </strong>
+        <%= @user.last_sign_in_at %>
+      </p>
+
+      <p>
+        <strong> Current sign in IP: </strong>
+        <%= @user.current_sign_in_ip %>
+      </p>
+
+      <p>
+        <strong> Last sign in IP: </strong>
+        <%= @user.last_sign_in_ip %>
+      </p>
+
+    </div>
+  </div>
+</div>

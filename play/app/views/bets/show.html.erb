@@ -1,59 +1,92 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <%= render partial: 'admin_nav', :locals => {:admin_nav_head => "Match info"} %>
 
-<p>
-  <strong>Team one:</strong>
-  <%= @bet.team_one %>
-</p>
+    <div class="show-container">
+      <p id="notice"><%= notice %></p>
+      <p>
+        <strong>Team one:</strong>
+        <%= @bet.team_one %>
+      </p>
 
-<p>
-  <strong>Team two:</strong>
-  <%= @bet.team_two %>
-</p>
+      <p>
+        <strong>Team two:</strong>
+        <%= @bet.team_two %>
+      </p>
 
-<p>
-  <strong>Team one chance:</strong>
-  <%= @bet.team_one_chance %>
-</p>
+      <p>
+        <strong>Team one chance:</strong>
+        <%= @bet.team_one_chance %>
+      </p>
 
-<p>
-  <strong>Team two chance:</strong>
-  <%= @bet.team_two_chance %>
-</p>
+      <p>
+        <strong>Team two chance:</strong>
+        <%= @bet.team_two_chance %>
+      </p>
 
-<p>
-  <strong>Team one value:</strong>
-  <%= @bet.team_one_value %>
-</p>
+      <p>
+        <strong>Team one value:</strong>
+        <%= @bet.team_one_value %>
+      </p>
 
-<p>
-  <strong>Team two value:</strong>
-  <%= @bet.team_two_value %>
-</p>
+      <p>
+        <strong>Team two value:</strong>
+        <%= @bet.team_two_value %>
+      </p>
 
-<p>
-  <strong>Winner:</strong>
-  <%= @bet.winner %>
-</p>
+      <p>
+        <strong>Winner:</strong>
+        <%= @bet.winner %>
+      </p>
 
-<p>
-  <strong>Bets on team one:</strong>
-  <%= @bet.bets_on_team_one %>
-</p>
+      <p>
+        <strong>Bets on team one:</strong>
+        <%= @bet.bets_on_team_one %>
+      </p>
 
-<p>
-  <strong>Bets on team two:</strong>
-  <%= @bet.bets_on_team_two %>
-</p>
+      <p>
+        <strong>Bets on team two:</strong>
+        <%= @bet.bets_on_team_two %>
+      </p>
 
-<p>
-  <strong>Can bet:</strong>
-  <%= @bet.can_bet %>
-</p>
+      <p>
+        <strong>Can bet:</strong>
+        <%= @bet.can_bet %>
+      </p>
 
-<p>
-  <strong>Match starts at:</strong>
-  <%= @bet.match_starts_at %>
-</p>
+      <p>
+        <strong>Match starts at:</strong>
+        <%= @bet.match_starts_at %>
+      </p>
 
-<%= link_to 'Edit', edit_bet_path(@bet) %> |
-<%= link_to 'Back', bets_path %>
+      <p>
+        <strong>Game:</strong>
+        <%= @bet.game %>
+      </p>
+
+      <p>
+        <strong>Best of format:</strong>
+        <%= @bet.bestof %>
+      </p>
+
+      <p>
+        <strong>Stream link:</strong>
+        <%= @bet.stream_link %>
+      </p>
+
+      <p>
+        <strong>Created at:</strong>
+        <%= @bet.created_at %>
+      </p>
+
+      <p>
+        <strong>Updated at:</strong>
+        <%= @bet.updated_at %>
+      </p>
+
+      <%= link_to 'Edit', edit_bet_path(@bet) %> |
+      <%= link_to 'Back', bets_path %>
+    </div>
+  </div>
+</div>
+        

@@ -1,24 +1,77 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="row">
+	<%= render partial: 'admin_nav_deliveries', :locals => {:admin_nav_head => "Show delivery info"} %>
+		<div class="show-container">
+			<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Street:</strong>
-  <%= @delivery.street %>
-</p>
+			<p>
+				<strong>ID:</strong>
+				<%= @delivery.id %>
+			</p>
 
-<p>
-  <strong>State:</strong>
-  <%= @delivery.state %>
-</p>
+			<p>
+				<strong>User ID:</strong>
+				<%= @delivery.user_id%>
+			</p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @delivery.country %>
-</p>
+			<p>
+				<strong>Prize ID:</strong>
+				<%= @delivery.prize_id  %> (<%= @delivery.prize.name %>)
+			</p>
 
-<p>
-  <strong>Zipcode:</strong>
-  <%= @delivery.zipcode %>
-</p>
 
-<%= link_to 'Edit', edit_delivery_path(@delivery) %> |
-<%= link_to 'Back', deliveries_path %>
+			<p>
+			  <strong>First and last name:</strong>
+			  <%= @delivery.first_last_name %>
+			</p>
+
+			<p>
+			  <strong>E-mail:</strong>
+			  <%= @delivery.user_email %>
+			</p>
+
+			<p>
+			  <strong>Phone number:</strong>
+			  <%= @delivery.phone_number %>
+			</p>
+
+			<p>
+			  <strong>Street:</strong>
+			  <%= @delivery.street %>
+			</p>
+
+			<p>
+			  <strong>State:</strong>
+			  <%= @delivery.state %>
+			</p>
+
+			<p>
+			  <strong>Country:</strong>
+			  <%= @delivery.country %>
+			</p>
+
+			<p>
+			  <strong>Zipcode:</strong>
+			  <%= @delivery.zipcode %>
+			</p>
+
+			<p>
+			  <strong>Address continued:</strong>
+			  <%= @delivery.address_continued %>
+			</p>
+
+			<p>
+			  <strong>Created at:</strong>
+			  <%= @delivery.created_at %>
+			</p>
+
+			<p>
+			  <strong>Updated at:</strong>
+			  <%= @delivery.updated_at %>
+			</p>
+
+			<%= link_to 'Edit', edit_delivery_path(@delivery) %> |
+			<%= link_to 'Back', deliveries_path %>
+		</div>
+	</div>
+</div>

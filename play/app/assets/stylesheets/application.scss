@@ -374,6 +374,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', end
   padding-bottom: rem-calc(63px);
 }
 
+.section_headline {
+  @include bp-medium {
+    padding-top: rem-calc(40px);
+    padding-bottom: rem-calc(10px);
+  }
+}
+
 .last-added-prizes-container {
   margin-top: rem-calc(60px);
   padding-bottom: rem-calc(60px);
@@ -845,6 +852,29 @@ $size: 150px;
   background: $main_color;
   padding: rem-calc(50px);
   margin-bottom: rem-calc(100px);
+
+  @include bp-medium {
+    margin-top: rem-calc(50px);
+    margin-bottom: rem-calc(50px);
+    margin-left: 0;
+    padding: rem-calc(30px);
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul li {
+    padding: rem-calc(5px 0);
+  }
+
+  li:before {
+     content: "• ";
+     font-size: rem-calc(24px);
+     color: $main_red;
+  }
 }
 
 .prize-single-name {
@@ -889,6 +919,11 @@ $size: 150px;
       padding-left: 0;
     }
   }
+
+  @include bp-medium {
+    margin-top: rem-calc(100px);
+    margin-bottom: 0;
+  }
 }
 
 .admin-bets-menu {
@@ -917,7 +952,15 @@ $size: 150px;
   }
 }
 
+/* ------------------ *\
+------ Show pages ------
+\* ------------------ */
 
+.show-container {
+  background: $main_color;
+  padding: rem-calc(50px);
+  margin: rem-calc(50px 0);
+}
 
 
 // Additional classes for overwriting in html without using style tag
@@ -950,4 +993,10 @@ $size: 150px;
 .row {
   margin-left: 0;
   margin-right: 0;
+}
+
+.row {
+  @include bp-large {
+    margin: (0 15px);
+  }
 }
