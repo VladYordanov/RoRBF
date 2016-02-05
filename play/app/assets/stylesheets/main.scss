@@ -196,7 +196,6 @@ input[name='user[password_confirmation]'],
 input[name='commit'] {
   width: 240px;
   height: 40px;
-  border-radius: 4px;
   border: 0;
   background: #f6f6f6;
   margin-top: 2px;
@@ -207,18 +206,11 @@ input[name='commit'] {
 input[name='commit'] {
   background: $main_red;
   font-weight: 700;
-  color: #fff;
+  color: #fff !important;
   text-align: center;
   padding-left: 0;
   margin-top: 20px;
   font-size: rem-calc(16px);
-  text-transform: uppercase;
-
-  box-shadow:
-    0 1px 1px #000, /*top external shadow*/
-    0 0px 0px #fff, /*bottom external highlight*/
-    inset 0 1px 0px rgba(255,255,255,0.5), /*top internal highlight*/
-    inset 0 0px 0px rgba(0,0,0,0.5); /*bottom internal shadow*/
 }
 
 .welcome-btn-already-signedup {
@@ -468,6 +460,7 @@ input[name='commit'] {
 
   @include bp-medium {
     margin-top: rem-calc(30px);
+    width: 100%;
 
   }
 }
@@ -502,6 +495,10 @@ input[name='commit'] {
     @include prefix(transition, 0.4s);
     background: $main_red;
     color: #fff;
+  }
+
+  @include bp-medium {
+    width: 100%;
   }
 }
 

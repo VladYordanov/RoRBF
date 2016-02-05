@@ -68,7 +68,8 @@ jQuery(document).ready(function(jQuery) {
 $(document).ready(function(){
   $('.bxslider').bxSlider({
     slideMargin: '0',
-   // auto: true,
+    responsive: true,
+    auto: true,
     pause: 3200
   });
 });
