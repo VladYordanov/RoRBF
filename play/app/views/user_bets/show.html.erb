@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
+  <% if current_admin %>
   <%= render partial: 'admin_nav_userbets', :locals => {:admin_nav_head => "Show delivery info"} %>
+  <% end %>   
     <div class="show-container">
 
       <p id="notice"><%= notice %></p>

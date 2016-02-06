@@ -990,7 +990,24 @@ $size: 150px;
 }
 
 
-// Additional classes for overwriting in html without using style tag
+/* ------------------ *\
+---- Delivery new ----
+\* ------------------ */
+
+.delivery-new-prize-container  {
+  background: $main_color;
+  margin: rem-calc(100px 0);
+
+  @include bp-medium {
+    margin: rem-calc(40px 0);
+  }
+}
+
+
+
+/*-------------------------------------------------------------------*\
+--Additional classes for overwriting in html without using style tag--
+\*-------------------------------------------------------------------*/
 
 .no-padding { padding: 0; };
 .no-padding-top { padding-top: 0; };

@@ -1,18 +1,28 @@
-<div class="container">
-	<div class="row">
+<% if current_user.points != @prize.price || current_user.experience != @prize.exp_price || current_user.level != @prize.level_needed %>
 
+		<div class="container">
+			<div class="row">
 
-	<div class="col-sm-6">
-		<div class="delivery-new-prize-container">
-
-		 	<p class="prize-single-name"><%= @prize.name %></p><br />
-		  	User: <%= @delivery_user_username %> <br />
-			User ID: <%= @delivery.user_id %><br />
+			<div class="col-sm-12">
+				<div class="delivery-new-prize-container padding-50">
+				 	<p> You don't have enough resources to buy <%= @prize.name %> </p>
+				</div>
+			</div> <!-- col -->
+			</div>
 		</div>
-	</div> <!-- col-6 -->
 
-			<%= render 'form' %>
-			<%= link_to 'Back', deliveries_path %>
+<% elsif current_user.points == @prize.price && current_user.experience == @prize.exp_price && current_user.level == @prize.level_needed %>
 
+	<div class="container">
+		<div class="row">
+
+		<div class="col-sm-12">
+			<div class="delivery-new-prize-container padding-50">
+			 	<p class="prize-single-name"><%= @prize.name %></p><br />
+				<%= render 'form' %>
+			</div>
+		</div> <!-- col -->
+		</div>
 	</div>
-</div>
+
+<% end %>

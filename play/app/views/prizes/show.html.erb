@@ -1,12 +1,14 @@
 <div class="container">
+<%if current_admin %>
 <%= render partial: 'admin_nav_prizes', :locals => {:admin_nav_head => "Prize info"} %>
+<% end %> 
   <div class="row" style="margin-top: 100px">
 
     <div class="col-sm-4">
       <div class="prize-single-thumbnail" style="background: url('<%= @prize.thumbnail.url %>')">
       </div>
-        <p>
-          <strong></strong>
+        <p style="text-align: center">
+          <strong>Requierements: </strong>
           <%= @prize.price %>p, <%= @prize.exp_price%> exp, <%= @prize.level_needed %> level
         </p>
 
