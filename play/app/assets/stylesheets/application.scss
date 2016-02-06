@@ -648,7 +648,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .main-nav .dropdown {
   position: absolute;
-  background: $main_color2;
+  background: $main_red;
   padding: 0;
   display: none;
   z-index: 999;
@@ -658,14 +658,14 @@ input[type=number]::-webkit-outer-spin-button {
     display: block;
     padding: rem-calc(10px 10px);
     width: rem-calc(160px);
-    border-top: 1px solid $main_color;
-    color: $main_color;
+    //border-top: 1px solid $main_color3;
+    color: #fff;
 
 
     &:hover {
       @include prefix(transition, 0.4s);
-      background: $main_color;
-      color: $main_color2;
+      //background: $main_color3;
+      color: $main_color3;
     }
 
   }

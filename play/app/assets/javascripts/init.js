@@ -40,7 +40,6 @@ $(document).on('page:load', function() {
 });
 
 jQuery(document).ready(function(jQuery) {
-
     $('#menu').slicknav({
     label: '',
     duration: 250,
