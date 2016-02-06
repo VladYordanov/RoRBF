@@ -44,9 +44,10 @@
 
               <% if current_user %>
                 <li><%= link_to "MY PROFILE", profile_users_path %></li>
-                <li><%= link_to "LOG OUT", destroy_user_session_path, :method => :delete %></li>
+                <li><%= link_to "LOG OUT", destroy_user_session_path, :method => :delete %>
+                </li>
               <% elsif current_admin %>
-                <li><a href="#">Admin</a>
+                <li><a href="#">ADMIN</a>
                   <ul class="dropdown">
                     <%=link_to (bets_path) do %>
                         <li>Bets</li>
@@ -64,7 +65,9 @@
                         <li>Users</li>
                     <% end %>
                   </ul>
-                </li>               
+                </li>  
+                <li><%= link_to "LOG OUT", destroy_admin_session_path, :method => :delete %>
+                </li>           
               <% else %>
                 <li><a href="#" id="sign-up-pop-up">SIGN UP</a></li>
                 <div id="sign-up-element-to-pop-up">

@@ -353,11 +353,13 @@ input[name='commit'] {
   background: $main_red;
 
   p {
-    @include vertical-align();
-    -webkit-transform: rotate(90deg) translateY(-0%) translateX(-73%);
-    -moz-transform: rotate(90deg) translateY(-0%) translateX(-73%);
-    -ms-transform: rotate(90deg) translateY(-0%) translateX(-73%);
-    -o-transform: rotate(90deg) translateY(-0%) translateX(-73%); 
+    position: relative;
+    top: -6px;
+   // @include vertical-align();
+    -webkit-transform: rotate(90deg) translateY(-0%) translateX(0%);// -73
+    -moz-transform: rotate(90deg) translateY(-0%) translateX(0%);// -73
+    -ms-transform: rotate(90deg) translateY(-0%) translateX(0%);// -73
+    -o-transform: rotate(90deg) translateY(-0%) translateX(0%); // -73
 
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
