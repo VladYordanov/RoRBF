@@ -1,34 +1,3 @@
-<% if false %>
-
-<div class="container matches-soon-container">
-  <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <div class="match-container" style="margin-top: 110px; border: 2px solid blue;">
-          <div class="game-info-container">
-            <p><%= @starting_soon.game %></p>
-          </div>  
-          <% @starts_in_min = @starting_soon.match_starts_at.min - DateTime.now.min %>
-          <% @starts_in_day = @starting_soon.match_starts_at.day - DateTime.now.day %>
-          <% @starts_in_hour = @starting_soon.match_starts_at.hour - DateTime.now.hour %>
-          <% if @starts_in_hour < 0 then @starts_in_hour = @starts_in_hour.to_i*(-1) end %>
-          
-          <h1>
-            <span><%= @starting_soon.team_one %></span> 
-            VS. 
-            <span><%= @starting_soon.team_two %></span>
-          </h1>
-          <% if @starts_in_day >= 0 %>
-            <h2> starts in <%= @starts_in_day %>d <%= @starts_in_hour %>h </h2>
-          <% elsif @starts_in_min <= 0  %>
-            <h2> started </h2>
-          <% else %>
-            <h2> starts in <%= @starts_in_hour %>h </h2>
-          <% end %>
-          <h3>BO<%= @starting_soon.bestof %></h3>
-        </div> <!-- .match-container -->
-      </div> <!-- .columns -->
-  </div>
-</div> <% end %>
 
 <div class="container">
   <div class="row">
@@ -61,34 +30,50 @@
         </div> <!-- .columns -->
 
 <div class="col-sm-6">
-<iframe src="http://player.twitch.tv/?channel=riotgames" frameborder="0" scrolling="no" height="378" width="98%" ></iframe><a href="http://www.twitch.tv/riotgames?tt_medium=live_embed&tt_content=text_link" style="margin-bottom: 110px; padding:2px 0px 4px; display:block; width:100%; left: 0; position: relative; font-weight:normal; font-size:10px;text-decoration:underline;"></a>
+<iframe src="http://player.twitch.tv/?channel=<%=@bet.stream_link%>" frameborder="0" scrolling="no" height="378" width="98%" ></iframe><a href="http://www.twitch.tv/riotgames?tt_medium=live_embed&tt_content=text_link" style="margin-bottom: 110px; padding:2px 0px 4px; display:block; width:100%; left: 0; position: relative; font-weight:normal; font-size:10px;text-decoration:underline;"></a>
 </div>
 
   
 <div class="col-sm-6" style="margin-bottom: 110px">     
     <% if !current_user %>
-      <p class="new-ubet-notlogged"> Please log in if you want to bet on this match. </p>
+      <div class="user-bet-form">
+        <p class="new-ubet-notlogged"> Please log in if you want to bet on this match. </p>
+      </div>
     <% else %>
 
-      <% if @bet.can_bet %>
-          <%# if DateTime.now.in_time_zone < @bet.match_starts_at.in_time_zone.to_datetime %>
-          <% if !@already_bet %>
-            <%= render 'form' %>
-          <% else %>
-            <div class="user-bet-form">
-                <% if @user_bet.bet_on_id == 1 %>
-                 <p>You have <%= @user_bet.bet_points %> points bet on <%= @bet.team_one %> </p>
-                 <% elsif @user_bet.bet_on_id == 2 %>
-                 <p>You have <%= @user_bet.bet_points %> points bet on <%= @bet.team_two %> </p>
-                <% end %>
-             </div>
+      <div class="user-bet-form">
+
+      <% if @bet.can_bet != 0 %>
+
+        <% if @already_bet == 1 %>
+
+          <% if @user_bet.bet_on_id == 1 %>
+            <p>You have <%= @user_bet.bet_points %> points bet on <%= @bet.team_one %> </p>
+          <% elsif @user_bet.bet_on_id == 2 %>
+            <p>You have <%= @user_bet.bet_points %> points bet on <%= @bet.team_two %> </p>      
           <% end %>
-             
-      <% else %>
-          <p>Match has already ended</p>
+
+        <% elsif !@already_bet %>
+
+          <% if @starts_in_min <= 0 && @starts_in_day <= 0 && @starts_in_hour <= 0 %>
+            <h2> The match has already started. </h2>
+          <% elsif %>
+
+            <%= render 'form' %>
+
+          <% end %>
+
+        <% end %>
+
+      <% elsif @bet.can_bet == 0 %>
+
+        <h2> Match has ended. </h2>
+
       <% end %>
 
+    </div> <!-- user-bet-form -->
 
+  <% end %> <!-- if current user -->
       <div class="match-single-info">
         <div class="match-single-info-headline"> VALUES </div>
         <div class="match-single-info-container">
@@ -101,7 +86,7 @@
         </div>      
      </div><!-- .mattch-single-info -->
 
-    <% end %> <!-- if current user -->
+  
 </div>
 
 <div class="col-sm-6">
