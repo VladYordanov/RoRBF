@@ -81,265 +81,52 @@
 
             </ul>
           </nav>
-
-
-
-
-                  <!--<div class="col-lg-12 col-md-12 no-padding">-->
-                    <!--&lt;!&ndash;<div class="head-nav-main" style="border: 1px solid red;">&ndash;&gt;-->
-                      <!--<li><%= link_to "HOME", root_path %></li>-->
-                      <!--<li><a href="#"> MATCHES </a>-->
-                          <!--<ul class="dropdown">-->
-                            <!--<li> <%= link_to "CURRENT", all_matches_main_index_path %> </li>-->
-                            <!--<li> <%= link_to "CS:GO", csgo_matches_main_index_path %> </li>-->
-                            <!--<li> <%= link_to "DOTA2", dota2_matches_main_index_path %> </li>-->
-                            <!--<li> <%= link_to "LoL", lol_matches_main_index_path %> </li>-->
-                            <!--<li> <%= link_to "SC II", sc2_matches_main_index_path %> </li>-->
-                          <!--</ul>-->
-                      <!--</li>-->
-                      <!--<li><%= link_to "PRIZES", prizes_main_index_path %></li>-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-                  <!--&lt;!&ndash;<div class="col-lg-6 col-md-12 no-padding sign-menu">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="sign-menu">&ndash;&gt;-->
-                      <!--<% if current_user %>-->
-                          <!--<li><%= link_to "MY PROFILE", profile_users_path %></li>-->
-                          <!--<li><%= link_to "LOG OUT", destroy_user_session_path, :method => :delete %></li>-->
-                      <!--<% else %>-->
-
-                          <!--<li><a href="#" id="sign-up-pop-up">Sign Up</a></li>-->
-                          <!--<div id="sign-up-element-to-pop-up">-->
-                            <!--<%= render :partial => "users/registrations/new" %>-->
-                          <!--</div>-->
-                          <!--<li><a href="#" id="sign-in-pop-up">Log In</a></li>-->
-                          <!--<div id="sign-in-element-to-pop-up">-->
-                            <!--<%= render :partial => "users/sessions/new" %>-->
-                          <!--</div>-->
-
-                      <!--<% end %>-->
-                    <!--&lt;!&ndash;</div> &lt;!&ndash; head-nav-login &ndash;&gt;&ndash;&gt;-->
-                  <!--</div> &lt;!&ndash; col &ndash;&gt;-->
-
-                </ul>
-              </nav>
-
-   <!--           <div class="col-xs-4 no-padding">
-                <div class="head-nav sign-menu">
-                  <ul>
-                    <li><a href="#">Sign up</a></li>
-                    <li><<a href="#">Log in</a></li>
-                  </ul>
-                </div>
-            </div> -->
-
-          </div> <!-- row -->
-        </div> <!-- container -->
-    </div> <!-- head-nav-container -->
+        </div> 
+      </div>
+    </div>
 
     <%= yield %>
 
+    <footer>
+      <div class="container">
+        <div class="row"> 
+          <div class="col-lg-4">
+            <div class="footer-menu">
+              <ul>
+                <li><a href="#">home</a></li>
+                <li><a href="#">matches</a></li>
+                <li><a href="#">prizes</a></li>
+                <div class="footer-sign">
+                  <li><a href="#">sign up</a></li>
+                  <li><a href="#">sign in</a></li>
+                </div>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-lg-offset-4"> 
+            <div class="footer-menu-social">
+              <a href="#"> <i class="fa fa-facebook-square"> </i> </a>
+              <a href="#"> <i class="fa fa-twitter-square"> </i> </a>
+              <a href="#"> <i class="fa fa-youtube-square"> </i> </a>
+              <div class="footer-email">support@bettingforge.eu</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <div class="footer-copyright">
+        <div class="container">
+          <div class="row">
+            <div class="copyright-text"> BettingForge © 2015 </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
   </body>
 </html>
-
-
-
-
-<footer>
-  <div class="container">
-    <div class="row"> 
-      <div class="col-lg-4">
-        <div class="footer-menu">
-          <ul>
-            <li><a href="#">home</a></li>
-            <li><a href="#">matches</a></li>
-            <li><a href="#">prizes</a></li>
-            <div class="footer-sign">
-              <li><a href="#">sign up</a></li>
-              <li><a href="#">sign in</a></li>
-            </div>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-lg-offset-4"> 
-        <div class="footer-menu-social">
-          <a href="#"> <i class="fa fa-facebook-square"> </i> </a>
-          <a href="#"> <i class="fa fa-twitter-square"> </i> </a>
-          <a href="#"> <i class="fa fa-youtube-square"> </i> </a>
-          <div class="footer-email">support@bettingforge.eu</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="footer-copyright">
-    <div class="container">
-      <div class="row">
-        <div class="copyright-text"> BettingForge © 2015 </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<% if false%>
-
-<div class="main-head">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="welcome-info">
-          <h1>BettingForge</h1>
-          <h2>Bet on your favorite game absolutely free,
-  win points and buy a prize.</h2>
-        </div>
-      </div>
-      <!--<div class="col-sm-12">
-        <% if !current_user %>
-          <div class="welcome-sign-up">
-            <h1>Sign Up</h1>
-            <%= render :partial => "users/registrations/new" %>
-            <div class="welcome-btn-already-signedup">
-              <a href="#">Already signed up? <span>Log in</span></a>
-            </div>
-          </div>
-        <% else %>
-        <% end %>
-      </div> -->
-    </div>
-
-  </div>
-</div>
-
-<div class="main-nav-container">
-  <div class="container">
-    <div class="row">
-    <nav id="my-menu">
-      <% if current_user %>
-      	<ul class="menu-users">
-          <li><%= link_to "HOME", root_path %></li>
-          <li><%= link_to "MATCHES", all_matches_main_index_path %>
-              <ul>
-                <li> <%= link_to "CURRENT", all_matches_main_index_path %> </li>
-                <li> <%= link_to "CS:GO", csgo_matches_main_index_path %> </li>
-                <li> <%= link_to "DOTA2", dota2_matches_main_index_path %> </li>
-                <li> <%= link_to "LoL", lol_matches_main_index_path %> </li>
-                <li> <%= link_to "SC II", sc2_matches_main_index_path %> </li>
-              </ul>
-          </li>
-          <li><%= link_to "PRIZES", prizes_main_index_path %></li>
-          <div class="menu-if-logged">
-              <li><%= link_to "My Profile", profile_users_path %></li>
-              <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
-          </div>
-      		<!--<li><%= link_to "Deliveries", deliveries_path %></li>
-      		<li><%= link_to "Prizes", prizes_path %></li>
-      		<li><%= link_to "My Bets", my_bets_users_path %></li>
-      		<li><%= link_to "My Profile", profile_users_path %></li>
-      		<li><%= link_to "Log Out",  destroy_user_session_path, :method => :delete %></li>
-      		<li> Logged in as: <%= current_user.username %> </li>-->
-      	</ul>
-      <% elsif current_admin %>
-      	<ul class="menu-admins">
-      		<li><p><%= link_to "BettingForge AdminPanel", admin_panel_admin_index_path %></p></li>
-
-      		<li><%= link_to "View site", root_path %>
-      		<li><%= link_to "LogOut", destroy_user_session_path, :method => :delete %></li>
-      		<li> Logged in as: <%= current_admin.username %> </li>
-      	</ul>
-      <% else %>
-      	<ul class="menu-users">
-          <li><%= link_to "HOME", root_path %></li>
-          <li><%= link_to "MATCHES", all_matches_main_index_path %>
-              <ul>
-                <li> <%= link_to "CURRENT", all_matches_main_index_path %> </li>
-                <li> <%= link_to "CS:GO", csgo_matches_main_index_path %> </li>
-                <li> <%= link_to "DOTA2", dota2_matches_main_index_path %> </li>
-                <li> <%= link_to "LoL", lol_matches_main_index_path %> </li>
-                <li> <%= link_to "SC II", sc2_matches_main_index_path %> </li>
-              </ul>
-          </li>
-          <li><%= link_to "PRIZES", prizes_main_index_path %></li>
-          <div class="menu-if-not-logged">
-            <li><a href="#" id="sign-up-pop-up">Sign Up</a></li>
-            <div id="sign-up-element-to-pop-up">
-                <%= render :partial => "users/registrations/new" %>
-
-            </div>
-            <li><a href="#" id="sign-in-pop-up">Sign In</a></li>
-            <div id="sign-in-element-to-pop-up">
-                <%= render :partial => "users/sessions/new" %>
-            </div>
-          </div>
-      	</ul>
-      <% end %>
-    </nav> <!-- my menu -->
-    </div>
-  </div> <!-- .container -->
-</div>
-
-<%= yield %>
-
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3 col-md-6">
-        <ul>
-          <li><span><%= link_to 'BettingForge', root_path %></span></li>
-          <li>support@bettingforge.eu</li> 
-          <li><a href="#">twitter</a></li>  
-          <li><a href="#">facebook</a></li>
-          <li><a href="#">youtube</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <ul>
-          <li><span><%= link_to 'BettingForge', root_path %></span></li>
-          <li>support@bettingforge.eu</li> 
-          <li><a href="#">twitter</a></li>  
-          <li><a href="#">facebook</a></li>
-          <li><a href="#">youtube</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-3 col-md-6 col-xs-offset-3">
-        <span>Copyright 2015</span>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-</body>
-</html>
-<% end %>
