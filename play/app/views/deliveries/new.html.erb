@@ -1,4 +1,4 @@
-<% if current_user.points != @prize.price || current_user.experience != @prize.exp_price || current_user.level != @prize.level_needed %>
+<% if current_user.points < @prize.price || current_user.experience < @prize.exp_price || current_user.level < @prize.level_needed %>
 
 		<div class="container">
 			<div class="row">
@@ -11,7 +11,7 @@
 			</div>
 		</div>
 
-<% elsif current_user.points == @prize.price && current_user.experience == @prize.exp_price && current_user.level == @prize.level_needed %>
+<% elsif current_user.points >= @prize.price && current_user.experience >= @prize.exp_price && current_user.level >= @prize.level_needed %>
 
 	<div class="container">
 		<div class="row">

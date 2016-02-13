@@ -18,7 +18,6 @@ class MainController < ApplicationController
 		@user_bet.user_id = @user.id
 	    @user_bet.bet_id = @bet.id
 	    @user_bet.save
-
 	end
 
 	def lol_matches

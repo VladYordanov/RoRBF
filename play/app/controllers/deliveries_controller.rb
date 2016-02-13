@@ -37,16 +37,8 @@ class DeliveriesController < ApplicationController
    
       respond_to do |format|
         if @delivery.save
-            @delivery.user_id = current_user.id
-            @delivery.prize_id = @prize.id
-            @delivery.save
 
-            @prize.in_stock -= 1
-            @prize.save
-
-            @user.points = @user.points - @prize.price
-            @user.experience += 100
-            @user.save 
+            @delivery.create_delivery(@prize, @user)
 
             format.html { redirect_to @delivery, notice: 'Delivery was successfully created.' }
             format.json { render :show, status: :created, location: @delivery }
