@@ -16,21 +16,16 @@ class UserBetsController < ApplicationController
   def new
     @user_bet = UserBet.new
     @bet = Bet.find(params[:id])
-    @user_bets = UserBet.all
     @user = current_user  
 
-    #check if user already betted on this match
-    if current_user 
-      @user_bets.each do |bet| 
-        if bet.user_id == @user.id 
-          if bet.bet_id == @bet.id
-            #redirect_to root_path
-            @already_bet = 1
-            @user_bet = UserBet.find(bet.id)
-            break
-          end
-        end
-      end
+    if @user
+      @user_bets = UserBet.where(:user_id => @user.id, :bet_id => @bet.id).first
+    end
+
+    if (@user_bets && @user_bets.bet_on_id != 0)
+      @already_bet = 1
+      @bet_team = @user_bets.user_bet_team_info(@bet)
+      @bet_points = @user_bets.bet_points
     end
   
   end
@@ -47,26 +42,28 @@ class UserBetsController < ApplicationController
     @bet = Bet.find(params[:id]) 
     @user = current_user
 
-    #linking the bet by the user with the match and the user
-    @user_bet.user_id = @user.id
-    @user_bet.bet_id = @bet.id
-    @user_bet.save
+    # #linking the bet by the user with the match and the user
+    # @user_bet.user_id = @user.id
+    # @user_bet.bet_id = @bet.id
+    # @user_bet.save
 
-    #taking the points betted from the user 
-    @user = User.find(@user_bet.user_id) 
-    @user.points -= @user_bet.bet_points 
-    @user.all_bets += 1
-    @user.save
+    # #taking the points betted from the user 
+    # @user = User.find(@user_bet.user_id) 
+    # @user.points -= @user_bet.bet_points 
+    # @user.all_bets += 1
+    # @user.save
 
-    #updating bet info
-    if @user_bet.bet_on_id == 1 
-      @bet.bets_on_team_one += 1
-      @bet.save
-    elsif @user_bet.bet_on_id == 2
-      @bet.bets_on_team_two += 1
-      @bet.save
-    end
+    # #updating bet info
+    # if @user_bet.bet_on_id == 1 
+    #   @bet.bets_on_team_one += 1
+    #   @bet.save
+    # elsif @user_bet.bet_on_id == 2
+    #   @bet.bets_on_team_two += 1
+    #   @bet.save
+    # end
       
+    @user_bet.create_user_bet(@user_bet, @bet)
+    @user_bet.update_bet_stats(@user_bet, @bet)
     
 
 

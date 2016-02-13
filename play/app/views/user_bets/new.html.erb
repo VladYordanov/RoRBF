@@ -46,13 +46,7 @@
       <% if @bet.can_bet != 0 %>
 
         <% if @already_bet == 1 %>
-
-          <% if @user_bet.bet_on_id == 1 %>
-            <p>You have <%= @user_bet.bet_points %> points bet on <%= @bet.team_one %> </p>
-          <% elsif @user_bet.bet_on_id == 2 %>
-            <p>You have <%= @user_bet.bet_points %> points bet on <%= @bet.team_two %> </p>      
-          <% end %>
-
+          <p> You have a <%= @bet_points %> points bet on <%= @bet_team %> </p>
         <% elsif !@already_bet %>
 
           <% if @starts_in_min <= 0 && @starts_in_day <= 0 && @starts_in_hour <= 0 %>
