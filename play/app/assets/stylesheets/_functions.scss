@@ -84,7 +84,7 @@ $rem-base: 16px;
 
 /* use: @include bp-small/med/large { content here } */
 @mixin bp-large {
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1170px) {
     @content;
   }
 }
