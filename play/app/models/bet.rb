@@ -47,5 +47,4 @@ class Bet < ActiveRecord::Base
 			end
 		end
 	end
-
 end
