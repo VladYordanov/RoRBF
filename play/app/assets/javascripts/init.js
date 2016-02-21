@@ -68,7 +68,7 @@ $(document).ready(function(){
   $('.bxslider').bxSlider({
     slideMargin: '0',
     responsive: true,
-    auto: true,
+    auto: false,
     pause: 3200
   });
 });

@@ -203,7 +203,7 @@ a {
 
 .bx-wrapper {
   width: 100%;
-  height: rem-calc(435px);
+  height: rem-calc(400px);
 
   .bx-viewport {
     position: static !important; 
@@ -273,32 +273,25 @@ a {
 
 
 .slider-slide-container {
-  background: red;
-  height: rem-calc(435px);
+  height: rem-calc(400px);
   background: $main_background;
-  background: rgba(27,27,27,1);
-background: -moz-linear-gradient(left, rgba(27,27,27,1) 0%, rgba(24,24,24,1) 52%, rgba(27,27,27,1) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(27,27,27,1)), color-stop(52%, rgba(24,24,24,1)), color-stop(100%, rgba(27,27,27,1)));
-background: -webkit-linear-gradient(left, rgba(27,27,27,1) 0%, rgba(24,24,24,1) 52%, rgba(27,27,27,1) 100%);
-background: -o-linear-gradient(left, rgba(27,27,27,1) 0%, rgba(24,24,24,1) 52%, rgba(27,27,27,1) 100%);
-background: -ms-linear-gradient(left, rgba(27,27,27,1) 0%, rgba(24,24,24,1) 52%, rgba(27,27,27,1) 100%);
-background: linear-gradient(to right, rgba(27,27,27,1) 0%, rgba(24,24,24,1) 52%, rgba(27,27,27,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', endColorstr='#1b1b1b', GradientType=1 );
+  //border: 1px solid red;
 
   .slider-headline {
     color: $main_red;
-    font-size: rem-calc(48px);
+    font-size: rem-calc(54px);
     font-weight: 700;
-    padding-top: rem-calc(100px);
-    padding-left: rem-calc(50px);
+    text-transform: uppercase;
+    // padding-top: rem-calc(100px);
+    // padding-left: rem-calc(50px);
   }
 
   .slider-subline {
-    color: $main_color2;
-    font-size: rem-calc(22px);
+    color: $main_color4;
+    font-size: rem-calc(28px);
     line-height: 1.5em;
     padding-top: rem-calc(20px);
-    padding-left: rem-calc(50px);
+    // padding-left: rem-calc(50px);
   }
 
   .slider-image {
@@ -313,7 +306,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', end
 
   .slider-headline,
   .slider-subline {
-    padding-left: rem-calc(20px);
+    //padding-left: rem-calc(20px);
   }
 }
 
@@ -373,7 +366,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', end
 
 .section_headline,
 .matches-to-be-played {
-  color: $main_color2;
+  color: $main_red;
   font-size: rem-calc(28px);
   font-weight: 700;
 
@@ -382,6 +375,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', end
 }
 
 .section_headline {
+  //border: 1px solid red;
+  padding: rem-calc(50px 0);
   @include bp-medium {
     padding-top: rem-calc(40px);
     padding-bottom: rem-calc(10px);
@@ -395,8 +390,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', end
 }
 
 .last-added-prizes-container {
-  margin-top: rem-calc(60px);
-  padding-bottom: rem-calc(60px);
+  // margin-top: rem-calc(60px);
+   padding-bottom: rem-calc(130px);
 }
 
 .matches-to-be-played {
@@ -493,7 +488,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', end
 
 .match-single-info {
   padding: rem-calc(40px 40px);
-  background-color: $main_color;
+  background-color: $main_background2;
 
   text-align: left;
   width: 100%;
@@ -521,7 +516,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', end
   width: 90%;
   float: left;
   position: relative;
-  background: $main_color;
+  background: $main_background2;
 
   @include border-box;
   padding: rem-calc(40px);
@@ -577,7 +572,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .profile-info-container {
-  background: $main_color;
+  background: $main_background2;
   margin: (110px 0);
   //padding: rem-calc(20px);
   overflow: auto;
@@ -624,6 +619,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 .main-nav {
+
+
   ul {
     padding-top: rem-calc(22px);
     display: inline-block;
@@ -636,6 +633,10 @@ input[type=number]::-webkit-outer-spin-button {
     display: inline-block;
     padding: rem-calc(0 10px);
     @include prefix(transition, 0.4s);
+
+    a {
+      color: $main-color;
+    }
   }
 
   li:hover > .dropdown {
@@ -691,8 +692,9 @@ $size: 150px;
   width: $size;
   height: $size;
   border-radius: 50%;
-  background-color: $main_color3;
+  background-color: $main_red;
   position: relative;
+  box-shadow: 0px 1px 10px $main_color3;
   &.gt-50 {
     background-color: $main_red;
   }
@@ -703,7 +705,7 @@ $size: 150px;
   .ppc-progress-fill {
     @include circle($size);
     clip: rect(0, #{$size/2}, $size, 0);
-    background: $main_color;
+    background: $main_color3;;
     transform: rotate(60deg);
   }
   .gt-50 & {
@@ -716,7 +718,7 @@ $size: 150px;
 }
 .ppc-percents {
   @include circle(#{$size/1.15});
-  background: $main_color;
+  background: $main_color3;
   text-align: center;
   display: table;
   span {
@@ -791,12 +793,24 @@ $size: 150px;
 }
 
 .user-bet-won-first,
-.user-bet-won-second {
-  .game-info-container,
-  &:hover {
-    background: $won_color;
+.user-bet-won-second,
+.user-bet-lost-first,
+.user-bet-lost-second {
+  h2 {
+    display: block;
+    float: none;
+    text-align: left;
+    line-height: rem-calc(20px);
+    height: rem-calc(20px);
+    right: 75px;
+    margin-right: 0;
+    margin-top: -6px;
+    position: absolute;
   }
+}
 
+.user-bet-won-first,
+.user-bet-won-second {
   h2,
   h3 {
     color: $won_color;
@@ -813,10 +827,6 @@ $size: 150px;
 
 .user-bet-lost-first,
 .user-bet-lost-second {
-  .game-info-container,
-  &:hover {
-    background: $main-red;
-  }
 
   h2,
   h3 {
@@ -876,9 +886,13 @@ $size: 150px;
 .prize-single-info {
   //margin-top: rem-calc(100px);
   margin-left: rem-calc(50px);
-  background: $main_color;
+  background: $main_background2;
   padding: rem-calc(50px);
   margin-bottom: rem-calc(100px);
+
+  p {
+    color: #999;
+  }
 
   @include bp-medium {
     margin-top: rem-calc(50px);
@@ -895,6 +909,7 @@ $size: 150px;
 
   ul li {
     padding: rem-calc(5px 0);
+    color: #999;
   }
 
   li:before {
@@ -904,9 +919,9 @@ $size: 150px;
   }
 }
 
-.prize-single-name {
+.prize-single-name{
   font-size: rem-calc(24px);
-  color: $main_red;
+  color: $main_color;
   font-weight: 700;
   margin-top: 0;
   padding-top: 0;
@@ -914,6 +929,8 @@ $size: 150px;
 
 .single-prize-btn {
   width: 100%;
+  //margin-bottom: rem-calc(70px);
+  background: $main_red;
 }
 
 
@@ -930,7 +947,7 @@ $size: 150px;
   background: $main_color;
   padding: rem-calc(20px);
   margin: rem-calc(50px 0);
-  margin-top: rem-calc(50px);
+  margin-top: rem-calc(100px);
 
   h1 {
     margin-top: rem-calc(12px);
@@ -995,7 +1012,7 @@ $size: 150px;
 \* ------------------ */
 
 .delivery-new-prize-container  {
-  background: $main_color;
+  background: $main_background2;
   margin: rem-calc(100px 0);
 
   @include bp-medium {
@@ -1004,6 +1021,195 @@ $size: 150px;
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------------*\
+---------------- REDESIGN ------------------
+\*-----------------------------------------*/
+
+.head-welcome-container {
+  max-width: rem-calc(750px);
+  margin: 0 auto;
+  margin-top: rem-calc(170px);
+}
+
+.welcome-headline {
+  color: $main_color;
+  font-size: rem-calc(58px);
+  font-weight: 700;
+  text-align: center;
+}
+
+.welcome-subline {
+  color: #999;
+  font-size: rem-calc(24px);
+  line-height: rem-calc(38px);
+  text-align: center;
+  font-weight: 400;
+  max-width: rem-calc(750px);
+  margin: 0 auto;
+
+  margin-top: rem-calc(65px);
+  margin-bottom: rem-calc(90px);
+}
+
+.welcome-buttons-container {
+  margin: 0 auto;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-button {
+  margin-left: rem-calc(30px);
+  margin-right: rem-calc(30px);
+  width: rem-calc(295px);
+  height: rem-calc(50px);
+  border: 0;
+  background: $main_red;
+
+  
+  color: #fff;
+  font-size: rem-calc(18px);
+}
+
+.content-headline-bline,
+.content-headline {
+  font-size: rem-calc(36px);
+  color: $main_color;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.content-headline-bline {
+  height: rem-calc(5px);
+  width: rem-calc(30px);
+  background: $main_color;
+  margin-bottom: rem-calc(10px);
+  margin-right: rem-calc(15px);
+}
+
+/*--------------------------------*\
+-------- STARTING SOON M -----------
+\*--------------------------------*/
+
+.starting-soon-big-container {
+  background: $main_background2;
+  margin-top: rem-calc(110px);
+  padding-bottom: rem-calc(70px);
+}
+
+.starting-soon-container {
+  margin-top: rem-calc(70px);
+}
+
+.starting-soon-matches {
+ // margin-top: rem-calc(70px);
+}
+
+
+.match-container {
+  height: rem-calc(105px);
+  background: $main_color;
+  margin: rem-calc(70px 0);
+
+  h1 span {
+    color: #fff;
+    font-size: rem-calc(24px);
+  }
+}
+
+.game-info-container {
+  background: 0;
+  margin-top: rem-calc(30px);
+  margin-left: rem-calc(30px);
+  display: inline-block;
+  position: absolute;
+  left: 0;
+    
+    p {
+      color: $main_color6;
+      font-size: rem-calc(15px);
+      font-weight: 700;
+      text-align: left;
+      line-height: rem-calc(6px);
+    };
+}
+
+.starting-time h2{
+  color: $main_color6;
+  font-size: rem-calc(15px);
+  font-weight: 700;
+  text-align: right;
+
+  margin-top: rem-calc(4px);
+}
+
+
+/*--------------------------------*\
+-------- PRIZES LAST ADD -----------
+\*--------------------------------*/
+
+.home-prizes-container {
+  margin-top: rem-calc(70px);
+}
+
+
+.home-prizes-showing {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: rem-calc(100px);
+
+  @include bp-medium {
+    flex-direction: column;
+  }
+}
+
+.last-prize-name {
+  position: relative;
+  color: $main_color;
+}
+
+.the-prize-container {
+  width: 340px;
+  margin-top: rem-calc(70px);
+
+  @include bp-medium {
+    width: 100%;
+  }
+}
+
+.prize-container,
+.btn-buy-prize {
+  width: 100%;
+}
+
+.btn-buy-prize {
+  margin-top: rem-calc(25px);
+  height: rem-calc(50px);
+}
+
+.prize-container-hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.matches-soon-container {
+  background: $main_background;
+  padding-bottom: 0;
+}
 
 /*-------------------------------------------------------------------*\
 --Additional classes for overwriting in html without using style tag--
@@ -1020,6 +1226,8 @@ $size: 150px;
   }
 }
 
+.color-red { color: $main_red; }
+
 .padding-50 { padding: rem-calc(50px); }
 .no-padding-top { padding-top: 0; }
 
@@ -1033,6 +1241,9 @@ $size: 150px;
 .won-color-background { color: #4ecc11; }
 .lost-color-text { color: $main_color; }
 .lost-color-background { color: $main-color };
+
+.left { float: left; }
+.rigt { float: right; }
 
 .row {
   margin-left: 0;

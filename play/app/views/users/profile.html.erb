@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="profile-info-container">
-    <div class="row padding-50"  style="background: #db2f2e; padding-top: 0;">
+    <div class="row padding-50"  style="background: #fe1530; padding-top: 0;">
       <div class="col-sm-4" >
 
         <div class="progress-pie-chart" data-percent="<%= @level_percentage %>">
@@ -38,10 +38,11 @@
 
       <div class="col-lg-4 col-sm-12 padding-50-bp" style=" padding-top: 0;" >
         <div class="profile-bought-prizes-container">
-          <div class="profile-prizes-headline"> Products bought </div>
+        <div class="content-headline-bline"></div>
+        <div class="content-headline"> Products </div>
           <% @deliveries.each do |delivery| %>
             <%= link_to (prize_path(delivery.prize.id)) do %>
-              <div class="prize-container full-width" style="background: url('<%= delivery.prize.thumbnail.url %>'); background-size: cover"> 
+              <div class="prize-container full-width" style="background: url('<%= delivery.prize.thumbnail.url %>'); background-size: cover; margin-top: 70px;"> 
                 <div class="prize-container-hover">
                   <div class="prize-info">
                     <div class="last-prize-name"> <%= delivery.prize.name %> </div>
@@ -54,7 +55,8 @@
       </div>
 
       <div class="col-lg-8 col-sm-12 padding-50-bp" >
-      <div class="profile-matches-headline"> Matches you betted on</div>
+    <div class="content-headline-bline"></div>
+    <div class="content-headline"> Matches </div>
       <% @user_bets.each do |user_bet| %>
         <% match = user_bet.bet %>
 
@@ -70,6 +72,25 @@
 
         <%= link_to user_bet_user_bets_path(match.id) do %>
           <div class="match-container <%= @class_winner %>">
+            <div class="game-info-container" style="padding-left: 30px;">
+              <p><%= match.game %></p>
+              <p>BO<%= match.bestof %></p>
+            </div>  
+
+            <h1>
+              <span class="user-bet-first-team"><%= match.team_one %></span> 
+              <div class="versus"> VS. </div> 
+              <span class="user-bet-second-team"><%= match.team_two %></span>
+            </h1>
+
+            <h2><%= user_bet.exp_change %> exp <br/> 
+            +<%= user_bet.returned_value %>p</h2>
+
+          </div> <!-- .match-container -->
+        <% end %>
+
+        <%= link_to user_bet_user_bets_path(match.id) do %>
+<!--           <div class="match-container <%= @class_winner %>">
 
             <div class="game-info-container"><p> <%= match.game %> </p> </div>
             <h1>
@@ -80,7 +101,7 @@
             <h2><%= user_bet.exp_change %> exp</h2>
             <h3>+<%= user_bet.returned_value %>p</h3>
 
-          </div> <!-- .match-container -->
+          </div> .match-container -->
         <% end %>
         <% end %>
       </div>

@@ -1,11 +1,14 @@
 <div class="col-xs-12 col-sm-7">
-<div class="matches-to-be-played">To be Played</div>
+  <div class="content-headline-bline"></div>
+  <div class="content-headline"> To be played </div>
   <% @bets.each do |match| %>
   	<%= link_to user_bet_user_bets_path(match.id) do %>	
-      <div class="match-container">
+     <div class="match-container">
         <div class="game-info-container">
           <p><%= match.game %></p>
+          <p>BO<%= match.bestof %></p>
         </div>  
+        <% @starts_in_mon = match.match_starts_at.mon - DateTime.now.mon %>
         <% @starts_in_min = match.match_starts_at.min - DateTime.now.min %>
         <% @starts_in_day = match.match_starts_at.day - DateTime.now.day %>
         <% @starts_in_hour = match.match_starts_at.hour - DateTime.now.hour %>
@@ -16,58 +19,52 @@
           <div class="versus"> VS. </div> 
           <span><%= match.team_two %></span>
         </h1>
-        <% if @starts_in_day >= 0 %>
-          <h2> starts in <%= @starts_in_day %>d <%= @starts_in_hour %>h </h2>
-        <% elsif @starts_in_min <= 0  %>
-          <h2> started </h2>
-        <% else %>
-          <h2> starts in <%= @starts_in_hour %>h </h2>
-        <% end %>
-        <h3>BO<%= match.bestof %></h3>
+
+        <div class="starting-time">
+          <% if @starts_in_day >= 0 %>
+            <h2> starts in <%= @starts_in_day %>d <%= @starts_in_hour %>h </h2>
+          <% elsif @starts_in_min <= 0  %>
+            <h2> started </h2>
+          <% else %>
+            <h2> starts in <%= @starts_in_hour %>h </h2>
+          <% end %>
+        </div>
       </div> <!-- .match-container -->
   	<% end %>
   <% end %>
 </div> <!-- .columns -->
 
 <div class="col-xs-12 col-sm-4 col-sm-offset-1">
-<div class="matches-to-be-played">Finished</div>
+  <div class="content-headline-bline"></div>
+  <div class="content-headline"> Finished </div>
   <% @finished_bets.each do |match| %>
     <%= link_to user_bet_user_bets_path(match.id) do %> 
-      <div class="match-container finished">
+       <div class="match-container">
+            <div class="game-info-container">
+              <p><%= match.game %></p>
+              <p>BO<%= match.bestof %></p>
+            </div>  
+            <% @starts_in_mon = match.match_starts_at.mon - DateTime.now.mon %>
+            <% @starts_in_min = match.match_starts_at.min - DateTime.now.min %>
+            <% @starts_in_day = match.match_starts_at.day - DateTime.now.day %>
+            <% @starts_in_hour = match.match_starts_at.hour - DateTime.now.hour %>
+            <% if @starts_in_hour < 0 then @starts_in_hour = @starts_in_hour.to_i*(-1) end %>
+            
+            <% if match.winner == 1 %>
+              <h1>
+                <span><%= match.team_one %></span> 
+                <div class="versus"> VS. </div> 
+                <span style="color: #555;"><%= match.team_two %></span>
+              </h1>
+            <% elsif match.winner == 2 %>
+              <h1>
+                <span style="color: #555;"><%= match.team_one %></span> 
+                <div class="versus"> VS. </div> 
+                <span><%= match.team_two %></span>
+              </h1>
+            <% end %>
 
-        <div class="game-info-container">
-          <p><%= match.game %></p>
-        </div>  
-        <% @starts_in_min = match.match_starts_at.min - DateTime.now.min %>
-        <% @starts_in_day = match.match_starts_at.day - DateTime.now.day %>
-        <% @starts_in_hour = match.match_starts_at.hour - DateTime.now.hour %>
-        <% if @starts_in_hour < 0 then @starts_in_hour = @starts_in_hour.to_i*(-1) end %>
-        
-        <% if match.winner = 1 %>
-          <h1>
-            <span style="color: #db2f2e;"><%= match.team_one %></span> 
-            <div class="versus"> VS. </div> 
-            <span style="color: #505050;"><%= match.team_two %></span>
-          </h1>
-        <% elsif match.winner = 2 %>
-          <h1>
-            <span style="color: #505050;"><%= match.team_one %></span> 
-            <div class="versus"> VS. </div>  
-            <span style="color: #db2f2e;"><%= match.team_two %></span>
-          </h1>
-        <% end %>
-
-        <% if @starts_in_day >= 0 %>
-          <h2> starts in <%= @starts_in_day %>d <%= @starts_in_hour %>h </h2>
-        <% elsif @starts_in_min <= 0  %>
-          <h2> started </h2>
-        <% else %>
-          <h2> starts in <%= @starts_in_hour %>h </h2>
-        <% end %>
-
-        <h3>BO<%= match.bestof %></h3>
-
-      </div> <!-- .match-container -->
+          </div> <!-- .match-container -->
     <% end %>
   <% end %>
 </div>

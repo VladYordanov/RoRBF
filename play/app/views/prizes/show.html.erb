@@ -7,10 +7,6 @@
     <div class="col-sm-4">
       <div class="prize-single-thumbnail" style="background: url('<%= @prize.thumbnail.url %>')">
       </div>
-        <p style="text-align: center">
-          <strong>Requierements: </strong>
-          <%= @prize.price %>p, <%= @prize.exp_price%> exp, <%= @prize.level_needed %> level
-        </p>
 
         <!-- <p><%= @prize.in_stock %> in stock</p> -->
 
@@ -21,7 +17,7 @@
             
             <%= link_to (new_prize_delivery_delivery_path(@prize.id)) do %>
               <button class="btn-buy-prize single-prize-btn">
-                Buy
+                Buy 
               </button>
             <% end %>
           <% else %>
@@ -32,6 +28,12 @@
         <% else %>
           <p class="prize-buy-not-logged"> Please log in to be able to buy this product </p>
         <% end %>
+
+        <p style="text-align: left; margin-bottom: 70px">
+          <strong>Price: </strong>
+          <%= @prize.price %>p, <%= @prize.exp_price%> exp, <%= @prize.level_needed %> level
+        </p>
+
 
     </div>
    

@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="container">
 	<div class="row">
 		<div class="slider-container">
@@ -21,88 +21,120 @@
 			  <li>
 			  	<div class="slider-slide-container">
 	  			  	<div class="slider-headline">No money, no risks</div>
-				  	<div class="slider-subline">Bet on your favorite games without investing money and get <br /> awesome rewards.</div>
+				  	<div class="slider-subline">Bet on your favorite games without investing money and get <br /> awesome rewards. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br /> Phasellus risus arcu, viverra et ultrices et. <br /></div>
 				  	<div class="slider-image"></div>
 				</div>
 			  </li>
 			</ul>
 
-		</div> <!-- slider container -->
-	</div> <!-- row -->
+		</div> slider container
+	</div> row 
+</div> -->
+
+<div class="container">
+	<div class="row">
+
+		<div class="head-welcome-container">
+			<h1 class="welcome-headline">BettingForge</h1>
+			<h2 class="welcome-subline"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nisl magna, euismod eget posuere a, finibus a erat. Donec fermentum tellus. </h2>
+			<div class="welcome-buttons-container">
+				<button class="welcome-button"> Log In </button>
+				<button class="welcome-button"> Sign Up </button>
+			</div>
+		</div>
+
+	</div>
 </div>
 
 <% match_counter = 0 %>
-<div class="matches-soon-container">
+<div class="starting-soon-big-container">
 	<div class="container">
-		<div class="section_headline"> Matches starting soon </div>
-
 		<div class="row">
-			<% @starting_soon.each do |match| %>
-			<%= link_to user_bet_user_bets_path(match.id) do %>	
-			<% match_counter += 1 %>
-			<% if match_counter % 2 != 0 %>
-				<div class="col-xs-12 col-sm-8">
-			<% elsif match_counter % 2 == 0 %>
-				<div class="col-xs-12 col-sm-8 col-sm-offset-4">
-			<% end %>
-					<div class="match-container">
-						<div class="game-info-container">
-							<p><%= match.game %></p>
-						</div>	
-						<% @starts_in_mon = match.match_starts_at.mon - DateTime.now.mon %>
-						<% @starts_in_min = match.match_starts_at.min - DateTime.now.min %>
-						<% @starts_in_day = match.match_starts_at.day - DateTime.now.day %>
-						<% @starts_in_hour = match.match_starts_at.hour - DateTime.now.hour %>
-						<% if @starts_in_hour < 0 then @starts_in_hour = @starts_in_hour.to_i*(-1) end %>
-						
-						<h1>
-							<span><%= match.team_one %></span> 
-							<div class="versus"> VS. </div> 
-							<span><%= match.team_two %></span>
-						</h1>
-						<% if @starts_in_day >= 0 %>
-							<h2> starts in <%= @starts_in_day %>d <%= @starts_in_hour %>h </h2>
-						<% elsif @starts_in_min <= 0  %>
-							<h2> started </h2>
-						<% else %>
-							<h2> starts in <%= @starts_in_hour %>h </h2>
+			<div class="starting-soon-container">
+				<div class="content-headline-bline"></div>
+				<div class="content-headline"> Starting Soon </div>
+
+				<div class="starting-soon-matches">
+					<% @starting_soon.each do |match| %>
+						<%= link_to user_bet_user_bets_path(match.id) do %>	
+						<% match_counter += 1 %>
+						<% if match_counter % 2 != 0 %>
+							<div class="col-xs-12 col-sm-8" style="float: none">
+						<% elsif match_counter % 2 == 0 %>
+							<div class="col-xs-12 col-sm-8 col-sm-offset-4" style="float: none">
 						<% end %>
-						<h3>BO<%= match.bestof %></h3>
-					</div> <!-- .match-container -->
-				</div> <!-- .columns -->
-			<% end #link_to %>
-			<% end %>
+								<div class="match-container">
+									<div class="game-info-container">
+										<p><%= match.game %></p>
+										<p>BO<%= match.bestof %></p>
+									</div>	
+									<% @starts_in_mon = match.match_starts_at.mon - DateTime.now.mon %>
+									<% @starts_in_min = match.match_starts_at.min - DateTime.now.min %>
+									<% @starts_in_day = match.match_starts_at.day - DateTime.now.day %>
+									<% @starts_in_hour = match.match_starts_at.hour - DateTime.now.hour %>
+									<% if @starts_in_hour < 0 then @starts_in_hour = @starts_in_hour.to_i*(-1) end %>
+									
+									<h1>
+										<span><%= match.team_one %></span> 
+										<div class="versus"> VS. </div> 
+										<span><%= match.team_two %></span>
+									</h1>
+
+									<div class="starting-time">
+										<% if @starts_in_day >= 0 %>
+											<h2> starts in <%= @starts_in_day %>d <%= @starts_in_hour %>h </h2>
+										<% elsif @starts_in_min <= 0  %>
+											<h2> started </h2>
+										<% else %>
+											<h2> starts in <%= @starts_in_hour %>h </h2>
+										<% end %>
+									</div>
+								</div> <!-- .match-container -->
+							</div> <!-- .columns -->
+						<% end #link_to %>
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 
 <div class="container">
-	<div class="row last-added-prizes-container">
-		<div class="section_headline">Lastly added prizes</div>
+	<div class="row">
+		<div class="home-prizes-container">
+				<div class="content-headline-bline"></div>
+				<div class="content-headline"> Last Added Prizes </div>
 
-		<% @prizes.each do |prize| %>
-			<div class="col-xs-12 col-sm-4">
-			<%= link_to (prize_path(prize.id)) do %>
-				<div class="prize-container" style="background: url('<%= prize.thumbnail.url %>'); background-size: cover">	
-					<div class="prize-container-hover">
-						<div class="prize-info">
-							<div class="last-prize-name"> <%= prize.name %> </div>
+				<div class="home-prizes-showing">
+
+					<% @prizes.each do |prize| %>
+						<!-- <div class="col-xs-12 col-sm-4"> -->
+						<div class="the-prize-container">
+						<%= link_to (prize_path(prize.id)) do %>
+							<div class="prize-container" style="background: url('<%= prize.thumbnail.url %>'); background-size: cover">	
+								<div class="prize-container-hover">
+									<div class="prize-info">
+										<div class="last-prize-name"> <%= prize.name %> </div>
+									</div>
+								</div>
+							</div> 
+						<% end %>
+
+									
+
+						<%= link_to (prize_path(prize.id)) do %>
+							<button class="btn-buy-prize">
+								See more
+							</button>
+						<% end %>
 						</div>
-					</div>
-				</div> 
-			<% end %>
+						<!-- </div> -->
+					<% end %>		
 
-						
+				</div>
 
-				<%= link_to (prize_path(prize.id)) do %>
-					<button class="btn-buy-prize">
-						See more
-					</button>
-				<% end %>
-			</div>
-	<% end %>				
-
+		</div>
 	</div>
 </div>
+

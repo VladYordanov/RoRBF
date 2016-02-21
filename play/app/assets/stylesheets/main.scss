@@ -33,7 +33,7 @@ th {
 
   padding: 4px;
   text-align: center;
-  border: 1px solid #222;
+  border: 1px solid #ccc;
 
   a {
     text-decoration: none;
@@ -42,13 +42,13 @@ th {
 }
 
 tr td {
-  background: $main_color;;
+  background: $main_background2;;
   padding: rem-calc(10px);
 }
 
 tr th,
 tr td {
-  background: $main_color;
+  background: $main_background2;
   padding: rem-calc(10px);
   color: #777;
 }
@@ -59,7 +59,7 @@ thead {
 
 select,
 input {
-  background: $main_color2;
+  background: #fff;
   border: 0;
   padding: rem-calc(5px);
 
@@ -71,11 +71,17 @@ label {
   padding-top: rem-calc(10px);
   margin-top: rem-calc(10px);
   line-height: rem-calc(22px);
+  color: $main_color;
 }
 
+
 form {
-  background: $main_color;
+  background: $main_background2;
   //padding: rem-calc(50px);
+}
+
+button {
+  color: #fff !important;
 }
 
 .field {
@@ -256,13 +262,9 @@ input[name='commit'] {
 }
 
 .matches-soon-container {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  // padding-top: 50px;
+  padding-bottom: rem-calc(130px);
   background: 
-  /*linear-gradient(
-        rgba(194, 40, 58, 0.95),
-        rgba(194, 40, 58, 0.95)
-      ), */
   linear-gradient(
         rgba(0, 0, 0, 0.75),
         rgba(0, 0, 0, 0.75)
@@ -273,9 +275,8 @@ input[name='commit'] {
 
 .match-container {
   width: 100%;
-  height: 80px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  //margin-top: 30px;
+  // margin-bottom: 30px;
   text-align: center;
   color: $main_red;
 
@@ -356,10 +357,10 @@ input[name='commit'] {
     position: relative;
     top: -6px;
    // @include vertical-align();
-    -webkit-transform: rotate(90deg) translateY(-0%) translateX(0%);// -73
-    -moz-transform: rotate(90deg) translateY(-0%) translateX(0%);// -73
-    -ms-transform: rotate(90deg) translateY(-0%) translateX(0%);// -73
-    -o-transform: rotate(90deg) translateY(-0%) translateX(0%); // -73
+    // -webkit-transform: rotate(90deg) translateY(-0%) translateX(0%);// -73
+    // -moz-transform: rotate(90deg) translateY(-0%) translateX(0%);// -73
+    // -ms-transform: rotate(90deg) translateY(-0%) translateX(0%);// -73
+    // -o-transform: rotate(90deg) translateY(-0%) translateX(0%); // -73
 
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
@@ -423,7 +424,7 @@ input[name='commit'] {
 
 .prize-container {
   //margin-top: rem-calc(60px);
-  width: 97.5%;
+  width: 92%;
   height: 200px;
   background: #000;
   -webkit-filter: grayscale(1);
@@ -450,11 +451,12 @@ input[name='commit'] {
       @include prefix(transition, 0.4s);
 
       .last-prize-name {
-        position: absolute;
-        left: 0; 
-        right: 0;
-        opacity: 0;
-        margin-top: rem-calc(-50px);
+        // position: absolute;
+        // left: 0; 
+        // right: 0;
+        // opacity: 0;
+        // margin-top: rem-calc(-50px);
+        color: $main_red;
         @include prefix(transition, 0.4s);
       }
     }
@@ -472,7 +474,7 @@ input[name='commit'] {
 }
 
 .btn-buy-prize {
-  width: 97.5%;
+  width: 92%;
   height: 40px;
   background: $main_color;
   color: $main_color5;
@@ -518,7 +520,7 @@ footer {
   width: 100%;
   padding-top: 40px;
 //  padding-bottom: 40px;
-  background-color: $main_color;
+  background-color: $main_background2;
   font-size: rem-calc(14px);
   color: $main_link_color;
 
@@ -530,6 +532,7 @@ footer {
   ul {
     text-decoration: none;
     list-style-type: none;
+    padding-left: 0;
   }
 
   span a,
@@ -545,8 +548,12 @@ footer {
 
 // -------------------------------------
 .head-nav-container {
-  background: $main_color;
-  height: rem-calc(100px);
+  background: $main_background;
+  height: rem-calc(96px);
+  position: fixed;
+  z-index: 9999999999;
+  left: 0;
+  right: 0;
 
   .logo {
     font-size: rem-calc(26px);
@@ -666,3 +673,5 @@ footer {
     top: rem-calc(38px);
   }
 }
+
+
