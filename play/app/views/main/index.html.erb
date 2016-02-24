@@ -1,35 +1,3 @@
-<!-- 
-<div class="container">
-	<div class="row">
-		<div class="slider-container">
-
-			<ul class="bxslider">
-			  <li>
-			  	<div class="slider-slide-container">
-	  			  	<div class="slider-headline">No money, no risks</div>
-				  	<div class="slider-subline">Bet on your favorite games without investing money and get <br /> awesome rewards.</div>
-				  	<div class="slider-image"></div>
-				</div>
-			  </li>
-			  <li>
-			  	<div class="slider-slide-container">
-	  			  	<div class="slider-headline">Lorem ipsum dolor sit amet</div>
-				  	<div class="slider-subline">Maecenas sapien turpis, volutpat vitae elementum id,<br /> accumsan quis nisi. </div>
-				  	<div class="slider-image"></div>
-				</div>
-			  </li>
-			  <li>
-			  	<div class="slider-slide-container">
-	  			  	<div class="slider-headline">No money, no risks</div>
-				  	<div class="slider-subline">Bet on your favorite games without investing money and get <br /> awesome rewards. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br /> Phasellus risus arcu, viverra et ultrices et. <br /></div>
-				  	<div class="slider-image"></div>
-				</div>
-			  </li>
-			</ul>
-
-		</div> slider container
-	</div> row 
-</div> -->
 
 <div class="container">
 	<div class="row">
@@ -38,13 +6,27 @@
 			<h1 class="welcome-headline">BettingForge</h1>
 			<h2 class="welcome-subline"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nisl magna, euismod eget posuere a, finibus a erat. Donec fermentum tellus. </h2>
 			<div class="welcome-buttons-container">
-				<button class="welcome-button"> Log In </button>
-				<button class="welcome-button"> Sign Up </button>
+				<a href="#" id="sign-up-pop-up">
+					<button onClick="$('#sign-in-element-to-pop-up').bPopup()" class="welcome-button"> Log In </button>
+				</a>
+				<div id="sign-up-element-to-pop-up">
+					<%= render :partial => "users/registrations/new" %>
+				</div>
+	
+				<a href="#" id="sign-in-pop-up">
+					<button onClick="$('#sign-up-element-to-pop-up').bPopup()"class="welcome-button"> Sign Up </button>
+                </a>
+                <div id="sign-in-element-to-pop-up">
+                  <%= render :partial => "users/sessions/new" %>
+                </div>
+
 			</div>
 		</div>
 
 	</div>
 </div>
+
+
 
 <% match_counter = 0 %>
 <div class="starting-soon-big-container">
