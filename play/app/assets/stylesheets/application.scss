@@ -939,6 +939,15 @@ $size: 150px;
 ------- Admin Panel -------
 \* --------------------- */
 
+//Admin form
+.new_admin {
+  max-width: rem-calc(1170px);
+  margin: 0 auto;
+  margin-top: rem-calc(100px);
+  margin-bottom: rem-calc(100px);
+  padding: rem-calc(50px);
+}
+
 
 // Bets Navigation
 
