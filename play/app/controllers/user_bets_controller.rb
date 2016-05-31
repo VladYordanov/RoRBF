@@ -16,7 +16,7 @@ class UserBetsController < ApplicationController
   def new
     @user_bet = UserBet.new
     @bet = Bet.find(params[:id])
-    @user = current_user  
+    @user = current_user
 
     if @user
       @user_bets = UserBet.where(:user_id => @user.id, :bet_id => @bet.id).first
@@ -27,7 +27,7 @@ class UserBetsController < ApplicationController
       @bet_team = @user_bets.user_bet_team_info(@bet)
       @bet_points = @user_bets.bet_points
     end
-  
+
   end
 
   # GET /user_bets/1/edit
@@ -39,9 +39,8 @@ class UserBetsController < ApplicationController
   def create
 
     @user_bet = UserBet.new(user_bet_params)
-    @bet = Bet.find(params[:id]) 
+    @bet = Bet.find(params[:id])
     @user = current_user
-
     @user_bet.create_user_bet(@user_bet, @bet)
     @user_bet.update_bet_stats(@user_bet, @bet)
 

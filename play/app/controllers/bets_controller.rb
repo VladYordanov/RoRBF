@@ -40,8 +40,6 @@
   # PATCH/PUT /bets/1
   # PATCH/PUT /bets/1.json
   def update
-
-
     respond_to do |format|
       if @bet.update(bet_params)
         format.html { redirect_to finished_match_bets_path, notice: 'Bet was successfully updated.' }
@@ -67,10 +65,8 @@
     @bet = Bet.find(params[:id]);
     @bet.can_bet = 0;
     @bet.save
-
     @user_bets = UserBet.all.where(:bet_id => @bet.id)
     @users = User.all
-
     @finished_match = @bet.finish_match(@user_bets, @users, @bet)
   end
 

@@ -17,9 +17,8 @@ class DeliveriesController < ApplicationController
     def new
         @delivery = Delivery.new
         @prize = Prize.find(params[:prize_id])
-
         @delivery.user_id = current_user.id
-        @delivery_user_username = current_user.username 
+        @delivery_user_username = current_user.username
         @delivery.prize_id = @prize.id
     end
 
@@ -34,10 +33,8 @@ class DeliveriesController < ApplicationController
       @prize = Prize.find(params[:prize_id])
       @user = current_user
 
-   
       respond_to do |format|
         if @delivery.save
-
             @delivery.create_delivery(@prize, @user)
 
             format.html { redirect_to @delivery, notice: 'Delivery was successfully created.' }
@@ -79,7 +76,7 @@ class DeliveriesController < ApplicationController
       @user = current_user
       @prize.in_stock -= 1
       @prize.save
-      
+
       respond_to do |format|
         format.html { redirect_to prizes_url, notice: 'You have bought this prize'}
       end
