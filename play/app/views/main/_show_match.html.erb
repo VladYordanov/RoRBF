@@ -3,7 +3,7 @@
   <div class="content-headline"> To be played </div>
   <% @bets.each do |match| %>
     <%= link_to user_bet_user_bets_path(match.id) do %>
-
+      <%= render 'show_match_big', :match => match %>
     <% end %>
   <% end %>
 </div> <!-- .columns -->
@@ -18,12 +18,6 @@
               <p><%= match.game %></p>
               <p>BO<%= match.bestof %></p>
             </div>
-            <% @starts_in_mon = match.match_starts_at.mon - DateTime.now.mon %>
-            <% @starts_in_min = match.match_starts_at.min - DateTime.now.min %>
-            <% @starts_in_day = match.match_starts_at.day - DateTime.now.day %>
-            <% @starts_in_hour = match.match_starts_at.hour - DateTime.now.hour %>
-            <% if @starts_in_hour < 0 then @starts_in_hour = @starts_in_hour.to_i*(-1) end %>
-
             <% if match.winner == 1 %>
               <h1>
                 <span><%= match.team_one %></span>

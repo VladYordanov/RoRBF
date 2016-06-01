@@ -1,0 +1,14 @@
+<div class="match-container">
+  <div class="game-info-container">
+    <p><%= match.game %></p>
+    <p>BO<%= match.bestof %></p>
+  </div>
+
+  <h1>
+    <span><%= match.team_one %></span><div class="versus"> VS. </div><span><%= match.team_two %></span>
+  </h1>
+
+  <div class="starting-time">
+    <h2> <%= start_time(match.id) %> </h2>
+  </div>
+</div>
