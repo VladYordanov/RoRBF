@@ -52,11 +52,6 @@
                     <p><%= match.game %></p>
                     <p>BO<%= match.bestof %></p>
                   </div>
-                  <% @starts_in_mon = match.match_starts_at.mon - DateTime.now.mon %>
-                  <% @starts_in_min = match.match_starts_at.min - DateTime.now.min %>
-                  <% @starts_in_day = match.match_starts_at.day - DateTime.now.day %>
-                  <% @starts_in_hour = match.match_starts_at.hour - DateTime.now.hour %>
-                  <% if @starts_in_hour < 0 then @starts_in_hour = @starts_in_hour.to_i*(-1) end %>
 
                   <h1>
                     <span><%= match.team_one %></span>
@@ -65,20 +60,14 @@
                   </h1>
 
                   <div class="starting-time">
-                    <% if @starts_in_day >= 0 %>
-                      <h2> starts in <%= @starts_in_day %>d <%= @starts_in_hour %>h </h2>
-                    <% elsif @starts_in_min <= 0  %>
-                      <h2> started </h2>
-                    <% else %>
-                      <h2> starts in <%= @starts_in_hour %>h </h2>
-                    <% end %>
+                    <h2> <%= start_time(match.id) %> </h2>
                   </div>
                 </div> <!-- .match-container -->
               </div> <!-- .columns -->
             <% end #link_to %>
           <% end %>
         </div>
-      </div>
+      </div> <!-- -->
     </div>
   </div>
 </div>
