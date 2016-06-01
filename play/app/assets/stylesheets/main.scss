@@ -2,12 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import 'variables';
-@import 'functions';
-@import 'jquery.bxslider';
-@import 'responsive-nav';
-@import 'navicon';
-@import 'slicknav';
+@import 'inc/variables';
+@import 'inc/functions';
+@import 'inc/jquery.bxslider';
+@import 'inc/responsive-nav';
+@import 'inc/navicon';
+@import 'inc/slicknav';
 
 
 * {
@@ -264,7 +264,7 @@ input[name='commit'] {
 .matches-soon-container {
   // padding-top: 50px;
   padding-bottom: rem-calc(130px);
-  background: 
+  background:
   linear-gradient(
         rgba(0, 0, 0, 0.75),
         rgba(0, 0, 0, 0.75)
@@ -386,7 +386,7 @@ input[name='commit'] {
     }
 
     background: rgba(0, 0, 0, 0.8);
-  
+
     .game-info-container {
       background: rgba(0, 0, 0, 0.8);
     }
@@ -403,7 +403,7 @@ input[name='commit'] {
   h1 {
     width: 70%;
     display: inline-block;
-    
+
     color: $main_red;
     font-family: 'Roboto', sans-serif;
     font-size: rem-calc(20px);
@@ -452,7 +452,7 @@ input[name='commit'] {
 
       .last-prize-name {
         // position: absolute;
-        // left: 0; 
+        // left: 0;
         // right: 0;
         // opacity: 0;
         // margin-top: rem-calc(-50px);
@@ -482,7 +482,7 @@ input[name='commit'] {
   float: none;
   margin: 0 auto;
 
-  color: #fff;  
+  color: #fff;
   margin-top: rem-calc(10px);
   @include prefix(transition, 0.4s);
 
@@ -560,7 +560,7 @@ footer {
     font-size: rem-calc(26px);
     color: $main_red;
     font-family: Montserrat, sans-serif;
-    font-weight: 700; 
+    font-weight: 700;
     margin-top: rem-calc(30px);
   }
 
@@ -573,7 +573,7 @@ footer {
   .head-nav {
     text-align: center;
     border: 1px solid red;
-    
+
     ul {
       margin-top: rem-calc(41px);
     }
@@ -612,7 +612,7 @@ footer {
           left: 0;
           text-align: left;
 
-          li, 
+          li,
           li:first-child,
           .sign-menu li {
             display: block;
@@ -675,4 +675,15 @@ footer {
   }
 }
 
+.welcome-field {
+  margin-top: rem-calc(10px);
+  margin-bottom: rem-calc(10px);
+}
 
+.new_user {
+  background: none;
+}
+
+.popup-button {
+  border: 2px solid blue;
+}

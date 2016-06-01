@@ -21,17 +21,17 @@ a {
   text-decoration: none;
 }
 
- @import 'functions';
- @import 'variables';
- @import 'responsive-nav';
+ @import 'inc/functions';
+ @import 'inc/variables';
+ @import 'inc/responsive-nav';
  @import 'font-awesome.min';
 
  html,
  body {
- 	width: 100%;
- 	height: 100%;
- 	margin: 0 auto;
- 	padding: 0;
+   width: 100%;
+   height: 100%;
+   margin: 0 auto;
+   padding: 0;
   background-color: $main_background;
  }
 
@@ -46,47 +46,47 @@ a {
 /*showing bets in main page */
 
 .bet_layout {
-	width: 400px;
-	height: 100px;
-	background: #333;
-	color: #fff;
+  width: 400px;
+  height: 100px;
+  background: #333;
+  color: #fff;
 }
 
 .bet_layout p {
-	text-align: center;
-	margin-top: 40px;
-	padding-top: 20px;
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
 }
 
 .team_one,
 .team_two {
-	font-size: 16px;
-	font-weight: bold;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .team_one_chance,
 .team_two_chance {
-	font-size: 14px;
-	font-weight: bold;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .team_one_chance {
-	padding-right: 20px;
+  padding-right: 20px;
 }
 
 .team_two_chance {
-	padding-left: 20px;
+  padding-left: 20px;
 }
 
 .values {
-	text-align: center;
+  text-align: center;
 }
 
 .team_one_value,
 .team_two_value {
-	padding-left: 30px;
-	padding-right: 30px;
-	font-weight: bold;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-weight: bold;
 }
 
 
@@ -206,7 +206,7 @@ a {
   height: rem-calc(400px);
 
   .bx-viewport {
-    position: static !important; 
+    position: static !important;
   }
 
   img {
@@ -251,7 +251,7 @@ a {
   }
 
   .bx-pager {
-  
+
     .bx-pager-item {
       @include prefix(box-sizing, border-box);
       width: 33.33333%;
@@ -264,9 +264,9 @@ a {
       &:last-child {
         padding-right: 0;
       }
-  
+
     }
-  
+
   }
 
 }
@@ -356,7 +356,7 @@ a {
 
     span {
        font-size: rem-calc(22px);
-      color: $main_color2; 
+      color: $main_color2;
     }
 
   }
@@ -529,7 +529,7 @@ select[name="user_bet[bet_on_id]"] {
   border: 0;
   color: $main_color;
   width: 100%;
-  height: rem-calc(40px); 
+  height: rem-calc(40px);
   margin-top: rem-calc(10px);
   padding: rem-calc(10px);
 }
@@ -541,10 +541,10 @@ select[name="user_bet[bet_on_id]"] {
   float: right;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .field-match {
@@ -577,7 +577,7 @@ input[type=number]::-webkit-outer-spin-button {
   //padding: rem-calc(20px);
   overflow: auto;
 
-  p {   
+  p {
     padding-left: rem-calc(20px);
   }
 }
@@ -594,7 +594,7 @@ input[type=number]::-webkit-outer-spin-button {
   li, a {
     padding: rem-calc(10px);
     font-size: rem-calc(16px);
-  
+
     &:last-child {
     }
   }
@@ -611,7 +611,7 @@ input[type=number]::-webkit-outer-spin-button {
   .js #menu {
     display:none;
   }
-  
+
   .js .slicknav_menu {
     display:block;
   }
@@ -674,7 +674,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 
-/* ----------------------- *\ 
+/* ----------------------- *\
 --- PROFILE PROGRESS BAR ---
 \* ----------------------- */
 @mixin circle($size) {
@@ -856,7 +856,7 @@ $size: 150px;
 .profile-bought-prizes-container {
   padding-top: rem-calc(50px);
 
-  .prize-container { 
+  .prize-container {
     height: rem-calc(110px);
   }
 }
@@ -1089,7 +1089,7 @@ $size: 150px;
   border: 0;
   background: $main_red;
 
-  
+
   color: #fff;
   font-size: rem-calc(18px);
 }
@@ -1147,7 +1147,7 @@ $size: 150px;
   display: inline-block;
   position: absolute;
   left: 0;
-    
+
     p {
       color: $main_color6;
       font-size: rem-calc(15px);

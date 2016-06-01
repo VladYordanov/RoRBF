@@ -62,8 +62,8 @@
   end
 
   def finished
-    @bet = Bet.find(params[:id]);
-    @bet.can_bet = 0;
+    @bet = Bet.find(params[:id])
+    @bet.can_bet = 0
     @bet.save
     @user_bets = UserBet.all.where(:bet_id => @bet.id)
     @users = User.all

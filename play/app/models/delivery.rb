@@ -1,17 +1,17 @@
 class Delivery < ActiveRecord::Base
-	belongs_to :prize
+  belongs_to :prize
 
-	def create_delivery(thePrize, theUser)
-		self.user_id = theUser.id
-		self.prize_id = thePrize.id
-		self.save
+  def create_delivery(the_prize, the_user)
+    self.user_id = the_user.id
+    self.prize_id = the_prize.id
+    self.save
 
-		thePrize.in_stock -= 1
-		thePrize.save
+    the_prize.in_stock -= 1
+    the_prize.save
 
-		theUser.points = theUser.points - thePrize.price
-		theUser.experience += 100
-		theUser.save
-	end	
+    the_user.points = the_user.points - the_prize.price
+    the_user.experience += 100
+    the_user.save
+  end
 
 end
