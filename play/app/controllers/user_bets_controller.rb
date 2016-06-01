@@ -17,6 +17,7 @@ class UserBetsController < ApplicationController
     @user_bet = UserBet.new
     @bet = Bet.find(params[:id])
     @user = current_user
+    @stream_link = @bet.stream_link 
 
     if @user
       @user_bets = UserBet.where(:user_id => @user.id, :bet_id => @bet.id).first
