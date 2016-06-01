@@ -1,35 +1,35 @@
 <div class="container">
   <div class="row">
 
-      <p id="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
 
-      <%= render partial: 'admin_nav_userbets', :locals => {:admin_nav_head => "Listing User Bets"} %>
+    <%= render partial: 'admin_nav_userbets', :locals => {:admin_nav_head => "Listing User Bets"} %>
 
-      <table>
-        <thead>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Bet points</th>
+          <th>Won</th>
+          <th>Loss</th>
+          <th>Ret. value</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @user_bets.each do |user_bet| %>
           <tr>
-            <th>User</th>
-            <th>Bet points</th>
-            <th>Won</th>
-            <th>Loss</th>
-            <th>Ret. value</th>
-            <th colspan="2"></th>
+            <td><%= user_bet.user.id %></td>
+            <td><%= user_bet.bet_points %></td>
+            <td><%= user_bet.won %></td>
+            <td><%= user_bet.loss %></td>
+            <td><%= user_bet.returned_value %></td>
+            <td><%= link_to 'Show', user_bet %></td>
+            <td><%= link_to 'Destroy', user_bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
-        </thead>
-
-        <tbody>
-          <% @user_bets.each do |user_bet| %>
-            <tr>
-              <td><%= user_bet.user.id %></td>
-              <td><%= user_bet.bet_points %></td>
-              <td><%= user_bet.won %></td>
-              <td><%= user_bet.loss %></td>
-              <td><%= user_bet.returned_value %></td>
-              <td><%= link_to 'Show', user_bet %></td>
-              <td><%= link_to 'Destroy', user_bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
   </div>
+</div>

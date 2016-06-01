@@ -1,37 +1,31 @@
+<%= form_for(@user_bet) do |f| %>
+<% if @user_bet.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user_bet.errors.count, "error") %> prohibited this user_bet from being saved:</h2>
 
+    <ul>
+    <% @user_bet.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
-      <%= form_for(@user_bet) do |f| %>
-      <% if @user_bet.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user_bet.errors.count, "error") %> prohibited this user_bet from being saved:</h2>
+  <div class="field-match">
+    <%= f.label :bet_points %><br>
+    <%= f.number_field :bet_points %>
+  </div>
 
-          <ul>
-          <% @user_bet.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
+  <div class="field-match field-bet-id">
+    <%= f.label "Bet on" %><br>
+    <select name="user_bet[bet_on_id]">
+      <option value="1"><%= @bet.team_one %></option>
+      <option value="2"><%= @bet.team_two %></option>
+    </select>
+  </div>
 
+  <div class="actions user-bet-submit">
+    <%= f.button "Bet", :submit => "Test", name: "id", value: @bet.id %>
+  </div>
 
-
-        <div class="field-match">
-          <%= f.label :bet_points %><br>
-          <%= f.number_field :bet_points %>
-        </div>
-
-        <div class="field-match field-bet-id">
-          <%= f.label "Bet on" %><br>
-          <select name="user_bet[bet_on_id]">
-            <option value="1"><%= @bet.team_one %></option>
-            <option value="2"><%= @bet.team_two %></option>
-          </select>
-        </div>
-
-        <div class="actions user-bet-submit">
-          <%= f.button "Bet", :submit => "Test", name: "id", value: @bet.id %>
-        </div>
-
-
-
-      <% end %>
+<% end %>

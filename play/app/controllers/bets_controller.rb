@@ -68,6 +68,7 @@
     @user_bets = UserBet.all.where(:bet_id => @bet.id)
     @users = User.all
     @finished_match = @bet.finish_match(@user_bets, @users, @bet)
+    redirect_to bets_path
   end
 
   def finish
