@@ -1,41 +1,38 @@
 <div class="container">
-	<div class="row last-added-prizes-container" style="margin-top: 120px; padding-bottom: 0">
-		<div class="content-headline-bline"></div>
-		<div class="content-headline"> All Prizes </div>
+  <div class="row last-added-prizes-container" style="margin-top: 120px; padding-bottom: 0">
+    <div class="content-headline-bline"></div>
+    <div class="content-headline"> All Prizes </div>
 
 
 
-			<div class="home-prizes-showing">
+      <div class="home-prizes-showing">
 
-				<% @prizes.each do |prize| %>
-					<!-- <div class="col-xs-12 col-sm-4"> -->
-					<div class="the-prize-container">
-					<%= link_to (prize_path(prize.id)) do %>
-						<div class="prize-container" style="background: url('<%= prize.thumbnail.url %>'); background-size: cover">	
-							<div class="prize-container-hover">
-								<div class="prize-info">
-									<div class="last-prize-name"> <%= prize.name %> </div>
-								</div>
-							</div>
-						</div> 
-					<% end %>
+        <% @prizes.each do |prize| %>
+          <!-- <div class="col-xs-12 col-sm-4"> -->
+          <div class="the-prize-container">
+          <%= link_to (prize_path(prize.id)) do %>
+            <div class="prize-container" style="background: url('<%= prize.thumbnail.url %>'); background-size: cover">
+              <div class="prize-container-hover">
+                <div class="prize-info">
+                  <div class="last-prize-name"> <%= prize.name %> </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
 
-								
 
-					<%= link_to (prize_path(prize.id)) do %>
-						<button class="btn-buy-prize">
-							See more
-						</button>
-					<% end %>
-					</div>
-					<!-- </div> -->
-				<% end %>		
 
-			</div>
-	
+          <%= link_to (prize_path(prize.id)) do %>
+            <button class="btn-buy-prize">
+              See more
+            </button>
+          <% end %>
+          </div>
+          <!-- </div> -->
+        <% end %>
 
-	</div>
+      </div>
+
+
+  </div>
 </div>
-
-
- 
