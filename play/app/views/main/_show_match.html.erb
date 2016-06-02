@@ -9,29 +9,32 @@
 </div> <!-- .columns -->
 
 <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+  
   <div class="content-headline-bline"></div>
   <div class="content-headline"> Finished </div>
+
   <% @finished_bets.each do |match| %>
     <%= link_to user_bet_user_bets_path(match.id) do %>
-       <div class="match-container finished-container">
-            <div class="game-info-container">
-              <p><%= match.game %></p>
-              <p>BO<%= match.bestof %></p>
-            </div>
-            <% if match.winner == 1 %>
-              <h1>
-                <span><%= match.team_one %></span>
-                <div class="versus"> VS. </div>
-                <span style="color: #555;"><%= match.team_two %></span>
-              </h1>
-            <% elsif match.winner == 2 %>
-              <h1>
-                <span style="color: #555;"><%= match.team_one %></span>
-                <div class="versus"> VS. </div>
-                <span><%= match.team_two %></span>
-              </h1>
-            <% end %>
-          </div> <!-- .match-container -->
+      <div class="match-container finished-container">
+        <div class="game-info-container">
+          <p><%= match.game %></p>
+          <p>BO<%= match.bestof %></p>
+        </div>
+        <% if match.winner == 1 %>
+          <h1>
+            <span><%= match.team_one %></span>
+            <div class="versus"> VS. </div>
+            <span style="color: #555;"><%= match.team_two %></span>
+          </h1>
+        <% elsif match.winner == 2 %>
+          <h1>
+            <span style="color: #555;"><%= match.team_one %></span>
+            <div class="versus"> VS. </div>
+            <span><%= match.team_two %></span>
+          </h1>
+        <% end %>
+      </div> <!-- .match-container -->
     <% end %>
   <% end %>
+
 </div>
