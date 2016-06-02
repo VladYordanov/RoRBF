@@ -33,13 +33,13 @@ class Bet < ActiveRecord::Base
         when 100..300 then user.level = 1
         when 301..600 then user.level = 2
         when 601..1000 then user.level = 3
-        when 1001..1700 then user.level = 4
-        when 1701..3500 then user.level = 5
-        when 3501..5000 then user.level = 6
-        when 5001..7000 then user.level = 7
-        when 7001..9500 then user.level = 8
-        when 9501..11150 then user.level = 9
-        when 11150..14000 then user.level = 10
+        when 1_001..1_700 then user.level = 4
+        when 1_701..3_500 then user.level = 5
+        when 3_501..5_000 then user.level = 6
+        when 5_001..7_000 then user.level = 7
+        when 7_001..9_500 then user.level = 8
+        when 9_501..11_150 then user.level = 9
+        when 11_150..14_000 then user.level = 10
         end
         the_user.save
 

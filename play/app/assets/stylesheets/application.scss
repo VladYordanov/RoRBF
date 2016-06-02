@@ -363,7 +363,6 @@ a {
 
 }
 
-
 .section_headline,
 .matches-to-be-played {
   color: $main_red;
@@ -525,7 +524,11 @@ a {
 
 #user_bet_bet_points,
 select[name="user_bet[bet_on_id]"] {
-  background: $main_color2;
+  background: $main_color6;
+  background: transparant;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
   border: 0;
   color: $main_color;
   width: 100%;
@@ -880,6 +883,7 @@ $size: 150px;
 .prize-single-thumbnail {
   width: 100%;
   height: rem-calc(250px);
+  background-size: contain;
  // margin: rem-calc(100px 0);
 }
 
@@ -1218,6 +1222,10 @@ $size: 150px;
 .matches-soon-container {
   background: $main_background;
   padding-bottom: 0;
+}
+
+.finished-container {
+  background: #9f9f9f;
 }
 
 /*-------------------------------------------------------------------*\

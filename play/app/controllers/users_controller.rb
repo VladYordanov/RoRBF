@@ -69,21 +69,23 @@ def bets
 end
 
 def profile
-  @user = current_user
-  @user_bets = UserBet.all.order("created_at DESC").where(:user_id => @user.id)
-  @deliveries = Delivery.all.order("created_at DESC").where(:user_id => @user.id)
+  if current_user
+    @user = current_user
+    @user_bets = UserBet.all.order("created_at DESC").where(:user_id => @user.id)
+    @deliveries = Delivery.all.order("created_at DESC").where(:user_id => @user.id)
 
-  case @user.experience
+    case @user.experience
     when 0..300 then @level_percentage = @user.calc_experience(0.0, 300.0)
     when 301..600 then @level_percentage = @user.calc_experience(301.0, 600.0)
     when 601..1000 then @level_percentage = @user.calc_experience(601.0, 1000.0)
-    when 1001..1700 then @level_percentage = @user.calc_experience(1001.0, 1700.0)
-    when 1701..3500 then @level_percentage = @user.calc_experience(1701.0, 3500.0)
-    when 3501..5000 then @level_percentage = @user.calc_experience(3501.0, 5000.0)
-    when 5001..7000 then @level_percentage = @user.calc_experience(5001.0, 7000.0)
-    when 7001..9500 then @level_percentage = @user.calc_experience(7001.0, 9500.0)
-    when 9501..11150 then @level_percentage = @user.calc_experience(9501.0, 11150.0)
-    when 11150..14000 then @level_percentage = @user.calc_experience(11150.0, 14000.0)
+    when 1_001..1_700 then @level_percentage = @user.calc_experience(1_001.0, 1_700.0)
+    when 1_701..3_500 then @level_percentage = @user.calc_experience(1_701.0, 3_500.0)
+    when 3_501..5_000 then @level_percentage = @user.calc_experience(3_501.0, 5_000.0)
+    when 5_001..7_000 then @level_percentage = @user.calc_experience(5_001.0, 7_000.0)
+    when 7_001..9_500 then @level_percentage = @user.calc_experience(7_001.0, 9_500.0)
+    when 9_501..11_150 then @level_percentage = @user.calc_experience(9_501.0, 11_150.0)
+    when 11_150..14_000 then @level_percentage = @user.calc_experience(11_150.0, 14_000.0)
+    end
   end
 
 end

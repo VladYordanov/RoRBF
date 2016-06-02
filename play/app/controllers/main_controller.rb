@@ -21,27 +21,27 @@ class MainController < ApplicationController
   end
 
   def lol_matches
-    @bets = Bet.all.where(:game => "lol", :can_bet => 1)
+    @bets = Bet.all.where(:game => "lol", :can_bet => 1).order("match_starts_at ASC")
     @finished_bets = Bet.order("match_starts_at ASC").where(:winner => [1,2], :game => "lol").first(5)
   end
 
   def csgo_matches
-    @bets = Bet.all.where(:game => "csgo", :can_bet => 1)
+    @bets = Bet.all.where(:game => "csgo", :can_bet => 1).order("match_starts_at ASC")
     @finished_bets = Bet.order("match_starts_at ASC").where(:winner => [1,2], :game => "csgo").first(5)
   end
 
   def dota2_matches
-    @bets = Bet.all.where(:game => "dota2", :can_bet => 1)
+    @bets = Bet.all.where(:game => "dota2", :can_bet => 1).order("match_starts_at ASC")
     @finished_bets = Bet.order("match_starts_at ASC").where(:winner => [1,2], :game => "dota2").first(5)
   end
 
   def sc2_matches
-    @bets = Bet.all.where(:game => "sc2", :can_bet => 1)
+    @bets = Bet.all.where(:game => "sc2", :can_bet => 1).order("match_starts_at ASC")
     @finished_bets = Bet.order("match_starts_at ASC").where(:winner => [1,2], :game => "sc2").first(5)
   end
 
   def all_matches
-    @bets = Bet.all.where(:can_bet => 1)
+    @bets = Bet.all.where(:can_bet => 1).order("match_starts_at ASC")
     @finished_bets = Bet.order("match_starts_at ASC").where(:winner => [1,2]).first(5)
   end
 

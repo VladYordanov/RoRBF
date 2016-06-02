@@ -26,12 +26,6 @@ class PrizesController < ApplicationController
     # POST /prizes.json
     def create
         @prize = Prize.new(prize_params)
-       # @prize = Prize.find(params[:prize_id])
-
-       # @delivery.user_id = current_user.id
-        #@delivery_user_username = current_user.username 
-       # @delivery.prize_id = @prize.id
-       # @delivery.save
 
         respond_to do |format|
           if @prize.save
@@ -62,7 +56,7 @@ class PrizesController < ApplicationController
     # DELETE /prizes/1.json
     def destroy
         @prize.destroy
-    
+
         respond_to do |format|
             format.html { redirect_to prizes_url, notice: 'Prize was successfully destroyed.' }
             format.json { head :no_content }

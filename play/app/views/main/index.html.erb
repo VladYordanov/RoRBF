@@ -4,7 +4,7 @@
 
     <div class="head-welcome-container">
       <h1 class="welcome-headline">BettingForge</h1>
-      <h2 class="welcome-subline"> You can bet on your favorite teams and win prizes without investing any money! </h2>
+      <h2 class="welcome-subline"> Bet on your favorite teams and win prizes<br/> without investing any money! </h2>
       <% if !current_user %>
         <div class="welcome-buttons-container">
           <a href="#" id="sign-up-pop-up">
@@ -34,7 +34,7 @@
     <div class="row">
       <div class="starting-soon-container">
         <div class="content-headline-bline"></div>
-        <div class="content-headline"> Starting Soon </div>
+        <div class="content-headline"> Starting soon </div>
 
         <div class="starting-soon-matches">
           <% @starting_soon.each do |match| %>
@@ -55,12 +55,11 @@
   </div>
 </div>
 
-
 <div class="container">
   <div class="row">
     <div class="home-prizes-container">
         <div class="content-headline-bline"></div>
-        <div class="content-headline"> Last Added Prizes </div>
+        <div class="content-headline">Last added prizes</div>
 
         <div class="home-prizes-showing">
 
@@ -71,13 +70,11 @@
               <div class="prize-container" style="background: url('<%= prize.thumbnail.url %>'); background-size: cover">
                 <div class="prize-container-hover">
                   <div class="prize-info">
-                    <div class="last-prize-name"> <%= prize.name %> </div>
+                    <div class="last-prize-name"><%= prize.name %></div>
                   </div>
                 </div>
               </div>
             <% end %>
-
-
 
             <%= link_to (prize_path(prize.id)) do %>
               <button class="btn-buy-prize">

@@ -201,12 +201,13 @@ input[name='user[password]'],
 input[name='user[password_confirmation]'],
 input[name='commit'] {
   width: 240px;
-  height: 40px;
+  height: 48px;
   border: 0;
   background: #f6f6f6;
-  margin-top: 2px;
+  // margin-top: 2px;
   padding-left: 20px;
   font-family: 'Roboto', sans-serif;
+  border-bottom: 1px solid #ccc;
 }
 
 input[name='commit'] {
@@ -215,8 +216,14 @@ input[name='commit'] {
   color: #fff !important;
   text-align: center;
   padding-left: 0;
-  margin-top: 20px;
+  // margin-top: 20px;
   font-size: rem-calc(16px);
+}
+
+input[type="submit"] {
+  border: 0;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
 }
 
 .welcome-btn-already-signedup {
@@ -676,14 +683,16 @@ footer {
 }
 
 .welcome-field {
-  margin-top: rem-calc(10px);
-  margin-bottom: rem-calc(10px);
+  // margin-top: rem-calc(10px);
+  // margin-bottom: rem-calc(10px);
+  border-radius: rem-calc(15px);
+  height: 100%;
+}
+
+.welcome-btn-signup {
+  margin-top: rem-calc(15px);
 }
 
 .new_user {
   background: none;
-}
-
-.popup-button {
-  border: 2px solid blue;
 }

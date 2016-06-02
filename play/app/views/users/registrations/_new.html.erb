@@ -1,23 +1,23 @@
-	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-	  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-	 <div class="welcome-field">
-	    <%= f.text_field :username, :placeholder => "Username" %>
-	 </div>
+   <div class="welcome-field">
+      <%= f.text_field :username, :placeholder => "Username" %>
+   </div>
 
-	  <div class="welcome-field">
-	    <%= f.email_field :email, :placeholder => "E-mail" %>
-	  </div>
+    <div class="welcome-field">
+      <%= f.email_field :email, :placeholder => "E-mail" %>
+    </div>
 
-	  <div class="welcome-field">
-	    <%= f.password_field :password, :placeholder => "Password" %>
-	  </div>
+    <div class="welcome-field">
+      <%= f.password_field :password, :placeholder => "Password" %>
+    </div>
 
-	  <div class="welcome-field">
-	    <%= f.password_field :password_confirmation, :placeholder => "Password confirmation" %>
-	  </div>
+    <div class="welcome-field">
+      <%= f.password_field :password_confirmation, :placeholder => "Password confirmation" %>
+    </div>
 
-	  <div class="welcome-btn-signup">
-	    <%= f.submit "Sign up" %>
-	  </div>
-	<% end %>
+    <div class="welcome-btn-signup">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>

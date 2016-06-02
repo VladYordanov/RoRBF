@@ -12,7 +12,7 @@
     </div>
 
     <div class="col-sm-6">
-    <iframe src="http://player.twitch.tv/?channel=<%=@bet.stream_link%>" frameborder="0" scrolling="no" height="378" width="98%" ></iframe><a href="<%= @stream_link %>" style="margin-bottom: 110px; padding:2px 0px 4px; display:block; width:100%; left: 0; position: relative; font-weight:normal; font-size:10px;text-decoration:underline;"></a>
+      <iframe src="http://player.twitch.tv/?channel=<%=@bet.stream_link%>" frameborder="0" scrolling="no" height="378" width="98%" ></iframe><a href="<%= @stream_link %>" style="margin-bottom: 110px; padding:2px 0px 4px; display:block; width:100%; left: 0; position: relative; font-weight:normal; font-size:10px;text-decoration:underline;"></a>
     </div>
 
     <div class="col-sm-6" style="margin-bottom: 110px">
@@ -27,9 +27,9 @@
             <% if @already_bet == 1 %>
               <p> You have a <%= @bet_points %> points bet on <%= @bet_team %> </p>
             <% elsif !@already_bet %>
-              <% if @starts_in_min <= 0 && @starts_in_day <= 0 && @starts_in_hour <= 0 %>
-                <h2> The match has already started. </h2>
-              <% elsif %>
+              <% if start_time(@bet.id) == 'started' %>
+                <p class="new-ubet-notlogged"> The match has already started. </p>
+              <% else %>
                 <%= render 'form' %>
               <% end %>
             <% end %>

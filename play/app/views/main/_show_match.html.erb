@@ -13,7 +13,7 @@
   <div class="content-headline"> Finished </div>
   <% @finished_bets.each do |match| %>
     <%= link_to user_bet_user_bets_path(match.id) do %>
-       <div class="match-container">
+       <div class="match-container finished-container">
             <div class="game-info-container">
               <p><%= match.game %></p>
               <p>BO<%= match.bestof %></p>

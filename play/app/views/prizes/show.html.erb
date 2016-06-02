@@ -1,23 +1,19 @@
 <div class="container">
 <%if current_admin %>
 <%= render partial: 'admin_nav_prizes', :locals => {:admin_nav_head => "Prize info"} %>
-<% end %> 
+<% end %>
   <div class="row" style="margin-top: 100px">
-
     <div class="col-sm-4">
-      <div class="prize-single-thumbnail" style="background: url('<%= @prize.thumbnail.url %>')">
-      </div>
-
-        <!-- <p><%= @prize.in_stock %> in stock</p> -->
+      <div class="prize-single-thumbnail"  style="background: url('<%= @prize.thumbnail.url %>'); background-size: cover"></div>
 
         <% if @prize.in_stock == 0 %>
           <p> We don't have this product in stock. </p>
         <% elsif current_user %>
           <% if current_user.points >= @prize.price && current_user.level >= @prize.level_needed && current_user.experience >= @prize.exp_price %>
-            
+
             <%= link_to (new_prize_delivery_delivery_path(@prize.id)) do %>
               <button class="btn-buy-prize single-prize-btn">
-                Buy 
+                Buy
               </button>
             <% end %>
           <% else %>
@@ -33,10 +29,7 @@
           <strong>Price: </strong>
           <%= @prize.price %>p, <%= @prize.exp_price%> exp, <%= @prize.level_needed %> level
         </p>
-
-
     </div>
-   
 
     <div class="col-sm-8">
       <div class="prize-single-info">
@@ -44,7 +37,6 @@
          <p> <%= @prize.description.html_safe %></p>
        </div>
     </div>
-
 
   </div> <!-- row -->
 </div> <!-- container -->
