@@ -24,7 +24,7 @@
               <li><a href="#">MATCHES</a>
                 <ul class="dropdown">
                   <%=link_to (all_matches_main_index_path) do %>
-                      <li>CURRENT</li>
+                      <li>All matches</li>
                   <% end %>
                   <%=link_to (csgo_matches_main_index_path) do %>
                       <li>CS:GO</li>
@@ -65,9 +65,9 @@
                         <li>Users</li>
                     <% end %>
                   </ul>
-                </li>  
+                </li>
                 <li><%= link_to "LOG OUT", destroy_admin_session_path, :method => :delete %>
-                </li>           
+                </li>
               <% else %>
                 <li><a href="#" id="sign-up-pop-up">SIGN UP</a></li>
                 <div id="sign-up-element-to-pop-up">
@@ -77,11 +77,11 @@
                 <div id="sign-in-element-to-pop-up">
                   <%= render :partial => "users/sessions/new" %>
                 </div>
-              <% end %>  
+              <% end %>
 
             </ul>
           </nav>
-        </div> 
+        </div>
       </div>
     </div>
 
@@ -89,7 +89,7 @@
 
     <footer>
       <div class="container">
-        <div class="row"> 
+        <div class="row">
           <div class="col-lg-4">
             <div class="footer-menu">
               <ul>
@@ -104,7 +104,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-lg-offset-4"> 
+          <div class="col-lg-4 col-lg-offset-4">
             <div class="footer-menu-social">
               <a href="#"> <i class="fa fa-facebook-square"> </i> </a>
               <a href="#"> <i class="fa fa-twitter-square"> </i> </a>

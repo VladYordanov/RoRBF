@@ -33,11 +33,16 @@ th {
 
   padding: 4px;
   text-align: center;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
 
   a {
     text-decoration: none;
     color: $main_red;
+
+    &:hover {
+      color: $main_color3;
+      text-decoration: overline;
+    }
   }
 }
 
@@ -54,7 +59,7 @@ tr td {
 }
 
 thead {
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 select,
@@ -65,6 +70,12 @@ input {
 
   color: $main_color !important;
   position: relative;
+}
+
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
 
 label {

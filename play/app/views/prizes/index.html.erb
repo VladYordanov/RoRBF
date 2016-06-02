@@ -1,37 +1,35 @@
 <div class="container">
   <div class="row">
 
-      <p id="notice"><%= notice %></p>
-
+    <p id="notice"><%= notice %></p>
+    
     <%= render partial: 'admin_nav_prizes', :locals => {:admin_nav_head => "Listing prizes"} %>
 
-      <table>
-        <thead>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Is in stock</th>
+          <th>In stock</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @prizes.each do |prize| %>
           <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Is in stock</th>
-            <th>In stock</th>
-            <th colspan="3"></th>
+            <td><%= prize.name %></td>
+            <td><%= prize.price %></td>
+            <td><%= prize.is_in_stock %></td>
+            <td><%= prize.in_stock %></td>
+            <td><%= link_to 'Show', prize %></td>
+            <td><%= link_to 'Edit', edit_prize_path(prize) %></td>
+            <td><%= link_to 'Destroy', prize, method: :delete, data: { confirm: 'Are you sure you want to delete this prize entry?' } %></td>
           </tr>
-        </thead>
-
-        <tbody>
-          <% @prizes.each do |prize| %>
-            <tr>
-              <td><%= prize.name %></td>
-              <td><%= prize.price %></td>
-              <td><%= prize.is_in_stock %></td>
-              <td><%= prize.in_stock %></td>
-              <td><%= link_to 'Show', prize %></td>
-              <td><%= link_to 'Edit', edit_prize_path(prize) %></td>
-              <td><%= link_to 'Destroy', prize, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-      <br>
+        <% end %>
+      </tbody>
+    </table>
 
   </div>
 </div>

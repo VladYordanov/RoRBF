@@ -526,15 +526,15 @@ a {
 select[name="user_bet[bet_on_id]"] {
   background: $main_color6;
   background: transparant;
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
   border: 0;
   color: $main_color;
   width: 100%;
   height: rem-calc(40px);
   margin-top: rem-calc(10px);
   padding: rem-calc(10px);
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
 
 #user_bet_bet_points {
@@ -637,8 +637,13 @@ input[type=number]::-webkit-outer-spin-button {
     padding: rem-calc(0 10px);
     @include prefix(transition, 0.4s);
 
+
     a {
       color: $main-color;
+
+      &:hover {
+        color: red;
+      }
     }
   }
 
@@ -662,7 +667,6 @@ input[type=number]::-webkit-outer-spin-button {
     display: block;
     padding: rem-calc(10px 10px);
     width: rem-calc(160px);
-    //border-top: 1px solid $main_color3;
     color: #fff;
 
 

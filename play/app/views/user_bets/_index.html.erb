@@ -26,10 +26,11 @@
             <td><%= user_bet.loss %></td>
             <td><%= user_bet.returned_value %></td>
             <td><%= link_to 'Show', user_bet %></td>
-            <td><%= link_to 'Destroy', user_bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Destroy', user_bet, method: :delete, data: { confirm: 'Are you sure you want to delete this User Bet entry?' } %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+    
   </div>
 </div>
