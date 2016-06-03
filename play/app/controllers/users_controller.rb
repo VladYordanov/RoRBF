@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  #before_filter :authenticate_admin!, except: [:bets, :profile]
+  before_filter :authenticate_admin!, except: [:bets, :profile]
   #before_filter :authenticate_user!, only: [:bets, :profile]
 
   # GET /users
@@ -76,16 +76,36 @@ def profile
     @user.compare_exp_level(@user.experience)
 
     case @user.experience
-    when 0..300 then @level_percentage = @user.calc_experience(0.0, 300.0)
-    when 301..600 then @level_percentage = @user.calc_experience(301.0, 600.0)
-    when 601..1_000 then @level_percentage = @user.calc_experience(601.0, 1_000.0)
-    when 1_001..1_700 then @level_percentage = @user.calc_experience(1_001.0, 1_700.0)
-    when 1_701..3_500 then @level_percentage = @user.calc_experience(1_701.0, 3_500.0)
-    when 3_501..5_000 then @level_percentage = @user.calc_experience(3_501.0, 5_000.0)
-    when 5_001..7_000 then @level_percentage = @user.calc_experience(5_001.0, 7_000.0)
-    when 7_001..9_500 then @level_percentage = @user.calc_experience(7_001.0, 9_500.0)
-    when 9_501..11_150 then @level_percentage = @user.calc_experience(9_501.0, 11_150.0)
-    when 11_150..14_000 then @level_percentage = @user.calc_experience(11_150.0, 14_000.0)
+    when 0..300 then
+      @level_percentage = @user.calc_experience(0.0, 300.0)
+      @max_points_of_level = 300
+    when 301..600 then
+      @level_percentage = @user.calc_experience(301.0, 600.0)
+      @max_points_of_level = 600
+    when 601..1_000 then
+      @level_percentage = @user.calc_experience(601.0, 1_000.0)
+      @max_points_of_level = 1_000
+    when 1_001..1_700 then
+      @level_percentage = @user.calc_experience(1_001.0, 1_700.0)
+      @max_points_of_level = 1_700
+    when 1_701..3_500 then
+      @level_percentage = @user.calc_experience(1_701.0, 3_500.0)
+      @max_points_of_level = 3_500
+    when 3_501..5_000 then
+      @level_percentage = @user.calc_experience(3_501.0, 5_000.0)
+      @max_points_of_level = 5_000
+    when 5_001..7_000 then
+      @level_percentage = @user.calc_experience(5_001.0, 7_000.0)
+      @max_points_of_level = 7_000
+    when 7_001..9_500 then
+      @level_percentage = @user.calc_experience(7_001.0, 9_500.0)
+      @max_points_of_level = 9_500
+    when 9_501..11_150 then
+      @level_percentage = @user.calc_experience(9_501.0, 11_150.0)
+      @max_points_of_level = 11_150
+    when 11_150..14_000 then
+      @level_percentage = @user.calc_experience(11_150.0, 14_000.0)
+      @max_points_of_level = 14_000
     end
   end
 

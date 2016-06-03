@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :start_time
-
   def start_time(match_id)
     match = Bet.find(match_id)
     time_left = (match.match_starts_at - Time.now.in_time_zone).to_i

@@ -3,7 +3,7 @@ class MainController < ApplicationController
   def index
     @user = current_user
     @bets = Bet.all
-    @starting_soon = Bet.order("match_starts_at ASC").where(:can_bet => "1").first(6)
+    @starting_soon = Bet.order("match_starts_at ASC").where(:can_bet => "1").first(4)
     @prizes = Prize.order("in_stock ASC").first(3)
   end
 

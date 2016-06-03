@@ -1,6 +1,6 @@
 
 class Bet < ActiveRecord::Base
-  has_many :user_bets
+  has_many :user_bets, :dependent => :destroy
 
   def finish_match(user_bets, the_users, the_bet)
     user_bets.each do |user_bet|
@@ -42,7 +42,6 @@ class Bet < ActiveRecord::Base
         when 11_150..14_000 then the_user.level = 10
         end
         the_user.save
-
       end
     end
   end
