@@ -7,14 +7,14 @@
       <% if !current_user %>
         <div class="welcome-buttons-container">
           <a href="#" id="sign-up-pop-up">
-            <button onClick="$('#sign-in-element-to-pop-up').bPopup()" class="welcome-button"> Log In </button>
+            <button class="welcome-button"> Log In </button>
           </a>
           <div id="sign-up-element-to-pop-up">
             <%= render :partial => "users/registrations/new" %>
           </div>
 
           <a href="#" id="sign-in-pop-up">
-            <button onClick="$('#sign-up-element-to-pop-up').bPopup()"class="welcome-button"> Sign Up </button>
+            <button class="welcome-button"> Sign Up </button>
           </a>
           <div id="sign-in-element-to-pop-up">
             <%= render :partial => "users/sessions/new" %>
