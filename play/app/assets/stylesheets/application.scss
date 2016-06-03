@@ -16,15 +16,16 @@
  *= require_self
  */
 
+ @import 'inc/functions';
+ @import 'inc/variables';
+ @import 'inc/responsive-nav';
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
 
 a {
   text-decoration: none;
 }
 
- @import 'inc/functions';
- @import 'inc/variables';
- @import 'inc/responsive-nav';
- @import 'font-awesome.min';
 
  html,
  body {
@@ -1096,10 +1097,12 @@ $size: 150px;
   height: rem-calc(50px);
   border: 0;
   background: $main_red;
-
-
   color: #fff;
   font-size: rem-calc(18px);
+
+  &:hover {
+    background: $main_color3;
+  }
 }
 
 .content-headline-bline,

@@ -73,11 +73,12 @@ def profile
     @user = current_user
     @user_bets = UserBet.all.order("created_at DESC").where(:user_id => @user.id)
     @deliveries = Delivery.all.order("created_at DESC").where(:user_id => @user.id)
+    @user.compare_exp_level(@user.experience)
 
     case @user.experience
     when 0..300 then @level_percentage = @user.calc_experience(0.0, 300.0)
     when 301..600 then @level_percentage = @user.calc_experience(301.0, 600.0)
-    when 601..1000 then @level_percentage = @user.calc_experience(601.0, 1000.0)
+    when 601..1_000 then @level_percentage = @user.calc_experience(601.0, 1_000.0)
     when 1_001..1_700 then @level_percentage = @user.calc_experience(1_001.0, 1_700.0)
     when 1_701..3_500 then @level_percentage = @user.calc_experience(1_701.0, 3_500.0)
     when 3_501..5_000 then @level_percentage = @user.calc_experience(3_501.0, 5_000.0)

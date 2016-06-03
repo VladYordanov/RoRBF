@@ -17,7 +17,7 @@ class UserBetsController < ApplicationController
     @user_bet = UserBet.new
     @bet = Bet.find(params[:id])
     @user = current_user
-    @stream_link = @bet.stream_link 
+    @stream_link = @bet.stream_link
 
     if @user
       @user_bets = UserBet.where(:user_id => @user.id, :bet_id => @bet.id).first
@@ -38,7 +38,6 @@ class UserBetsController < ApplicationController
   # POST /user_bets
   # POST /user_bets.json
   def create
-
     @user_bet = UserBet.new(user_bet_params)
     @bet = Bet.find(params[:id])
     @user = current_user
@@ -47,7 +46,7 @@ class UserBetsController < ApplicationController
 
     respond_to do |format|
       if @user_bet.save
-        format.html { redirect_to @user_bet, notice: 'User bet was successfully created.' }
+        format.html { redirect_to user_bet_user_bets_path(@bet.id), notice: 'User bet was successfully created.' }
         format.json { render :show, status: :created, location: @user_bet }
       else
         format.html { render :new }

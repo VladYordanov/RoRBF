@@ -1,0 +1,7 @@
+TODO:
+    V  - (routing) new user_bet -> route to the match not the show V
+    V  - fontawesome
+    V  - myprofile controller -> update level based on exp THERE IN THE CONTROLLER V
+      - remove unused gems from gemfile
+      - minify and rearrange css
+      - home sign up and sign in buttons - add hover

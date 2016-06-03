@@ -32,7 +32,7 @@ class Bet < ActiveRecord::Base
         case the_user.experience
         when 100..300 then the_user.level = 1
         when 301..600 then the_user.level = 2
-        when 601..1000 then the_user.level = 3
+        when 601..1_000 then the_user.level = 3
         when 1_001..1_700 then the_user.level = 4
         when 1_701..3_500 then the_user.level = 5
         when 3_501..5_000 then the_user.level = 6
